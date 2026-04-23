@@ -17,7 +17,8 @@ export default function Navigation() {
 
   const navItems = [
     { label: 'Home', href: '#hero' },
-    { label: 'Work', href: '#timeline' },
+    { label: 'Experience', href: '#experience' },
+    { label: 'Projects', href: '#projects' },
     { label: 'Skills', href: '#skills' },
     { label: 'Story', href: '#about' },
     { label: 'Contact', href: '#contact' },

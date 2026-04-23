@@ -42,6 +42,10 @@ export default function About() {
             </p>
 
             <p className="text-lg leading-relaxed text-[#71717A]">
+              Currently in my final year at VRSEC, pursuing a B.Tech in AI &amp; Data Science. But the real learning has been outside the classroom — through internships, hackathons, and building things that actually matter.
+            </p>
+
+            <p className="text-lg leading-relaxed text-[#71717A]">
               When I&apos;m not building AI systems, I&apos;m probably writing about building AI systems. I share my learnings on LinkedIn — sometimes about breakthroughs, sometimes about things that didn&apos;t work. Both feel equally important.
             </p>
 
