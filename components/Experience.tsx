@@ -10,96 +10,102 @@ export default function Experience() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="experience" className="py-32 bg-white relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#F7F5F0] to-white" />
+    <section id="experience" className="py-32 bg-white relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[30%] h-full bg-[#F7F5F0]" />
       
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-20"
         >
-          <span className="text-[#C45D35] font-mono text-xs tracking-widest uppercase">Experience</span>
-          <h2 className="text-4xl md:text-5xl font-display mt-4 mb-16">
+          <div className="flex items-center gap-4 mb-4">
+            <span className="text-[#9A9A9A] font-mono text-xs tracking-[0.3em] uppercase">— 02 / Experience</span>
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl">
             Where the real work happens
           </h2>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          className="bg-[#F7F5F0] rounded-none border border-[#E5E2DB] overflow-hidden max-w-4xl"
-        >
-          <div className="p-10 md:p-14">
-            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-10">
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <Briefcase size={24} weight="regular" className="text-[#C45D35]" />
-                  <h3 className="text-2xl md:text-3xl font-display">AI Engineer Intern</h3>
-                </div>
-                <p className="text-[#6B6B6B] text-lg">Aynstyn Technologies Pvt. Ltd.</p>
+        <div className="grid lg:grid-cols-12 gap-12">
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-4"
+          >
+            <div className="sticky top-32">
+              <div className="bg-[#1A1A1A] text-white p-8">
+                <p className="font-mono text-xs text-[#6B6B6B] tracking-widest uppercase mb-6">Current Role</p>
+                <p className="font-display text-2xl mb-2">AI Engineer Intern</p>
+                <p className="text-[#9A9A9A] text-sm mb-6">Aynstyn Technologies</p>
+                <div className="w-8 h-[1px] bg-[#C45D35] mb-6" />
+                <p className="font-mono text-xs text-[#6B6B6B] mb-2">Period</p>
+                <p className="text-sm">Jan 2026 — Present</p>
               </div>
-              <span className="px-5 py-2 bg-[#EDEAE4] text-[#6B6B6B] font-mono text-sm tracking-wide self-start">
-                Jan 2026 — Present
-              </span>
             </div>
+          </motion.div>
 
-            <div className="space-y-8 mb-10">
-              <p className="text-lg text-[#6B6B6B] leading-relaxed">
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-8"
+          >
+            <div className="space-y-12">
+              <p className="text-xl text-[#6B6B6B] leading-relaxed font-light">
                 Engineered AI-powered SaaS modules for interview simulation, candidate assessment, and voice evaluation. Then realized the harder problem wasn&apos;t the AI — it was knowing if the AI was actually trustworthy.
               </p>
-              
-              <div className="space-y-5">
-                <div className="flex items-start gap-4">
-                  <span className="text-[#C45D35] font-mono text-sm mt-1">01</span>
-                  <div>
-                    <p className="font-medium text-[#1A1A1A]">Built evaluation infrastructure</p>
-                    <p className="text-[#6B6B6B] text-sm">Evaluation pipeline across 200+ test cases. Coverage improved by 2x.</p>
+
+              <div className="space-y-8">
+                {[
+                  {
+                    num: '01',
+                    title: 'Built evaluation infrastructure',
+                    desc: 'Evaluation pipeline across 200+ test cases. Coverage improved by 2x.'
+                  },
+                  {
+                    num: '02', 
+                    title: 'Optimized inference workflows',
+                    desc: 'Reduced unstable outputs. Made responses consistent across edge cases.'
+                  },
+                  {
+                    num: '03',
+                    title: 'Integrated LLM-powered systems',
+                    desc: 'Real-time inference supporting concurrent user interactions.'
+                  }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-6 group">
+                    <div className="flex-shrink-0">
+                      <span className="text-[#C45D35] font-mono text-xs">{item.num}</span>
+                      <div className="w-[1px] h-full bg-[#E5E2DB] ml-[5px] mt-2 group-hover:bg-[#C45D35] transition-colors" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-[#1A1A1A] mb-1">{item.title}</h4>
+                      <p className="text-sm text-[#6B6B6B]">{item.desc}</p>
+                    </div>
                   </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <span className="text-[#C45D35] font-mono text-sm mt-1">02</span>
-                  <div>
-                    <p className="font-medium text-[#1A1A1A]">Optimized inference workflows</p>
-                    <p className="text-[#6B6B6B] text-sm">Reduced unstable outputs. Made responses consistent across edge cases.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <span className="text-[#C45D35] font-mono text-sm mt-1">03</span>
-                  <div>
-                    <p className="font-medium text-[#1A1A1A]">Integrated LLM-powered systems</p>
-                    <p className="text-[#6B6B6B] text-sm">Real-time inference supporting concurrent user interactions.</p>
-                  </div>
+                ))}
+              </div>
+
+              <div className="pt-8 border-t border-[#E5E2DB]">
+                <p className="text-xs font-mono text-[#9A9A9A] tracking-widest uppercase mb-4">Technologies</p>
+                <div className="flex flex-wrap gap-2">
+                  {['FastAPI', 'LangChain', 'PyTorch', 'RAG', 'LLM Evaluation', 'SaaS'].map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-4 py-2 bg-[#F7F5F0] text-[#6B6B6B] text-sm font-mono border border-[#E5E2DB] hover:border-[#C45D35] hover:text-[#C45D35] transition-colors"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
-
-            <div className="flex flex-wrap gap-2 mb-10">
-              {['FastAPI', 'LangChain', 'PyTorch', 'RAG', 'LLM Evaluation', 'SaaS'].map((tech) => (
-                <span
-                  key={tech}
-                  className="px-4 py-2 bg-[#EDEAE4] text-[#6B6B6B] text-sm font-mono border border-[#E5E2DB] hover:border-[#C45D35] hover:text-[#C45D35] transition-colors cursor-default"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            <a
-              href="https://linkedin.com/company/aynstyn"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[#C45D35] hover:text-[#A84D2B] transition-colors font-mono text-sm tracking-wide group"
-            >
-              Learn more
-              <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )

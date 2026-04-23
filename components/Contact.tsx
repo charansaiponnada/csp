@@ -17,19 +17,17 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-32 bg-white relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#F7F5F0] to-white" />
-      
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
+    <section id="contact" className="py-32 bg-[#F7F5F0] relative">
+      <div className="max-w-4xl mx-auto px-6">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
-          <span className="text-[#C45D35] font-mono text-xs tracking-widest uppercase">Contact</span>
-          <h2 className="text-4xl md:text-5xl font-display mt-4 mb-6">
+          <span className="text-[#9A9A9A] font-mono text-xs tracking-[0.3em] uppercase">— 06 / Contact</span>
+          <h2 className="font-display text-4xl md:text-5xl mt-4 mb-6">
             Let&apos;s connect
           </h2>
           <p className="text-xl text-[#6B6B6B] max-w-2xl mx-auto font-light">
@@ -40,19 +38,19 @@ export default function Contact() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          className="grid md:grid-cols-2 gap-12"
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="grid md:grid-cols-2 gap-8"
         >
           <div className="space-y-4">
             <a
               href="mailto:charansaiponnada06@gmail.com"
-              className="flex items-center gap-4 p-6 bg-[#F7F5F0] border border-[#E5E2DB] hover:border-[#C45D35]/30 transition-colors group"
+              className="flex items-center gap-4 p-6 bg-white border border-[#E5E2DB] hover:border-[#C45D35] transition-colors group"
             >
               <div className="p-3 bg-[#EDEAE4] group-hover:bg-[#C45D35]/10 transition-colors">
-                <Envelope size={24} className="text-[#C45D35]" />
+                <Envelope size={22} className="text-[#C45D35]" />
               </div>
               <div>
-                <span className="text-xs font-mono text-[#9A9A9A] tracking-wide">Email</span>
+                <span className="text-xs font-mono text-[#9A9A9A] tracking-wide uppercase block mb-1">Email</span>
                 <p className="font-medium text-[#1A1A1A]">charansaiponnada06@gmail.com</p>
               </div>
             </a>
@@ -61,13 +59,13 @@ export default function Contact() {
               href="https://github.com/charansaiponnada"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 p-6 bg-[#F7F5F0] border border-[#E5E2DB] hover:border-[#C45D35]/30 transition-colors group"
+              className="flex items-center gap-4 p-6 bg-white border border-[#E5E2DB] hover:border-[#C45D35] transition-colors group"
             >
               <div className="p-3 bg-[#EDEAE4] group-hover:bg-[#C45D35]/10 transition-colors">
-                <GithubLogo size={24} className="text-[#C45D35]" />
+                <GithubLogo size={22} className="text-[#C45D35]" />
               </div>
               <div>
-                <span className="text-xs font-mono text-[#9A9A9A] tracking-wide">GitHub</span>
+                <span className="text-xs font-mono text-[#9A9A9A] tracking-wide uppercase block mb-1">GitHub</span>
                 <p className="font-medium text-[#1A1A1A]">@charansaiponnada</p>
               </div>
             </a>
@@ -76,13 +74,13 @@ export default function Contact() {
               href="https://linkedin.com/in/charansaiponnada"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 p-6 bg-[#F7F5F0] border border-[#E5E2DB] hover:border-[#C45D35]/30 transition-colors group"
+              className="flex items-center gap-4 p-6 bg-white border border-[#E5E2DB] hover:border-[#C45D35] transition-colors group"
             >
               <div className="p-3 bg-[#EDEAE4] group-hover:bg-[#C45D35]/10 transition-colors">
-                <LinkedinLogo size={24} className="text-[#C45D35]" />
+                <LinkedinLogo size={22} className="text-[#C45D35]" />
               </div>
               <div>
-                <span className="text-xs font-mono text-[#9A9A9A] tracking-wide">LinkedIn</span>
+                <span className="text-xs font-mono text-[#9A9A9A] tracking-wide uppercase block mb-1">LinkedIn</span>
                 <p className="font-medium text-[#1A1A1A]">Charan Sai Ponnada</p>
               </div>
             </a>
@@ -90,44 +88,44 @@ export default function Contact() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-mono text-[#6B6B6B] mb-2 tracking-wide">Name</label>
+              <label htmlFor="name" className="block text-xs font-mono text-[#9A9A9A] tracking-wide uppercase mb-2">Name</label>
               <input
                 type="text"
                 id="name"
                 required
-                className="w-full px-4 py-3 bg-[#F7F5F0] border border-[#E5E2DB] rounded-none focus:border-[#C45D35] focus:outline-none transition-colors"
+                className="w-full px-5 py-4 bg-white border border-[#E5E2DB] focus:border-[#C45D35] focus:outline-none transition-colors"
                 placeholder="Your name"
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-mono text-[#6B6B6B] mb-2 tracking-wide">Email</label>
+              <label htmlFor="email" className="block text-xs font-mono text-[#9A9A9A] tracking-wide uppercase mb-2">Email</label>
               <input
                 type="email"
                 id="email"
                 required
-                className="w-full px-4 py-3 bg-[#F7F5F0] border border-[#E5E2DB] rounded-none focus:border-[#C45D35] focus:outline-none transition-colors"
+                className="w-full px-5 py-4 bg-white border border-[#E5E2DB] focus:border-[#C45D35] focus:outline-none transition-colors"
                 placeholder="your@email.com"
               />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-mono text-[#6B6B6B] mb-2 tracking-wide">Message</label>
+              <label htmlFor="message" className="block text-xs font-mono text-[#9A9A9A] tracking-wide uppercase mb-2">Message</label>
               <textarea
                 id="message"
                 required
                 rows={4}
-                className="w-full px-4 py-3 bg-[#F7F5F0] border border-[#E5E2DB] rounded-none focus:border-[#C45D35] focus:outline-none transition-colors resize-none"
+                className="w-full px-5 py-4 bg-white border border-[#E5E2DB] focus:border-[#C45D35] focus:outline-none transition-colors resize-none"
                 placeholder="Let's talk about..."
               />
             </div>
             <button
               type="submit"
               disabled={formState !== 'idle'}
-              className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#1A1A1A] text-white font-mono text-sm tracking-wide hover:bg-[#1A1A1A]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#1A1A1A] text-white font-mono text-sm tracking-wide hover:bg-[#1A1A1A]/85 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {formState === 'idle' && (
                 <>
                   <PaperPlaneTilt size={18} />
-                  Send Message
+                  <span>Send Message</span>
                 </>
               )}
               {formState === 'submitting' && 'Sending...'}
