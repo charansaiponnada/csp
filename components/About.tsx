@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { ArrowRight } from '@phosphor-icons/react'
 
 export default function About() {
   const ref = useRef(null)
@@ -16,49 +17,50 @@ export default function About() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="grid md:grid-cols-2 gap-16 items-start"
+          className="max-w-3xl mx-auto"
         >
-          <div>
-            <span className="text-[#2563EB] font-mono text-sm tracking-wider uppercase">The Story</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-8">
-              Thinking out loud about AI systems
-            </h2>
-          </div>
+          <span className="text-[#2563EB] font-mono text-sm tracking-wider uppercase">The Story</span>
+          
+          <div className="mt-8 space-y-8">
+            <p className="text-2xl md:text-3xl font-medium leading-relaxed text-[#18181B]">
+              I build AI systems that operate beyond experiments and function reliably in real-world environments.
+            </p>
 
-          <div className="space-y-6">
-            <div className="relative pl-8 border-l-2 border-[#E4E4E7]">
-              <span className="absolute -left-3 top-0 text-6xl text-[#2563EB]/20 font-serif">&quot;</span>
-              <p className="text-xl leading-relaxed text-[#71717A] italic">
-                In financial applications, a prediction without reasoning is not usable. Explainability is not an add-on; it is a requirement.
+            <div className="w-16 h-1 bg-[#2563EB] rounded-full" />
+
+            <div className="space-y-6 text-lg text-[#71717A] leading-relaxed">
+              <p>
+                Currently working as an AI Engineer Intern at Aynstyn Technologies, designing and deploying LLM-powered systems for interview simulation and candidate evaluation. Not just getting them to work — getting them to actually be trustworthy.
+              </p>
+
+              <p>
+                The thing I keep coming back to: bigger isn&apos;t always better. That&apos;s where Small Language Models start to impress. Faster inference, predictable behavior, easier to debug. For domain-specific tasks, they&apos;re often the right call.
+              </p>
+
+              <p>
+                I&apos;m in my final year at VRSEC, but the real learning has been outside the classroom. Hackathons (secured 2nd place at YUVAAN 2026 at IIT Hyderabad), research (published at ISAECT 2025), and building things that actually get used.
+              </p>
+
+              <p>
+                When I&apos;m not building, I&apos;m probably writing about what I learned. Sometimes breakthroughs. Sometimes things that didn&apos;t work. Both feel equally important.
               </p>
             </div>
 
-            <p className="text-lg leading-relaxed text-[#71717A]">
-              Currently working as an AI Engineer Intern at Aynstyn Technologies, I design and deploy LLM-powered systems for interview simulation, candidate evaluation, and real-time AI applications. My focus is on improving model reliability, scalability, and practical usability in production settings.
-            </p>
-
-            <p className="text-lg leading-relaxed text-[#71717A]">
-              I&apos;m particularly drawn to the problems that don&apos;t have clean solutions — when a RAG pipeline confidently gives wrong answers, when an LLM&apos;s output is unstable, when the &quot;right-looking&quot; architecture still fails in practice. That&apos;s where the real engineering happens.
-            </p>
-
-            <p className="text-lg leading-relaxed text-[#71717A]">
-              Currently in my final year at VRSEC, pursuing a B.Tech in AI &amp; Data Science. But the real learning has been outside the classroom — through internships, hackathons, and building things that actually matter.
-            </p>
-
-            <p className="text-lg leading-relaxed text-[#71717A]">
-              When I&apos;m not building AI systems, I&apos;m probably writing about building AI systems. I share my learnings on LinkedIn — sometimes about breakthroughs, sometimes about things that didn&apos;t work. Both feel equally important.
-            </p>
-
-            <div className="pt-6">
+            <div className="pt-8 flex items-center gap-4">
               <a
                 href="https://linkedin.com/in/charansaiponnada"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[#2563EB] hover:text-[#1D4ED8] transition-colors group"
+                className="inline-flex items-center gap-2 text-[#2563EB] hover:text-[#1D4ED8] transition-colors group font-medium"
               >
                 Read more on LinkedIn
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                <ArrowRight 
+                  size={18} 
+                  className="group-hover:translate-x-1 transition-transform" 
+                />
               </a>
+              <span className="text-[#E4E4E7]">|</span>
+              <span className="text-sm text-[#71717A]">1,303 followers</span>
             </div>
           </div>
         </motion.div>

@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { GithubLogo, ArrowSquareOut, Star, Fork } from '@phosphor-icons/react'
+import { GithubLogo, ArrowSquareOut, BookOpen } from '@phosphor-icons/react'
 
 const projects = [
   {
@@ -17,6 +17,8 @@ const projects = [
     ],
     stack: ['Python', 'Gemini 2.5', 'Streamlit', 'Flask', 'Tavily Search', 'Databricks'],
     github: 'https://github.com/charansaiponnada/VIVIRITY',
+    demo: undefined,
+    paper: undefined,
     stars: '2nd at YUVAAN 2026',
     color: '#2563EB',
   },
@@ -31,6 +33,8 @@ const projects = [
     ],
     stack: ['Python', 'LangChain', 'ChromaDB', 'OpenRouter', 'Gradio'],
     github: 'https://github.com/charansaiponnada/AyurMind',
+    demo: undefined,
+    paper: undefined,
     stars: 'Conference ready',
     color: '#059669',
   },
@@ -40,12 +44,14 @@ const projects = [
     description: 'Standard BLIP didn\'t understand Indian traffic scenes. So we fine-tuned it — 3-stage LoRA on 427 scenes. The numbers improved modestly (+15.6% across metrics), but more importantly, the captions started actually making sense for the context.',
     whatWorked: [
       'LoRA fine-tuning reduced compute requirements significantly',
-      'Published at ISAECT 2025',
+      '3-stage LoRA training on 427-scene Indian traffic dataset',
       'Model deployed on HuggingFace',
     ],
     stack: ['PyTorch', 'BLIP', 'LoRA', 'OpenCV'],
     github: 'https://github.com/charansaiponnada/blip-instance',
-    stars: 'Published',
+    demo: 'https://huggingface.co/Charansaiponnada/BLIP-BASE-INDIAN',
+    paper: 'https://doi.org/10.1109/isaect68904.2025.11318802',
+    stars: 'Published — ISAECT 2025',
     color: '#7C3AED',
   },
   {
@@ -57,8 +63,10 @@ const projects = [
       'Subject-wise cross-validation (no data leakage)',
       'Scientific rigor > chasing accuracy',
     ],
-    stack: ['Python', 'Machine Learning', 'Signal Processing', ' Riemannian Geometry'],
+    stack: ['Python', 'Machine Learning', 'Signal Processing', 'Riemannian Geometry'],
     github: 'https://github.com/charansaiponnada/eeg-meditation-classification-study',
+    demo: undefined,
+    paper: undefined,
     stars: 'Research journey',
     color: '#DC2626',
   },
@@ -137,7 +145,7 @@ export default function Projects() {
                       </div>
                     </div>
 
-                    <div className="flex md:flex-col gap-3 md:items-end">
+                    <div className="flex flex-wrap gap-3 md:items-end">
                       <a
                         href={project.github}
                         target="_blank"
@@ -147,6 +155,28 @@ export default function Projects() {
                         <GithubLogo size={16} />
                         View Code
                       </a>
+                      {project.demo && (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-4 py-2 bg-[#059669] text-white text-sm font-medium rounded-lg hover:bg-[#059669]/80 transition-colors"
+                        >
+                          <ArrowSquareOut size={16} />
+                          HuggingFace
+                        </a>
+                      )}
+                      {project.paper && (
+                        <a
+                          href={project.paper}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-4 py-2 bg-[#7C3AED] text-white text-sm font-medium rounded-lg hover:bg-[#7C3AED]/80 transition-colors"
+                        >
+                          <BookOpen size={16} />
+                          Paper (DOI)
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
