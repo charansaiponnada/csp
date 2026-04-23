@@ -37,17 +37,17 @@ export default function Accomplishments() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="accomplishments" className="py-32 bg-white">
+    <section id="accomplishments" className="py-32 bg-[#F7F5F0] relative">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="mb-20"
         >
-          <span className="text-[#2563EB] font-mono text-sm tracking-wider uppercase">Recognition</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4">
+          <span className="text-[#C45D35] font-mono text-xs tracking-widest uppercase">Recognition</span>
+          <h2 className="text-4xl md:text-5xl font-display mt-4">
             Things that made me pause
           </h2>
         </motion.div>
@@ -58,18 +58,17 @@ export default function Accomplishments() {
               key={item.title}
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -4 }}
-              className="bg-[#FAFAF9] p-8 rounded-2xl border border-[#E4E4E7] hover:border-[#2563EB]/30 transition-all cursor-default group"
+              transition={{ duration: 0.6, delay: index * 0.1, ease: 'easeOut' }}
+              className="bg-white border border-[#E5E2DB] p-10 hover:border-[#C45D35]/30 transition-all cursor-default group"
             >
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-[#2563EB]/10 rounded-xl group-hover:bg-[#2563EB]/20 transition-colors">
-                  <item.icon size={28} weight="duotone" className="text-[#2563EB]" />
+              <div className="flex items-start gap-6">
+                <div className="p-4 bg-[#EDEAE4] group-hover:bg-[#C45D35]/10 transition-colors">
+                  <item.icon size={32} weight="regular" className="text-[#C45D35]" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
-                  <p className="text-[#71717A] text-sm mb-2">{item.description}</p>
-                  <span className="text-xs font-mono text-[#2563EB]">{item.date}</span>
+                  <h3 className="text-xl font-display mb-1">{item.title}</h3>
+                  <p className="text-[#6B6B6B] text-sm mb-3">{item.description}</p>
+                  <span className="text-xs font-mono text-[#9A9A9A] tracking-wide">{item.date}</span>
                 </div>
               </div>
             </motion.div>

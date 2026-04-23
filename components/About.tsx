@@ -14,21 +14,21 @@ export default function About() {
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
           className="max-w-3xl mx-auto"
         >
-          <span className="text-[#2563EB] font-mono text-sm tracking-wider uppercase">The Story</span>
+          <span className="text-[#C45D35] font-mono text-xs tracking-widest uppercase">The Story</span>
           
-          <div className="mt-8 space-y-8">
-            <p className="text-2xl md:text-3xl font-medium leading-relaxed text-[#18181B]">
-              I build AI systems that operate beyond experiments and function reliably in real-world environments.
+          <div className="mt-12 space-y-10">
+            <p className="text-3xl md:text-4xl lg:text-5xl font-display leading-snug text-[#1A1A1A]">
+              &ldquo;I build AI systems that operate beyond experiments and function reliably in real-world environments.&rdquo;
             </p>
 
-            <div className="w-16 h-1 bg-[#2563EB] rounded-full" />
+            <div className="w-16 h-[2px] bg-[#C45D35]" />
 
-            <div className="space-y-6 text-lg text-[#71717A] leading-relaxed">
+            <div className="space-y-6 text-lg text-[#6B6B6B] leading-relaxed font-light">
               <p>
                 Currently working as an AI Engineer Intern at Aynstyn Technologies, designing and deploying LLM-powered systems for interview simulation and candidate evaluation. Not just getting them to work — getting them to actually be trustworthy.
               </p>
@@ -46,21 +46,21 @@ export default function About() {
               </p>
             </div>
 
-            <div className="pt-8 flex items-center gap-4">
+            <div className="pt-10 flex items-center gap-6">
               <a
                 href="https://linkedin.com/in/charansaiponnada"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[#2563EB] hover:text-[#1D4ED8] transition-colors group font-medium"
+                className="inline-flex items-center gap-3 text-[#1A1A1A] hover:text-[#C45D35] transition-colors font-mono text-sm tracking-wide group"
               >
                 Read more on LinkedIn
                 <ArrowRight 
-                  size={18} 
+                  size={16} 
                   className="group-hover:translate-x-1 transition-transform" 
                 />
               </a>
-              <span className="text-[#E4E4E7]">|</span>
-              <span className="text-sm text-[#71717A]">1,303 followers</span>
+              <span className="text-[#E5E2DB]">—</span>
+              <span className="text-sm text-[#9A9A9A] font-mono">1,303 followers</span>
             </div>
           </div>
         </motion.div>

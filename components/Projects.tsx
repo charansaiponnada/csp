@@ -3,13 +3,13 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { GithubLogo, ArrowSquareOut, BookOpen } from '@phosphor-icons/react'
+import { GithubLogo, ArrowSquareOut, BookOpen, ArrowUpRight } from '@phosphor-icons/react'
 
 const projects = [
   {
     title: 'Intelli-Credit',
     tagline: 'Built at a hackathon. Used in real credit decisions.',
-    description: 'Credit appraisal takes days. We got it down to minutes — not by throwing more models at it, but by designing a system where every number is traceable. 500+ page reports processed. 2nd place at YUVAAN 2026. Won the prototype round, lost shortlisting, kept building anyway.',
+    description: 'Credit appraisal takes days. We got it down to minutes — not by throwing more models at it, but by designing a system where every number is traceable. 500+ page reports processed. Won the prototype round, lost shortlisting, kept building anyway.',
     whatWorked: [
       'VectorLess RAG: 98% lower API overhead vs standard embedding approaches',
       'Multi-agent pipeline that doesn\'t hallucinate financial data',
@@ -19,8 +19,8 @@ const projects = [
     github: 'https://github.com/charansaiponnada/VIVIRITY',
     demo: undefined,
     paper: undefined,
-    stars: '2nd at YUVAAN 2026',
-    color: '#2563EB',
+    badge: '2nd at YUVAAN 2026',
+    color: '#C45D35',
   },
   {
     title: 'AyurMind',
@@ -35,8 +35,8 @@ const projects = [
     github: 'https://github.com/charansaiponnada/AyurMind',
     demo: undefined,
     paper: undefined,
-    stars: 'Conference ready',
-    color: '#059669',
+    badge: 'Conference ready',
+    color: '#8B4513',
   },
   {
     title: 'BLIP Fine-tuning',
@@ -51,8 +51,8 @@ const projects = [
     github: 'https://github.com/charansaiponnada/blip-instance',
     demo: 'https://huggingface.co/Charansaiponnada/BLIP-BASE-INDIAN',
     paper: 'https://doi.org/10.1109/isaect68904.2025.11318802',
-    stars: 'Published — ISAECT 2025',
-    color: '#7C3AED',
+    badge: 'ISAECT 2025',
+    color: '#5C4033',
   },
   {
     title: 'EEG Meditation Study',
@@ -67,8 +67,8 @@ const projects = [
     github: 'https://github.com/charansaiponnada/eeg-meditation-classification-study',
     demo: undefined,
     paper: undefined,
-    stars: 'Research journey',
-    color: '#DC2626',
+    badge: 'Research',
+    color: '#4A3728',
   },
 ]
 
@@ -77,58 +77,60 @@ export default function Projects() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="projects" className="py-32 bg-[#FAFAF9]">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="projects" className="py-32 bg-[#F7F5F0] relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-white to-[#F7F5F0]" />
+      
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="mb-20"
         >
-          <span className="text-[#2563EB] font-mono text-sm tracking-wider uppercase">Projects</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4">
+          <span className="text-[#C45D35] font-mono text-xs tracking-widest uppercase">Projects</span>
+          <h2 className="text-4xl md:text-5xl font-display mt-4 mb-6">
             What I&apos;ve actually built
           </h2>
-          <p className="text-[#71717A] mt-4 max-w-2xl">
+          <p className="text-[#6B6B6B] mt-4 max-w-2xl text-lg font-light">
             Not just demos. Things that went through iteration, failure, and sometimes got called off for the right reasons.
           </p>
         </motion.div>
 
-        <div className="space-y-12">
+        <div className="space-y-16">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 60 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.8, delay: index * 0.15, ease: 'easeOut' }}
               className="group"
             >
-              <div className="bg-white rounded-2xl border border-[#E4E4E7] hover:border-[#2563EB]/30 transition-all overflow-hidden">
-                <div className="p-8 md:p-12">
-                  <div className="flex flex-col md:flex-row md:items-start gap-6">
+              <div className="bg-white border border-[#E5E2DB] hover:border-[#C45D35]/30 transition-all">
+                <div className="p-10 md:p-14">
+                  <div className="flex flex-col lg:flex-row lg:items-start gap-10">
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
+                      <div className="flex items-center gap-4 mb-4">
                         <span 
-                          className="w-3 h-3 rounded-full"
+                          className="w-2 h-2 rounded-full"
                           style={{ backgroundColor: project.color }}
                         />
-                        <span className="text-sm text-[#71717A] font-mono">{project.stars}</span>
+                        <span className="text-sm text-[#9A9A9A] font-mono tracking-wide">{project.badge}</span>
                       </div>
                       
-                      <h3 className="text-2xl font-bold mb-1">{project.title}</h3>
-                      <p className="text-[#2563EB] text-lg mb-4">{project.tagline}</p>
+                      <h3 className="text-3xl md:text-4xl font-display mb-2">{project.title}</h3>
+                      <p className="text-[#C45D35] text-lg mb-6 font-light">{project.tagline}</p>
                       
-                      <p className="text-[#71717A] leading-relaxed mb-6">
+                      <p className="text-[#6B6B6B] leading-relaxed mb-8 max-w-2xl">
                         {project.description}
                       </p>
 
-                      <div className="space-y-2 mb-6">
-                        <p className="text-sm font-medium text-[#18181B]">What actually worked:</p>
+                      <div className="space-y-3 mb-8">
+                        <p className="text-xs font-mono tracking-widest uppercase text-[#9A9A9A]">What actually worked</p>
                         {project.whatWorked.map((item, i) => (
-                          <div key={i} className="flex items-start gap-2">
-                            <span className="text-[#059669] mt-0.5">→</span>
-                            <span className="text-sm text-[#71717A]">{item}</span>
+                          <div key={i} className="flex items-start gap-3">
+                            <span className="text-[#C45D35] font-mono text-sm mt-0.5">—</span>
+                            <span className="text-sm text-[#6B6B6B]">{item}</span>
                           </div>
                         ))}
                       </div>
@@ -137,7 +139,7 @@ export default function Projects() {
                         {project.stack.map((tech) => (
                           <span
                             key={tech}
-                            className="px-3 py-1 bg-[#F4F4F5] text-[#71717A] text-xs font-mono rounded-full"
+                            className="px-4 py-2 bg-[#EDEAE4] text-[#6B6B6B] text-sm font-mono border border-[#E5E2DB]"
                           >
                             {tech}
                           </span>
@@ -145,22 +147,23 @@ export default function Projects() {
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-3 md:items-end">
+                    <div className="flex flex-col gap-3 lg:min-w-[200px]">
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-[#18181B] text-white text-sm font-medium rounded-lg hover:bg-[#18181B]/80 transition-colors"
+                        className="flex items-center justify-center gap-2 px-6 py-3 bg-[#1A1A1A] text-white font-mono text-sm tracking-wide hover:bg-[#1A1A1A]/90 transition-colors"
                       >
                         <GithubLogo size={16} />
                         View Code
+                        <ArrowUpRight size={14} />
                       </a>
                       {project.demo && (
                         <a
                           href={project.demo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-4 py-2 bg-[#059669] text-white text-sm font-medium rounded-lg hover:bg-[#059669]/80 transition-colors"
+                          className="flex items-center justify-center gap-2 px-6 py-3 bg-[#C45D35] text-white font-mono text-sm tracking-wide hover:bg-[#C45D35]/90 transition-colors"
                         >
                           <ArrowSquareOut size={16} />
                           HuggingFace
@@ -171,7 +174,7 @@ export default function Projects() {
                           href={project.paper}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-4 py-2 bg-[#7C3AED] text-white text-sm font-medium rounded-lg hover:bg-[#7C3AED]/80 transition-colors"
+                          className="flex items-center justify-center gap-2 px-6 py-3 bg-[#EDEAE4] text-[#1A1A1A] font-mono text-sm tracking-wide hover:bg-[#E5E2DB] transition-colors border border-[#E5E2DB]"
                         >
                           <BookOpen size={16} />
                           Paper (DOI)

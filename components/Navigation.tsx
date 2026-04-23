@@ -26,32 +26,34 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-[#FAFAF9]/80 backdrop-blur-md border-b border-[#E4E4E7]'
+          ? 'bg-[#F7F5F0]/90 backdrop-blur-lg border-b border-[#E5E2DB]'
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#hero" className="font-semibold text-lg">
-          CSP<span className="text-[#2563EB]">.</span>
+      <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="#hero" className="font-mono text-sm tracking-tight">
+          <span className="font-semibold">CSP</span>
+          <span className="text-[#C45D35]">.</span>
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
+        <div className="hidden md:flex items-center gap-10">
+          {navItems.map((item, index) => (
             <a
               key={item.label}
               href={item.href}
-              className="text-[#71717A] hover:text-[#18181B] transition-colors relative group"
+              className="text-[#6B6B6B] hover:text-[#1A1A1A] transition-colors relative group font-mono text-sm tracking-wide"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               {item.label}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#2563EB] transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#C45D35] transition-all duration-500 group-hover:w-full" />
             </a>
           ))}
         </div>
 
         <button
-          className="md:hidden p-2 text-[#18181B]"
+          className="md:hidden p-2 text-[#1A1A1A]"
           onClick={() => setIsMobileOpen(!isMobileOpen)}
           aria-label="Toggle menu"
         >
@@ -60,13 +62,13 @@ export default function Navigation() {
       </div>
 
       {isMobileOpen && (
-        <div className="md:hidden bg-white border-t border-[#E4E4E7]">
-          <div className="px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-[#F7F5F0] border-t border-[#E5E2DB]">
+          <div className="px-6 py-6 flex flex-col gap-5">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="text-[#71717A] hover:text-[#18181B] transition-colors py-2"
+                className="text-[#6B6B6B] hover:text-[#1A1A1A] transition-colors py-2 font-mono text-sm"
                 onClick={() => setIsMobileOpen(false)}
               >
                 {item.label}
