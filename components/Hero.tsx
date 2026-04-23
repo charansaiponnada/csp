@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react'
 import { useState, useEffect } from 'react'
+import CodeWindow from './CodeWindow'
 
 export default function Hero() {
   const [time, setTime] = useState('')
@@ -26,7 +27,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center relative overflow-hidden cursor-dot"
+      className="min-h-screen flex items-center relative overflow-hidden"
     >
       <div className="absolute inset-0">
         <div className="absolute top-0 right-0 w-[60%] h-full bg-gradient-to-l from-[#EDEAE4]/50 to-transparent" />
@@ -35,7 +36,7 @@ export default function Hero() {
       
       <div className="max-w-6xl mx-auto px-6 py-32 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-7">
             <motion.div
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
@@ -120,20 +121,9 @@ export default function Hero() {
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-4 hidden lg:block"
+            className="lg:col-span-5 hidden lg:block"
           >
-            <div className="relative">
-              <div className="absolute -top-4 -right-4 w-24 h-24 border border-[#E5E2DB]" />
-              <div className="absolute -bottom-4 -left-4 w-24 h-24 border border-[#C45D35]/30" />
-              <div className="bg-[#EDEAE4] p-8 border border-[#E5E2DB]">
-                <p className="font-mono text-xs text-[#9A9A9A] tracking-widest uppercase mb-4">Currently</p>
-                <p className="font-display text-xl mb-2">AI Engineer</p>
-                <p className="text-[#6B6B6B] text-sm mb-4">Aynstyn Technologies</p>
-                <div className="w-8 h-[1px] bg-[#C45D35] mb-4" />
-                <p className="font-mono text-xs text-[#9A9A9A] tracking-widest uppercase mb-4">Also</p>
-                <p className="text-[#6B6B6B] text-sm">Building things that matter at VRSEC</p>
-              </div>
-            </div>
+            <CodeWindow />
           </motion.div>
         </div>
       </div>
