@@ -19,31 +19,6 @@ const projects = [
     github: 'https://github.com/charansaiponnada/VIVIRITY',
     badge: '2nd at YUVAAN 2026',
     year: '2026',
-    diagram: (
-      <svg viewBox="0 0 280 180" className="w-full">
-        <defs>
-          <linearGradient id="flow1" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#C45D35" stopOpacity="0.2"/>
-            <stop offset="100%" stopColor="#C45D35" stopOpacity="0.8"/>
-          </linearGradient>
-        </defs>
-        <rect x="10" y="70" width="50" height="40" rx="4" fill="#EDEAE4" stroke="#E5E2DB"/>
-        <text x="35" y="95" fontSize="8" textAnchor="middle" fill="#6B6B6B">Docs</text>
-        <rect x="80" y="70" width="50" height="40" rx="4" fill="#EDEAE4" stroke="#E5E2DB"/>
-        <text x="105" y="95" fontSize="8" textAnchor="middle" fill="#6B6B6B">Parse</text>
-        <rect x="150" y="70" width="50" height="40" rx="4" fill="#EDEAE4" stroke="#E5E2DB"/>
-        <text x="175" y="95" fontSize="8" textAnchor="middle" fill="#6B6B6B">Agent</text>
-        <rect x="220" y="70" width="50" height="40" rx="4" fill="#EDEAE4" stroke="#E5E2DB"/>
-        <text x="245" y="95" fontSize="8" textAnchor="middle" fill="#6B6B6B">Output</text>
-        <path d="M60 90 L80 90" stroke="url(#flow1)" strokeWidth="2" markerEnd="url(#arrow)"/>
-        <path d="M130 90 L150 90" stroke="url(#flow1)" strokeWidth="2"/>
-        <path d="M200 90 L220 90" stroke="url(#flow1)" strokeWidth="2"/>
-        <text x="35" y="130" fontSize="7" textAnchor="middle" fill="#9A9A9A">Input</text>
-        <text x="105" y="130" fontSize="7" textAnchor="middle" fill="#9A9A9A">Extract</text>
-        <text x="175" y="130" fontSize="7" textAnchor="middle" fill="#9A9A9A">Reason</text>
-        <text x="245" y="130" fontSize="7" textAnchor="middle" fill="#9A9A9A">Memo</text>
-      </svg>
-    ),
   },
   {
     title: 'BLIP Fine-tuning',
@@ -60,36 +35,6 @@ const projects = [
     paper: 'https://doi.org/10.1109/isaect68904.2025.11318802',
     badge: 'ISAECT 2025',
     year: '2025',
-    diagram: (
-      <svg viewBox="0 0 280 180" className="w-full">
-        <defs>
-          <linearGradient id="flow2" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#C45D35" stopOpacity="0.2"/>
-            <stop offset="100%" stopColor="#C45D35" stopOpacity="0.8"/>
-          </linearGradient>
-        </defs>
-        <rect x="20" y="60" width="60" height="40" rx="4" fill="#EDEAE4" stroke="#E5E2DB"/>
-        <text x="50" y="85" fontSize="8" textAnchor="middle" fill="#6B6B6B">Image</text>
-        <rect x="100" y="60" width="60" height="40" rx="4" fill="#EDEAE4" stroke="#E5E2DB"/>
-        <text x="130" y="85" fontSize="8" textAnchor="middle" fill="#6B6B6B">BLIP</text>
-        <rect x="180" y="60" width="60" height="40" rx="4" fill="#EDEAE4" stroke="#E5E2DB"/>
-        <text x="210" y="85" fontSize="8" textAnchor="middle" fill="#6B6B6B">LoRA</text>
-        <rect x="140" y="100" width="60" height="40" rx="4" fill="#C45D35" opacity="0.2"/>
-        <text x="170" y="125" fontSize="8" textAnchor="middle" fill="#C45D35">Fine-tuned</text>
-        <path d="M80 80 L100 80" stroke="url(#flow2)" strokeWidth="2"/>
-        <path d="M160 80 L180 80" stroke="url(#flow2)" strokeWidth="2"/>
-        <path d="M200 100 L170 100" stroke="#C45D35" strokeWidth="1" strokeDasharray="3,3"/>
-        <circle cx="50" cy="140" r="8" fill="#EDEAE4" stroke="#C45D35" strokeWidth="1"/>
-        <text x="50" y="144" fontSize="8" textAnchor="middle" fill="#C45D35">1</text>
-        <circle cx="130" cy="140" r="8" fill="#EDEAE4" stroke="#C45D35" strokeWidth="1"/>
-        <text x="130" y="144" fontSize="8" textAnchor="middle" fill="#C45D35">2</text>
-        <circle cx="210" cy="140" r="8" fill="#EDEAE4" stroke="#C45D35" strokeWidth="1"/>
-        <text x="210" y="144" fontSize="8" textAnchor="middle" fill="#C45D35">3</text>
-        <text x="50" y="160" fontSize="7" textAnchor="middle" fill="#9A9A9A">Base</text>
-        <text x="130" y="160" fontSize="7" textAnchor="middle" fill="#9A9A9A">Adapt</text>
-        <text x="210" y="160" fontSize="7" textAnchor="middle" fill="#9A9A9A">Deploy</text>
-      </svg>
-    ),
   },
   {
     title: 'AyurMind',
@@ -195,11 +140,6 @@ export default function Projects() {
                 </div>
 
                 <div className="lg:col-span-4 lg:col-start-9">
-                  {project.diagram && (
-                    <div className="mb-4 p-4 bg-white border border-[#E5E2DB] rounded-lg">
-                      {project.diagram}
-                    </div>
-                  )}
                   <div className="flex flex-col gap-3">
                     <a
                       href={project.github}
