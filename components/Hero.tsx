@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { GithubLogo, LinkedinLogo, Envelope } from '@phosphor-icons/react'
+import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react'
 import { useState, useEffect } from 'react'
 import CodeWindow from './CodeWindow'
 
@@ -29,63 +29,62 @@ export default function Hero() {
       id="hero"
       className="min-h-screen flex items-center relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-[#FAFAFA]" />
+      <div className="absolute inset-0 bg-[#F7F5F0]" />
       
-      <div className="max-w-5xl mx-auto px-6 py-32 relative z-10 w-full">
-        <div className="grid lg:grid-cols-5 gap-12 items-center">
-          <div className="lg:col-span-3">
+      <div className="max-w-6xl mx-auto px-6 py-32 relative z-10 w-full">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="mb-6"
             >
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#007AFF]/10 text-[#007AFF] text-xs font-mono rounded-full">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#007AFF] animate-pulse" />
-                Open to Internships
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#1A1A1A] text-white text-xs font-mono tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C45D35] animate-pulse" />
+                Available for work
               </span>
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.15] mb-6 text-[#1D1D1F]"
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display text-5xl md:text-7xl lg:text-8xl font-normal leading-[1.1] mb-8"
             >
-              Charan Sai<br />
-              <span className="text-[#007AFF]">Ponnada</span>
+              Hello, I&apos;m<br />
+              <span className="gradient-text">Charan Sai</span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-lg md:text-xl text-[#6E6E73] leading-relaxed mb-8 max-w-lg"
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="text-xl md:text-2xl text-[#6B6B6B] leading-relaxed mb-8 max-w-lg"
             >
-              AI Engineer building real-world ML systems.<br />
-              <span className="text-[#A1A1A6]">Computer Vision, Multimodal Systems, Assistive AI</span>
+              Building AI systems that don&apos;t just work, but make sense.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex items-center gap-4 text-sm text-[#A1A1A6] font-mono mb-10"
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex items-center gap-4 text-sm text-[#9A9A9A] font-mono mb-10"
             >
               <span>{time} IST</span>
-              <span className="w-1 h-1 bg-[#D2D2D7] rounded-full" />
-              <span>India</span>
+              <span className="w-1 h-1 bg-[#E5E2DB] rounded-full" />
+              <span>Kakinada, India</span>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex gap-3"
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex gap-4"
             >
               <a
                 href="#projects"
-                className="flex items-center gap-2 px-5 py-2.5 bg-[#007AFF] text-white font-mono text-sm rounded-lg hover:bg-[#0066D9] transition-colors"
+                className="flex items-center gap-2 px-5 py-3 bg-[#1A1A1A] text-white font-mono text-sm hover:bg-[#1A1A1A]/90 transition-colors"
               >
                 View Work
               </a>
@@ -93,18 +92,19 @@ export default function Hero() {
                 href="https://github.com/charansaiponnada"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-2.5 border border-[#D2D2D7] text-[#1D1D1F] font-mono text-sm rounded-lg hover:border-[#007AFF] hover:text-[#007AFF] transition-colors"
+                className="flex items-center gap-2 px-5 py-3 border border-[#E5E2DB] text-[#1A1A1A] font-mono text-sm hover:border-[#C45D35] transition-colors"
               >
-                <GithubLogo size={16} />
-                GitHub
+                <GithubLogo size={18} />
+                github
               </a>
               <a
                 href="https://linkedin.com/in/charansaiponnada"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-2.5 border border-[#D2D2D7] text-[#1D1D1F] font-mono text-sm rounded-lg hover:border-[#007AFF] hover:text-[#007AFF] transition-colors"
+                className="flex items-center gap-2 px-5 py-3 border border-[#E5E2DB] text-[#1A1A1A] font-mono text-sm hover:border-[#C45D35] transition-colors"
               >
-                <LinkedinLogo size={16} />
+                <LinkedinLogo size={18} />
+                linkedin
               </a>
             </motion.div>
           </div>
@@ -112,11 +112,11 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="lg:col-span-2 hidden lg:block"
+            transition={{ duration: 1, delay: 0.3 }}
+            className="hidden lg:block"
           >
             <div className="relative">
-              <div className="absolute -inset-4 bg-[#007AFF]/5 rounded-2xl" />
+              <div className="absolute -inset-4 bg-gradient-to-br from-[#C45D35]/10 to-transparent rounded-3xl" />
               <CodeWindow />
             </div>
           </motion.div>
@@ -127,7 +127,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#A1A1A6] text-xs font-mono tracking-widest"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#9A9A9A] text-xs font-mono tracking-widest"
       >
         scroll
       </motion.div>

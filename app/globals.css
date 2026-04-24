@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #FAFAFA;
+  --bg-primary: #F7F5F0;
   --bg-surface: #FFFFFF;
-  --text-primary: #1D1D1F;
-  --text-secondary: #6E6E73;
-  --text-muted: #A1A1A6;
-  --accent: #007AFF;
-  --accent-hover: #0066D9;
-  --border: #D2D2D7;
+  --text-primary: #1A1A1A;
+  --text-secondary: #6B6B6B;
+  --text-muted: #9A9A9A;
+  --accent: #C45D35;
+  --accent-hover: #A84D2B;
+  --border: #E5E2DB;
   --code-bg: #1C1C1E;
 }
 
@@ -19,10 +19,10 @@
 }
 
 body {
-  font-family: 'IBM Plex Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -32,7 +32,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -56,23 +56,8 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--accent) 0%, #5856D5 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, #6B3A2A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
