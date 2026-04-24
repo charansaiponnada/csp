@@ -54,6 +54,8 @@ export default function Hero() {
             >
               Hello, I&apos;m<br />
               <span className="gradient-text">Charan Sai</span>
+              <br />
+              <span className="text-[#C45D35]">Ponnada</span> 
             </motion.h1>
 
             <motion.p
