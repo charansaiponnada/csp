@@ -182,7 +182,7 @@ export default function CodeWindow() {
           <motion.span
             animate={{ opacity: [1, 0] }}
             transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-            className="inline-block w-2 h-4 bg-[#007AFF] ml-0"
+            className="inline-block w-2 h-4 bg-[#C45D35] ml-0"
           />
         )}
       </div>
@@ -196,7 +196,7 @@ export default function CodeWindow() {
             <div
               key={i}
               className={`w-1.5 h-1.5 rounded-full transition-colors ${
-                i === currentIndex ? 'bg-[#007AFF]' : 'bg-[#4A4A4A]'
+                i === currentIndex ? 'bg-[#C45D35]' : 'bg-[#4A4A4A]'
               }`}
             />
           ))}
