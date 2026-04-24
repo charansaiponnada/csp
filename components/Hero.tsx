@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react'
+import { GithubLogo, LinkedinLogo, Envelope } from '@phosphor-icons/react'
 import { useState, useEffect } from 'react'
 import CodeWindow from './CodeWindow'
 
@@ -29,121 +29,108 @@ export default function Hero() {
       id="hero"
       className="min-h-screen flex items-center relative overflow-hidden"
     >
-      <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-[60%] h-full bg-gradient-to-l from-[#EDEAE4]/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-[40%] h-[60%] bg-gradient-to-t from-[#C45D35]/[0.02] to-transparent" />
-      </div>
+      <div className="absolute inset-0 bg-[#FAFAFA]" />
       
-      <div className="max-w-6xl mx-auto px-6 py-32 relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7">
+      <div className="max-w-5xl mx-auto px-6 py-32 relative z-10 w-full">
+        <div className="grid lg:grid-cols-5 gap-12 items-center">
+          <div className="lg:col-span-3">
             <motion.div
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="mb-6"
             >
-              <div className="mb-8 flex items-center gap-4">
-                <span className="text-[#9A9A9A] font-mono text-xs tracking-widest uppercase">
-                  Available for work
-                </span>
-                <span className="w-2 h-2 rounded-full bg-[#C45D35] animate-pulse" />
-              </div>
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#007AFF]/10 text-[#007AFF] text-xs font-mono rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#007AFF] animate-pulse" />
+                Open to Internships
+              </span>
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 80 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[7rem] font-normal leading-[1] tracking-tight mb-8"
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.15] mb-6 text-[#1D1D1F]"
             >
-              Charan
-              <br />
-              <span className="gradient-text italic">Sai</span>
-              <br />
-              <span className="text-[#9A9A9A]">Ponnada</span>
+              Charan Sai<br />
+              <span className="text-[#007AFF]">Ponnada</span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="text-xl md:text-2xl text-[#6B6B6B] max-w-xl mb-6 leading-relaxed font-light"
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="text-lg md:text-xl text-[#6E6E73] leading-relaxed mb-8 max-w-lg"
             >
-              AI systems that don&apos;t just work,
-              <br />
-              but make sense.
+              AI Engineer building real-world ML systems.<br />
+              <span className="text-[#A1A1A6]">Computer Vision, Multimodal Systems, Assistive AI</span>
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex items-center gap-3 text-[#9A9A9A] font-mono text-sm tracking-wide mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex items-center gap-4 text-sm text-[#A1A1A6] font-mono mb-10"
             >
-              <span>{time}</span>
-              <span className="w-px h-3 bg-[#E5E2DB]" />
-              <span>IST</span>
-              <span className="w-px h-3 bg-[#E5E2DB]" />
-              <span>Kakinada, India</span>
+              <span>{time} IST</span>
+              <span className="w-1 h-1 bg-[#D2D2D7] rounded-full" />
+              <span>India</span>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap gap-4"
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex gap-3"
             >
+              <a
+                href="#projects"
+                className="flex items-center gap-2 px-5 py-2.5 bg-[#007AFF] text-white font-mono text-sm rounded-lg hover:bg-[#0066D9] transition-colors"
+              >
+                View Work
+              </a>
               <a
                 href="https://github.com/charansaiponnada"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-3 px-6 py-4 bg-[#1A1A1A] text-white font-mono text-sm tracking-wide hover:bg-[#1A1A1A]/85 transition-all"
+                className="flex items-center gap-2 px-5 py-2.5 border border-[#D2D2D7] text-[#1D1D1F] font-mono text-sm rounded-lg hover:border-[#007AFF] hover:text-[#007AFF] transition-colors"
               >
-                <GithubLogo size={18} />
-                <span>github</span>
-                <svg className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                </svg>
+                <GithubLogo size={16} />
+                GitHub
               </a>
               <a
                 href="https://linkedin.com/in/charansaiponnada"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-3 px-6 py-4 border border-[#E5E2DB] text-[#1A1A1A] font-mono text-sm tracking-wide hover:border-[#C45D35] hover:text-[#C45D35] transition-all"
+                className="flex items-center gap-2 px-5 py-2.5 border border-[#D2D2D7] text-[#1D1D1F] font-mono text-sm rounded-lg hover:border-[#007AFF] hover:text-[#007AFF] transition-colors"
               >
-                <LinkedinLogo size={18} />
-                <span>linkedin</span>
+                <LinkedinLogo size={16} />
               </a>
             </motion.div>
           </div>
 
           <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 hidden lg:block"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="lg:col-span-2 hidden lg:block"
           >
-            <CodeWindow />
+            <div className="relative">
+              <div className="absolute -inset-4 bg-[#007AFF]/5 rounded-2xl" />
+              <CodeWindow />
+            </div>
           </motion.div>
         </div>
       </div>
       
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="text-[#9A9A9A] font-mono text-xs tracking-widest"
-        >
-          scroll
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.6 }}
-          className="w-[1px] h-12 bg-gradient-to-b from-[#E5E2DB] to-transparent"
-        />
-      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#A1A1A6] text-xs font-mono tracking-widest"
+      >
+        scroll
+      </motion.div>
     </section>
   )
 }

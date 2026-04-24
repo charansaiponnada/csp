@@ -16,44 +16,40 @@ export default function Navigation() {
   }, [])
 
   const navItems = [
-    { label: 'Home', href: '#hero' },
+    { label: 'Work', href: '#projects' },
     { label: 'Experience', href: '#experience' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Story', href: '#about' },
+    { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
   ]
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#F7F5F0]/90 backdrop-blur-lg border-b border-[#E5E2DB]'
+          ? 'bg-white/80 backdrop-blur-xl border-b border-[#D2D2D7]'
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#hero" className="font-mono text-sm tracking-tight">
-          <span className="font-semibold">CSP</span>
-          <span className="text-[#C45D35]">.</span>
+          <span className="font-semibold text-[#1D1D1F]">CSP</span>
+          <span className="text-[#007AFF]">.</span>
         </a>
 
-        <div className="hidden md:flex items-center gap-10">
-          {navItems.map((item, index) => (
+        <div className="hidden md:flex items-center gap-8">
+          {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="text-[#6B6B6B] hover:text-[#1A1A1A] transition-colors relative group font-mono text-sm tracking-wide"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="text-[#6E6E73] hover:text-[#1D1D1F] transition-colors font-mono text-sm"
             >
               {item.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#C45D35] transition-all duration-500 group-hover:w-full" />
             </a>
           ))}
         </div>
 
         <button
-          className="md:hidden p-2 text-[#1A1A1A]"
+          className="md:hidden p-2 text-[#1D1D1F]"
           onClick={() => setIsMobileOpen(!isMobileOpen)}
           aria-label="Toggle menu"
         >
@@ -62,13 +58,13 @@ export default function Navigation() {
       </div>
 
       {isMobileOpen && (
-        <div className="md:hidden bg-[#F7F5F0] border-t border-[#E5E2DB]">
+        <div className="md:hidden bg-white border-t border-[#D2D2D7]">
           <div className="px-6 py-6 flex flex-col gap-5">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="text-[#6B6B6B] hover:text-[#1A1A1A] transition-colors py-2 font-mono text-sm"
+                className="text-[#6E6E73] hover:text-[#1D1D1F] transition-colors py-2 font-mono text-sm"
                 onClick={() => setIsMobileOpen(false)}
               >
                 {item.label}

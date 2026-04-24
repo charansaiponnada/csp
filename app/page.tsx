@@ -6,8 +6,6 @@ import Hero from '@/components/Hero'
 import About from '@/components/About'
 import Experience from '@/components/Experience'
 import Projects from '@/components/Projects'
-import Skills from '@/components/Skills'
-import Accomplishments from '@/components/Accomplishments'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
@@ -19,14 +17,12 @@ export default function Home() {
   }, [])
 
   return (
-    <main className={`min-h-screen transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+    <main className={`min-h-screen transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       <Navigation />
       <Hero />
       <About />
       <Experience />
       <Projects />
-      <Skills />
-      <Accomplishments />
       <Contact />
       <Footer />
     </main>

@@ -10,99 +10,83 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="about" className="py-32 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="about" className="py-24 bg-white relative">
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="grid lg:grid-cols-12 gap-16"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="grid lg:grid-cols-12 gap-12"
         >
           <div className="lg:col-span-5">
-            <span className="text-[#C45D35] font-mono text-xs tracking-[0.3em] uppercase">The Story</span>
+            <span className="text-[#007AFF] font-mono text-xs tracking-[0.2em] uppercase">About</span>
             
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-8"
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-6"
             >
-              <div className="text-[#9A9A9A] font-mono text-xs tracking-widest mb-6">
-                — 01 / About
-              </div>
-              <h2 className="font-display text-4xl md:text-5xl leading-tight">
-                Thinking out loud about AI systems
+              <h2 className="font-display text-3xl md:text-4xl leading-tight text-[#1D1D1F]">
+                Building AI systems that actually work.
               </h2>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-12 space-y-6"
+              transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-8 space-y-5"
             >
-              <div className="flex items-start gap-4">
-                <span className="text-[#C45D35] font-mono text-xs mt-1">▲</span>
-                <p className="text-[#6B6B6B] leading-relaxed font-light">
-                  Currently working as an AI Engineer Intern at Aynstyn Technologies, designing and deploying LLM-powered systems. Not just getting them to work — getting them to be trustworthy.
-                </p>
-              </div>
+              <p className="text-[#6E6E73] leading-relaxed">
+                I'm building AI systems that solve real problems. Currently working on LLM pipelines and evaluation at Aynstyn Technologies — making AI trustworthy, not just accurate.
+              </p>
               
-              <div className="flex items-start gap-4">
-                <span className="text-[#C45D35] font-mono text-xs mt-1">▲</span>
-                <p className="text-[#6B6B6B] leading-relaxed font-light">
-                  Bigger isn&apos;t always better. That&apos;s where Small Language Models start to impress. Faster inference, predictable behavior, easier to debug.
-                </p>
-              </div>
+              <p className="text-[#6E6E73] leading-relaxed">
+                What I focus on: multimodal systems that bridge vision and language, assistive AI for accessibility, and real-time ML pipelines that don't break in production.
+              </p>
+              
+              <p className="text-[#6E6E73] leading-relaxed">
+                The system has to actually work. That's what draws me to this — I care about building things that have real impact, not just impressive demos.
+              </p>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-12 pt-8 border-t border-[#E5E2DB]"
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="mt-10"
             >
               <a
                 href="https://linkedin.com/in/charansaiponnada"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 text-[#1A1A1A] hover:text-[#C45D35] transition-colors font-mono text-sm tracking-wide group"
+                className="inline-flex items-center gap-2 text-[#007AFF] hover:text-[#0066D9] transition-colors font-mono text-sm"
               >
-                Read more on LinkedIn
-                <ArrowRight 
-                  size={16} 
-                  className="group-hover:translate-x-1 transition-transform" 
-                />
+                More on LinkedIn
+                <ArrowRight size={14} className="transition-transform" />
               </a>
-              <span className="text-[#E5E2DB] mx-3">—</span>
-              <span className="text-xs text-[#9A9A9A] font-mono">1,303 followers</span>
             </motion.div>
           </div>
 
           <div className="lg:col-span-6 lg:col-start-7">
             <motion.div
-              initial={{ opacity: 0, x: 60 }}
+              initial={{ opacity: 0, x: 40 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="relative"
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-[#F5F5F7] p-8 rounded-2xl border border-[#D2D2D7]"
             >
-              <div className="bg-[#EDEAE4] p-10 md:p-14 border border-[#E5E2DB]">
-                <span className="text-[#C45D35] font-mono text-xs tracking-[0.2em]">&ldquo;</span>
-                <p className="font-display text-2xl md:text-3xl leading-snug text-[#1A1A1A] mb-8">
-                  In financial applications, a prediction without reasoning is not usable. Explainability is not an add-on; it is a requirement.
+              <p className="text-2xl text-[#1D1D1F] leading-relaxed font-display">
+                "In financial applications, a prediction without reasoning is not usable. Explainability is not an add-on; it is a requirement."
+              </p>
+              
+              <div className="mt-8 pt-6 border-t border-[#D2D2D7]">
+                <p className="text-xs text-[#A1A1A6] font-mono tracking-widest uppercase mb-2">Current</p>
+                <p className="text-[#6E6E73]">
+                  Final year B.Tech CSE at VRSEC. AI Engineer Intern at Aynstyn Technologies. Building LLM pipelines, RAG systems, and evaluation frameworks.
                 </p>
-                <span className="text-[#C45D35] font-mono text-xs tracking-[0.2em]">&rdquo;</span>
-                
-                <div className="mt-10 pt-8 border-t border-[#E5E2DB]">
-                  <p className="text-xs text-[#9A9A9A] font-mono tracking-widest uppercase mb-2">Also worth noting</p>
-                  <p className="text-[#6B6B6B] text-sm font-light">
-                    Final year at VRSEC. The real learning has been outside the classroom — through internships, hackathons (2nd at YUVAAN 2026), and building things that actually get used.
-                  </p>
-                </div>
               </div>
-
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 border border-[#C45D35]/20" />
             </motion.div>
           </div>
         </motion.div>

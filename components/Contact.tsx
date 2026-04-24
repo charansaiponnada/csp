@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { Envelope, GithubLogo, LinkedinLogo, PaperPlaneTilt } from '@phosphor-icons/react'
+import { Envelope, GithubLogo, LinkedinLogo } from '@phosphor-icons/react'
 
 export default function Contact() {
   const ref = useRef(null)
@@ -17,121 +17,68 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-32 bg-[#F7F5F0] relative">
-      <div className="max-w-4xl mx-auto px-6">
+    <section id="contact" className="py-24 bg-white relative">
+      <div className="max-w-3xl mx-auto px-6">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-12"
         >
-          <span className="text-[#9A9A9A] font-mono text-xs tracking-[0.3em] uppercase">— 06 / Contact</span>
-          <h2 className="font-display text-4xl md:text-5xl mt-4 mb-6">
-            Let&apos;s connect
+          <span className="text-[#A1A1A6] font-mono text-xs tracking-[0.2em] uppercase">Contact</span>
+          <h2 className="font-display text-3xl md:text-4xl mt-3 mb-4 text-[#1D1D1F]">
+            Let&apos;s Work Together
           </h2>
-          <p className="text-xl text-[#6B6B6B] max-w-2xl mx-auto font-light">
-            Interested in working together, or just want to talk about AI systems that actually make sense? Reach out.
+          <p className="text-[#6E6E73] text-lg mb-8">
+            I&apos;m open to AI / ML / Data Science internships and research opportunities.
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="grid md:grid-cols-2 gap-8"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid sm:grid-cols-3 gap-4"
         >
-          <div className="space-y-4">
-            <a
-              href="mailto:charansaiponnada06@gmail.com"
-              className="flex items-center gap-4 p-6 bg-white border border-[#E5E2DB] hover:border-[#C45D35] transition-colors group"
-            >
-              <div className="p-3 bg-[#EDEAE4] group-hover:bg-[#C45D35]/10 transition-colors">
-                <Envelope size={22} className="text-[#C45D35]" />
-              </div>
-              <div>
-                <span className="text-xs font-mono text-[#9A9A9A] tracking-wide uppercase block mb-1">Email</span>
-                <p className="font-medium text-[#1A1A1A]">charansaiponnada06@gmail.com</p>
-              </div>
-            </a>
+          <a
+            href="mailto:charansaiponnada06@gmail.com"
+            className="flex items-center justify-center gap-3 p-5 bg-[#F5F5F7] border border-[#D2D2D7] rounded-xl hover:border-[#007AFF] hover:bg-[#007AFF]/5 transition-colors group"
+          >
+            <Envelope size={20} className="text-[#6E6E73] group-hover:text-[#007AFF] transition-colors" />
+            <span className="font-mono text-sm text-[#1D1D1F]">Email</span>
+          </a>
 
-            <a
-              href="https://github.com/charansaiponnada"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 p-6 bg-white border border-[#E5E2DB] hover:border-[#C45D35] transition-colors group"
-            >
-              <div className="p-3 bg-[#EDEAE4] group-hover:bg-[#C45D35]/10 transition-colors">
-                <GithubLogo size={22} className="text-[#C45D35]" />
-              </div>
-              <div>
-                <span className="text-xs font-mono text-[#9A9A9A] tracking-wide uppercase block mb-1">GitHub</span>
-                <p className="font-medium text-[#1A1A1A]">@charansaiponnada</p>
-              </div>
-            </a>
+          <a
+            href="https://github.com/charansaiponnada"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-3 p-5 bg-[#F5F5F7] border border-[#D2D2D7] rounded-xl hover:border-[#007AFF] hover:bg-[#007AFF]/5 transition-colors group"
+          >
+            <GithubLogo size={20} className="text-[#6E6E73] group-hover:text-[#007AFF] transition-colors" />
+            <span className="font-mono text-sm text-[#1D1D1F]">GitHub</span>
+          </a>
 
-            <a
-              href="https://linkedin.com/in/charansaiponnada"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 p-6 bg-white border border-[#E5E2DB] hover:border-[#C45D35] transition-colors group"
-            >
-              <div className="p-3 bg-[#EDEAE4] group-hover:bg-[#C45D35]/10 transition-colors">
-                <LinkedinLogo size={22} className="text-[#C45D35]" />
-              </div>
-              <div>
-                <span className="text-xs font-mono text-[#9A9A9A] tracking-wide uppercase block mb-1">LinkedIn</span>
-                <p className="font-medium text-[#1A1A1A]">Charan Sai Ponnada</p>
-              </div>
-            </a>
-          </div>
+          <a
+            href="https://linkedin.com/in/charansaiponnada"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-3 p-5 bg-[#F5F5F7] border border-[#D2D2D7] rounded-xl hover:border-[#007AFF] hover:bg-[#007AFF]/5 transition-colors group"
+          >
+            <LinkedinLogo size={20} className="text-[#6E6E73] group-hover:text-[#007AFF] transition-colors" />
+            <span className="font-mono text-sm text-[#1D1D1F]">LinkedIn</span>
+          </a>
+        </motion.div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-xs font-mono text-[#9A9A9A] tracking-wide uppercase mb-2">Name</label>
-              <input
-                type="text"
-                id="name"
-                required
-                className="w-full px-5 py-4 bg-white border border-[#E5E2DB] focus:border-[#C45D35] focus:outline-none transition-colors"
-                placeholder="Your name"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-xs font-mono text-[#9A9A9A] tracking-wide uppercase mb-2">Email</label>
-              <input
-                type="email"
-                id="email"
-                required
-                className="w-full px-5 py-4 bg-white border border-[#E5E2DB] focus:border-[#C45D35] focus:outline-none transition-colors"
-                placeholder="your@email.com"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-xs font-mono text-[#9A9A9A] tracking-wide uppercase mb-2">Message</label>
-              <textarea
-                id="message"
-                required
-                rows={4}
-                className="w-full px-5 py-4 bg-white border border-[#E5E2DB] focus:border-[#C45D35] focus:outline-none transition-colors resize-none"
-                placeholder="Let's talk about..."
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={formState !== 'idle'}
-              className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#1A1A1A] text-white font-mono text-sm tracking-wide hover:bg-[#1A1A1A]/85 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {formState === 'idle' && (
-                <>
-                  <PaperPlaneTilt size={18} />
-                  <span>Send Message</span>
-                </>
-              )}
-              {formState === 'submitting' && 'Sending...'}
-              {formState === 'success' && 'Message Sent!'}
-            </button>
-          </form>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-16 pt-8 border-t border-[#D2D2D7] text-center"
+        >
+          <p className="text-[#A1A1A6] text-sm font-mono">
+            © 2026 Charan Sai Ponnada. Built with Next.js.
+          </p>
         </motion.div>
       </div>
     </section>
