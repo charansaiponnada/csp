@@ -5,60 +5,79 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const codeSnippets = [
   {
-    title: 'Multi-Agent Pipeline',
-    language: 'python',
-    code: `from transformers import AutoModel
-from peft import LoraConfig, get_peft_model
-
-config = LoraConfig(
-    r=16,
-    lora_alpha=32,
-    target_modules=["q_proj", "v_proj"],
-    lora_dropout=0.05
-)
-
-model = get_peft_model(base_model, config)
-model.print_trainable_parameters()
-# trainable_params: 2.8M (0.44%)`
-  },
-  {
     title: 'RAG Pipeline',
     language: 'python',
     code: `from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 
 embeddings = HuggingFaceEmbeddings(
-    model="BAAI/bge-small-en-v1.5"
+    model_name="BAAI/bge-small-en-v1.5"
 )
 
-db = Chroma.from_documents(
-    documents, 
+vector_db = Chroma.from_documents(
+    documents=docs,
     embedding=embeddings
 )
 
 query = "credit risk factors"
-results = db.similarity_search(query)
-print(results[0].page_content[:200])`
+docs = vector_db.similarity_search(query, k=3)
+
+context = "\\n".join([d.page_content for d in docs])`
   },
   {
-    title: 'Model Evaluation',
+    title: 'LLM Generation',
     language: 'python',
     code: `from transformers import pipeline
-from sklearn.metrics import f1_score
 
 generator = pipeline(
     "text-generation",
-    model="Charansaiponnada/BLIP-BASE-INDIAN",
-    max_new_tokens=256
+    model="mistralai/Mistral-7B-Instruct",
+    max_new_tokens=200
 )
 
-predictions = []
-for prompt in test_prompts:
-    result = generator(prompt)
-    predictions.append(result[0]["generated_text"])
+prompt = f"Answer based on context:\\n{context}"
+response = generator(prompt)
 
-f1 = f1_score(labels, predictions, average='macro')
-print(f"F1 Score: {f1:.3f}")`
+print(response[0]["generated_text"])`
+  },
+  {
+    title: 'LoRA Fine-Tuning',
+    language: 'python',
+    code: `from peft import LoraConfig, get_peft_model
+from transformers import AutoModelForCausalLM
+
+base_model = AutoModelForCausalLM.from_pretrained("gpt2")
+
+config = LoraConfig(
+    r=16,
+    lora_alpha=32,
+    target_modules=["c_attn"],
+    lora_dropout=0.1
+)
+
+model = get_peft_model(base_model, config)
+model.print_trainable_parameters()`
+  },
+  {
+    title: 'Multi-Agent Orchestration',
+    language: 'python',
+    code: `def retriever_agent(query):
+    return vector_db.similarity_search(query)
+
+def reasoning_agent(context):
+    prompt = f"Analyze:\\n{context}"
+    return generator(prompt)[0]["generated_text"]
+
+def critic_agent(answer):
+    return "Valid" if len(answer) > 50 else "Revise"
+
+docs = retriever_agent(user_query)
+context = "\\n".join([d.page_content for d in docs])
+
+answer = reasoning_agent(context)
+review = critic_agent(answer)
+
+print(answer, review)`
   },
 ]
 
