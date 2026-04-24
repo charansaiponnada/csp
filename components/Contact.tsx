@@ -7,7 +7,7 @@ import { Envelope, GithubLogo, LinkedinLogo, Copy, Check, ArrowSquareOut } from 
 const stats = [
   { label: 'GitHub', value: '150+', suffix: 'contributions', href: 'https://github.com/charansaiponnada' },
   { label: 'LinkedIn', value: '1.3K', suffix: 'connections', href: 'https://linkedin.com/in/charansaiponnada' },
-  { label: 'Papers', value: '2', suffix: 'published', href: 'https://github.com/charansaiponnada' },
+  { label: 'Papers', value: '2', suffix: 'published', href: 'https://scholar.google.com/citations?user=Y56JNs0AAAAJ&hl=en' },
 ]
 
 const links = [
@@ -32,7 +32,7 @@ const links = [
   {
     label: 'Papers',
     value: 'View on Google Scholar',
-    href: 'https://scholar.google.com',
+    href: 'https://scholar.google.com/citations?user=Y56JNs0AAAAJ&hl=en',
     icon: ArrowSquareOut,
   },
 ]
