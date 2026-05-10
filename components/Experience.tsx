@@ -1,110 +1,128 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Briefcase } from '@phosphor-icons/react'
+
+const experiences = [
+  {
+    role: 'AI Engineer Intern',
+    company: 'Aynstyn Technologies Pvt. Ltd.',
+    period: 'Jan 2026 – Present',
+    description: 'Engineering AI-powered SaaS modules for interview simulation and candidate assessment. Building high-stakes evaluation infrastructure for LLM reliability.',
+    highlights: [
+      'Engineered SaaS modules for voice evaluation supporting 3+ production workflows.',
+      'Built LLM evaluation pipeline validating performance across 200+ structured test cases.',
+      'Optimized prompt architectures reducing unstable outputs and improving consistency.',
+      'Integrated LLM components into scalable infrastructure for real-time inference.'
+    ],
+    tech: ['FastAPI', 'LangChain', 'PyTorch', 'LLM Eval', 'RAG']
+  }
+]
+
+const research = [
+  {
+    title: 'Vision-Language Assistive Navigation System',
+    venue: 'Primary Author — ISAECT 2025',
+    description: 'Multimodal assistive navigation system using BLIP for scene understanding in complex traffic environments.',
+    highlights: [
+      'Fine-tuned BLIP via 3-stage LoRA training on 427-scene Indian traffic dataset.',
+      'Achieved +15.6% improvement across BLEU, METEOR, and semantic similarity.',
+      'Developed full ML pipeline from dataset design to model release.',
+      'Published on HuggingFace and GitHub.'
+    ],
+    tech: ['BLIP', 'LoRA', 'Computer Vision', 'PyTorch']
+  }
+]
 
 export default function Experience() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="experience" className="py-32 bg-white relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[30%] h-full bg-[#F7F5F0]" />
-      
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+    <section id="experience" className="py-32 bg-[#0A0A0A] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-20"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-24"
         >
-          <div className="flex items-center gap-4 mb-4">
-            <span className="text-[#9A9A9A] font-mono text-xs tracking-[0.3em] uppercase">— 02 / Experience</span>
-          </div>
-          <h2 className="font-display text-4xl md:text-5xl">
-            Where the real work happens
-          </h2>
+          <span className="text-[#E87E53] font-mono text-[10px] tracking-[0.4em] uppercase mb-4 block">01 / Career Path</span>
+          <h2 className="font-display text-5xl md:text-7xl font-medium tracking-tight">Experience <span className="text-white/20">&</span> Research</h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-12 gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-4"
-          >
-            <div className="sticky top-32">
-              <div className="bg-[#1A1A1A] text-white p-8">
-                <p className="font-mono text-xs text-[#6B6B6B] tracking-widest uppercase mb-6">Current Role</p>
-                <p className="font-display text-2xl mb-2">AI Engineer Intern</p>
-                <p className="text-[#9A9A9A] text-sm mb-6">Aynstyn Technologies</p>
-                <div className="w-8 h-[1px] bg-[#C45D35] mb-6" />
-                <p className="font-mono text-xs text-[#6B6B6B] mb-2">Period</p>
-                <p className="text-sm">Jan 2026 — Present</p>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-8"
-          >
-            <div className="space-y-12">
-              <p className="text-xl text-[#6B6B6B] leading-relaxed font-light">
-                Engineered AI-powered SaaS modules for interview simulation, candidate assessment, and voice evaluation. Then realized the harder problem wasn&apos;t the AI — it was knowing if the AI was actually trustworthy.
-              </p>
-
-              <div className="space-y-8">
-                {[
-                  {
-                    num: '01',
-                    title: 'Built evaluation infrastructure',
-                    desc: 'Evaluation pipeline across 200+ test cases. Coverage improved by 2x.'
-                  },
-                  {
-                    num: '02', 
-                    title: 'Optimized inference workflows',
-                    desc: 'Reduced unstable outputs. Made responses consistent across edge cases.'
-                  },
-                  {
-                    num: '03',
-                    title: 'Integrated LLM-powered systems',
-                    desc: 'Real-time inference supporting concurrent user interactions.'
-                  }
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-6 group">
-                    <div className="flex-shrink-0">
-                      <span className="text-[#C45D35] font-mono text-xs">{item.num}</span>
-                      <div className="w-[1px] h-full bg-[#E5E2DB] ml-[5px] mt-2 group-hover:bg-[#C45D35] transition-colors" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-[#1A1A1A] mb-1">{item.title}</h4>
-                      <p className="text-sm text-[#6B6B6B]">{item.desc}</p>
-                    </div>
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Experience Column */}
+          <div className="space-y-12">
+            <h3 className="text-white/30 font-mono text-[10px] tracking-widest uppercase mb-8">Professional</h3>
+            {experiences.map((exp, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 + i * 0.1 }}
+                className="glass p-8 rounded-3xl group hover:border-white/20 transition-all"
+              >
+                <div className="flex justify-between items-start mb-6">
+                  <div>
+                    <h4 className="text-2xl font-medium mb-1">{exp.role}</h4>
+                    <p className="text-[#E87E53] font-mono text-xs">{exp.company}</p>
                   </div>
-                ))}
-              </div>
-
-              <div className="pt-8 border-t border-[#E5E2DB]">
-                <p className="text-xs font-mono text-[#9A9A9A] tracking-widest uppercase mb-4">Technologies</p>
+                  <span className="text-white/30 font-mono text-[10px] uppercase tracking-tighter">{exp.period}</span>
+                </div>
+                <p className="text-white/50 text-sm mb-8 leading-relaxed font-light">{exp.description}</p>
+                <ul className="space-y-4 mb-8">
+                  {exp.highlights.map((h, j) => (
+                    <li key={j} className="flex gap-4 text-xs text-white/40 leading-relaxed font-light">
+                      <span className="text-[#E87E53] font-mono">0{j+1}</span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
                 <div className="flex flex-wrap gap-2">
-                  {['FastAPI', 'LangChain', 'PyTorch', 'RAG', 'LLM Evaluation', 'SaaS'].map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-4 py-2 bg-[#F7F5F0] text-[#6B6B6B] text-sm font-mono border border-[#E5E2DB] hover:border-[#C45D35] hover:text-[#C45D35] transition-colors"
-                    >
-                      {tech}
-                    </span>
+                  {exp.tech.map((t) => (
+                    <span key={t} className="px-3 py-1 bg-white/5 border border-white/5 text-[10px] font-mono text-white/40 rounded-full group-hover:border-white/10 transition-all">{t}</span>
                   ))}
                 </div>
-              </div>
-            </div>
-          </motion.div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Research Column */}
+          <div className="space-y-12">
+            <h3 className="text-white/30 font-mono text-[10px] tracking-widest uppercase mb-8">Academic</h3>
+            {research.map((res, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.3 + i * 0.1 }}
+                className="glass p-8 rounded-3xl group hover:border-white/20 transition-all"
+              >
+                <div className="flex justify-between items-start mb-6">
+                  <div>
+                    <h4 className="text-2xl font-medium mb-1">{res.title}</h4>
+                    <p className="text-[#E87E53] font-mono text-xs">{res.venue}</p>
+                  </div>
+                </div>
+                <p className="text-white/50 text-sm mb-8 leading-relaxed font-light">{res.description}</p>
+                <ul className="space-y-4 mb-8">
+                  {res.highlights.map((h, j) => (
+                    <li key={j} className="flex gap-4 text-xs text-white/40 leading-relaxed font-light">
+                      <span className="text-[#E87E53] font-mono">0{j+1}</span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex flex-wrap gap-2">
+                  {res.tech.map((t) => (
+                    <span key={t} className="px-3 py-1 bg-white/5 border border-white/5 text-[10px] font-mono text-white/40 rounded-full group-hover:border-white/10 transition-all">{t}</span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

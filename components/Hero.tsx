@@ -27,98 +27,106 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center relative overflow-hidden"
+      className="min-h-screen flex items-center relative overflow-hidden bg-[#0A0A0A]"
     >
-      <div className="absolute inset-0 bg-[#F7F5F0]" />
+      {/* Background Glows */}
+      <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#E87E53]/10 blur-[120px] rounded-full" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-[#E87E53]/5 blur-[100px] rounded-full" />
       
-      <div className="max-w-6xl mx-auto px-6 py-32 relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-6 py-32 relative z-10 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="mb-6"
+              className="mb-8"
             >
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#1A1A1A] text-white text-xs font-mono tracking-wider">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C45D35] animate-pulse" />
-                Available for work
+              <span className="inline-flex items-center gap-2 px-3 py-1 border border-white/10 bg-white/5 backdrop-blur-sm text-white/60 text-[10px] font-mono tracking-[0.2em] uppercase rounded-full">
+                <span className="w-1 h-1 rounded-full bg-[#E87E53] animate-pulse" />
+                Available for AI Internships
               </span>
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-5xl md:text-7xl lg:text-8xl font-normal leading-[1.1] mb-8"
+              className="font-display text-6xl md:text-8xl font-medium tracking-tight leading-[0.95] mb-10"
             >
-              Hello, I&apos;m<br />
-              <span className="gradient-text">Charan Sai</span>
-              <br />
-              <span className="gradient-text">Ponnada</span> 
+              Charan Sai<br />
+              <span className="text-white/40">Ponnada</span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-xl md:text-2xl text-[#6B6B6B] leading-relaxed mb-8 max-w-lg"
+              className="text-lg md:text-xl text-white/50 leading-relaxed mb-10 max-w-md font-light"
             >
-              Building AI systems that don&apos;t just work, but make sense.
+              AI Engineer specializing in <span className="text-white">RAG Systems</span>, 
+              <span className="text-white"> LLM Evaluation</span>, and 
+              <span className="text-white"> Computer Vision</span>.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex items-center gap-4 text-sm text-[#9A9A9A] font-mono mb-10"
+              className="flex items-center gap-6 text-[10px] text-white/30 font-mono tracking-widest uppercase mb-12"
             >
-              <span>{time} IST</span>
-              <span className="w-1 h-1 bg-[#E5E2DB] rounded-full" />
-              <span>Kakinada, India</span>
+              <div className="flex items-center gap-2">
+                <span className="w-1 h-1 bg-white/20 rounded-full" />
+                <span>{time} IST</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-1 h-1 bg-white/20 rounded-full" />
+                <span>Kakinada, India</span>
+              </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex gap-4"
+              className="flex flex-wrap gap-4"
             >
               <a
                 href="#projects"
-                className="flex items-center gap-2 px-5 py-3 bg-[#1A1A1A] text-white font-mono text-sm hover:bg-[#1A1A1A]/90 transition-colors"
+                className="group relative flex items-center gap-2 px-8 py-4 bg-white text-black font-medium text-sm rounded-full overflow-hidden transition-all hover:pr-10"
               >
-                View Work
+                <span className="relative z-10">Explore Research</span>
+                <div className="absolute right-4 opacity-0 group-hover:opacity-100 transition-all">→</div>
               </a>
               <a
                 href="https://github.com/charansaiponnada"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-3 border border-[#E5E2DB] text-[#1A1A1A] font-mono text-sm hover:border-[#C45D35] transition-colors"
+                className="flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 text-white font-medium text-sm rounded-full hover:bg-white/10 transition-all"
               >
-                <GithubLogo size={18} />
-                github
+                <GithubLogo size={20} />
+                <span>GitHub</span>
               </a>
               <a
                 href="https://linkedin.com/in/charansaiponnada"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-3 border border-[#E5E2DB] text-[#1A1A1A] font-mono text-sm hover:border-[#C45D35] transition-colors"
+                className="flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 text-white font-medium text-sm rounded-full hover:bg-white/10 transition-all"
               >
-                <LinkedinLogo size={18} />
-                linkedin
+                <LinkedinLogo size={20} />
+                <span>LinkedIn</span>
               </a>
             </motion.div>
           </div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="hidden lg:block"
+            transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden lg:block relative"
           >
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-[#C45D35]/10 to-transparent rounded-3xl" />
+            <div className="absolute -inset-10 bg-[#E87E53]/5 blur-[80px] rounded-full opacity-50" />
+            <div className="relative z-10 scale-110 translate-x-12">
               <CodeWindow />
             </div>
           </motion.div>
@@ -128,10 +136,11 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#9A9A9A] text-xs font-mono tracking-widest"
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
       >
-        scroll
+        <span className="text-white/20 text-[10px] font-mono tracking-[0.3em] uppercase">Scroll</span>
+        <div className="w-[1px] h-12 bg-gradient-to-b from-white/20 to-transparent" />
       </motion.div>
     </section>
   )

@@ -1,79 +1,54 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { List, X } from '@phosphor-icons/react'
+import { motion, AnimatePresence } from 'framer-motion'
+
+const navItems = [
+  { name: 'Research', href: '#projects' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Contact', href: '#contact' },
+]
 
 export default function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navItems = [
-    { label: 'Work', href: '#projects' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'About', href: '#about' },
-    { label: 'Contact', href: '#contact' },
-  ]
-
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-[#F7F5F0]/90 backdrop-blur-lg border-b border-[#E5E2DB]'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-        <a href="#hero" className="font-mono text-sm tracking-tight">
-          <span className="font-semibold">CSP</span>
-          <span className="text-[#C45D35]">.</span>
-        </a>
-
-        <div className="hidden md:flex items-center gap-10">
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-fit px-6">
+      <motion.div
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        className={`flex items-center gap-1 p-1 rounded-full transition-all duration-300 ${
+          scrolled ? 'glass' : 'bg-transparent border border-transparent'
+        }`}
+      >
+        <div className="flex items-center">
           {navItems.map((item) => (
             <a
-              key={item.label}
+              key={item.name}
               href={item.href}
-              className="text-[#6B6B6B] hover:text-[#1A1A1A] transition-colors relative group font-mono text-sm tracking-wide"
+              className="px-5 py-2.5 text-[11px] font-mono tracking-widest uppercase text-white/50 hover:text-white transition-all rounded-full hover:bg-white/5"
             >
-              {item.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#C45D35] transition-all duration-500 group-hover:w-full" />
+              {item.name}
             </a>
           ))}
         </div>
-
-        <button
-          className="md:hidden p-2 text-[#1A1A1A]"
-          onClick={() => setIsMobileOpen(!isMobileOpen)}
-          aria-label="Toggle menu"
+        
+        <div className="w-[1px] h-4 bg-white/10 mx-2" />
+        
+        <a
+          href="mailto:charansaiponnada06@gmail.com"
+          className="px-5 py-2.5 text-[11px] font-mono tracking-widest uppercase text-[#E87E53] hover:text-[#F29976] transition-all"
         >
-          {isMobileOpen ? <X size={24} /> : <List size={24} />}
-        </button>
-      </div>
-
-      {isMobileOpen && (
-        <div className="md:hidden bg-[#F7F5F0] border-t border-[#E5E2DB]">
-          <div className="px-6 py-6 flex flex-col gap-5">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-[#6B6B6B] hover:text-[#1A1A1A] transition-colors py-2 font-mono text-sm"
-                onClick={() => setIsMobileOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
+          Hire Me
+        </a>
+      </motion.div>
     </nav>
   )
 }

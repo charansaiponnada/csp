@@ -1,69 +1,36 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { GithubLogo, ArrowSquareOut, BookOpen } from '@phosphor-icons/react'
 
 const projects = [
   {
-    title: 'Intelli-Credit',
-    tagline: 'Built at a hackathon. Used in real credit decisions.',
-    description: 'Credit appraisal takes days. We got it down to minutes — not by throwing more models at it, but by designing a system where every number is traceable.',
-    whatWorked: [
-      'VectorLess RAG: 98% lower API overhead vs standard embedding',
-      'Multi-agent pipeline that doesn\'t hallucinate financial data',
-      'Credit Appraisal Memo in under 5 minutes',
+    title: 'VIVIRITY Intelli-Credit',
+    role: 'Credit Risk Intelligence System',
+    description: 'Reduced financial analysis time from days to minutes by processing 500+ page annual reports in under 5 minutes.',
+    achievements: [
+      'Built end-to-end AI credit intelligence system; 2nd place at IIT Hyderabad AI/ML Hackathon.',
+      'Developed VectorLess RAG pipeline achieving 98% lower API overhead.',
+      'Extracted 50+ financial risk indicators via multi-agent decision pipeline.'
     ],
-    stack: ['Python', 'Gemini 2.5', 'Streamlit', 'Flask', 'Tavily'],
+    stack: ['Python', 'Gemini', 'RAG', 'Multi-Agent'],
     github: 'https://github.com/charansaiponnada/VIVIRITY',
-    badge: '2nd at YUVAAN 2026',
-    year: '2026',
-  },
-  {
-    title: 'BLIP Fine-tuning',
-    tagline: 'When the base model isn\'t enough.',
-    description: 'Standard BLIP didn\'t understand Indian traffic scenes. So we fine-tuned it — 3-stage LoRA on 427 scenes.',
-    whatWorked: [
-      'LoRA reduced compute significantly',
-      '3-stage training on 427-scene dataset',
-      'Model on HuggingFace',
-    ],
-    stack: ['PyTorch', 'BLIP', 'LoRA', 'OpenCV'],
-    github: 'https://github.com/charansaiponnada/blip-instance',
-    demo: 'https://huggingface.co/Charansaiponnada/BLIP-BASE-INDIAN',
-    paper: 'https://doi.org/10.1109/isaect68904.2025.11318802',
-    badge: 'ISAECT 2025',
-    year: '2025',
+    badge: 'YUVAAN 2026'
   },
   {
     title: 'AyurMind',
-    tagline: 'Multi-agent RAG that doesn\'t make up medical advice.',
-    description: 'The hard part wasn\'t building a RAG system. The hard part was stopping it from confidently giving wrong answers.',
-    whatWorked: [
-      '4 specialized agents + orchestrator',
-      '84% top-3 retrieval accuracy',
-      'Bilingual support (English + Hindi)',
+    role: 'Domain-Specific RAG System',
+    description: 'RAG system over 1200+ structured Ayurvedic knowledge entries with 84% Top-3 retrieval accuracy.',
+    achievements: [
+      'Reduced hallucinated responses by 45% using validation layers.',
+      'Improved expert-rated answer quality from 3.1 to 4.4 / 5.',
+      'Optimized retrieval pipeline for domain-specific accuracy.'
     ],
     stack: ['Python', 'LangChain', 'ChromaDB', 'Gradio'],
     github: 'https://github.com/charansaiponnada/AyurMind',
-    badge: 'Conference ready',
-    year: '2025',
-  },
-  {
-    title: 'EEG Meditation Study',
-    tagline: 'Sometimes the ceiling is the result.',
-    description: 'Built three complete EEG pipelines. Performance plateaued at F1 0.78-0.80. Called it off. Label quality was the bottleneck.',
-    whatWorked: [
-      'Three rigorous pipelines, all evaluated',
-      'Subject-wise cross-validation',
-      'Scientific rigor > chasing accuracy',
-    ],
-    stack: ['Python', 'ML', 'Signal Processing'],
-    github: 'https://github.com/charansaiponnada/eeg-meditation-classification-study',
-    badge: 'Research',
-    year: '2025',
-  },
+    badge: 'Conference Ready'
+  }
 ]
 
 export default function Projects() {
@@ -71,117 +38,64 @@ export default function Projects() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="projects" className="py-32 bg-[#F7F5F0] relative">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="projects" className="py-32 bg-[#0A0A0A] relative">
+      <div className="max-w-7xl mx-auto px-6">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-24"
         >
-          <span className="text-[#9A9A9A] font-mono text-xs tracking-[0.3em] uppercase">— 03 / Projects</span>
-          <h2 className="font-display text-4xl md:text-5xl mt-4 mb-6">
-            What I&apos;ve actually built
-          </h2>
-          <p className="text-[#6B6B6B] text-lg font-light max-w-xl">
-            Not just demos. Things that went through iteration, failure, and sometimes got called off for the right reasons.
-          </p>
+          <span className="text-[#E87E53] font-mono text-[10px] tracking-[0.4em] uppercase mb-4 block">02 / Key Initiatives</span>
+          <h2 className="font-display text-5xl md:text-7xl font-medium tracking-tight">Technical <span className="text-white/20">Projects</span></h2>
         </motion.div>
 
-        <div className="space-y-16">
-          {projects.map((project, index) => (
+        <div className="grid md:grid-cols-2 gap-8">
+          {projects.map((project, i) => (
             <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 80 }}
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 1, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="group"
+              transition={{ duration: 0.8, delay: 0.2 + i * 0.1 }}
+              className="glass p-10 rounded-[2.5rem] group hover:border-white/20 transition-all flex flex-col"
             >
-              <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-                <div className="lg:col-span-1">
-                  <span className="text-[#9A9A9A] font-mono text-xs">{project.year}</span>
-                </div>
-
-                <div className="lg:col-span-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="px-3 py-1 bg-[#EDEAE4] text-[#6B6B6B] text-xs font-mono">{project.badge}</span>
-                  </div>
-                  
-                  <h3 className="font-display text-3xl md:text-4xl mb-2 group-hover:text-[#C45D35] transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-[#6B6B6B] mb-6 font-light">{project.tagline}</p>
-                  
-                  <p className="text-[#6B6B6B] leading-relaxed mb-8 max-w-lg">
-                    {project.description}
-                  </p>
-
-                  <div className="space-y-2 mb-8">
-                    <p className="text-xs font-mono text-[#9A9A9A] tracking-widest uppercase">What worked</p>
-                    {project.whatWorked.map((item, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <span className="w-1 h-1 rounded-full bg-[#C45D35]" />
-                        <span className="text-sm text-[#6B6B6B]">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    {project.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-[#EDEAE4] text-[#6B6B6B] text-xs font-mono border border-[#E5E2DB]"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="lg:col-span-4 lg:col-start-9">
-                  <div className="flex flex-col gap-3">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group/btn flex items-center justify-center gap-2 px-6 py-4 bg-[#1A1A1A] text-white font-mono text-sm tracking-wide hover:bg-[#1A1A1A]/85 transition-all"
-                    >
-                      <GithubLogo size={16} />
-                      <span>View Code</span>
-                      <svg className="w-4 h-4 opacity-0 -translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                      </svg>
-                    </a>
-                    {project.demo && (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group/btn flex items-center justify-center gap-2 px-6 py-4 border border-[#E5E2DB] text-[#1A1A1A] font-mono text-sm tracking-wide hover:border-[#C45D35] hover:text-[#C45D35] transition-all"
-                      >
-                        <ArrowSquareOut size={16} />
-                        <span>HuggingFace</span>
-                      </a>
-                    )}
-                    {project.paper && (
-                      <a
-                        href={project.paper}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group/btn flex items-center justify-center gap-2 px-6 py-4 border border-[#E5E2DB] text-[#1A1A1A] font-mono text-sm tracking-wide hover:border-[#C45D35] hover:text-[#C45D35] transition-all"
-                      >
-                        <BookOpen size={16} />
-                        <span>Paper (DOI)</span>
-                      </a>
-                    )}
-                  </div>
-                </div>
+              <div className="mb-8">
+                <span className="px-3 py-1 bg-[#E87E53]/10 text-[#E87E53] text-[9px] font-mono tracking-widest uppercase rounded-full border border-[#E87E53]/20 mb-6 inline-block">
+                  {project.badge}
+                </span>
+                <h3 className="text-3xl font-medium mb-2 group-hover:text-[#E87E53] transition-colors">{project.title}</h3>
+                <p className="text-white/40 text-xs font-mono uppercase tracking-widest">{project.role}</p>
               </div>
 
-              {index < projects.length - 1 && (
-                <div className="mt-16 mb-8 h-[1px] bg-[#E5E2DB]" />
-              )}
+              <p className="text-white/50 text-sm mb-8 leading-relaxed font-light">
+                {project.description}
+              </p>
+
+              <div className="space-y-4 mb-10 flex-grow">
+                {project.achievements.map((a, j) => (
+                  <div key={j} className="flex gap-4 items-start">
+                    <div className="w-1 h-1 rounded-full bg-[#E87E53] mt-2 flex-shrink-0" />
+                    <p className="text-xs text-white/40 leading-relaxed font-light">{a}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex items-center justify-between pt-8 border-t border-white/5">
+                <div className="flex gap-2">
+                  {project.stack.map((s) => (
+                    <span key={s} className="px-3 py-1 bg-white/5 border border-white/5 text-[9px] font-mono text-white/30 rounded-full">{s}</span>
+                  ))}
+                </div>
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:bg-white hover:text-black transition-all"
+                >
+                  <GithubLogo size={20} />
+                </a>
+              </div>
             </motion.div>
           ))}
         </div>
