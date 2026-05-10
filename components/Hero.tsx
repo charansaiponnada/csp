@@ -54,7 +54,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="font-display text-6xl md:text-8xl font-medium tracking-tight leading-[0.95] mb-10"
             >
-              Charan Sai<br />
+              <span className="gradient-text">Charan Sai</span><br />
               <span className="text-white/40">Ponnada</span>
             </motion.h1>
 
