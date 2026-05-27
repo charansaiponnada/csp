@@ -147,7 +147,7 @@ export default function CodeWindow() {
                   {line.split(/(\s+|[(){}[\],.:;])/g).map((token, tokenIndex) => {
                     if (!token) return null
                     if (keywords.includes(token)) {
-                      return <span key={tokenIndex} className="text-[#E87E53]">{token}</span>
+                      return <span key={tokenIndex} className="text-[#00D1FF]">{token}</span>
                     }
                     if (/^\d+\.?\d*$/.test(token)) {
                       return <span key={tokenIndex} className="text-[#D19A66]">{token}</span>
@@ -169,7 +169,7 @@ export default function CodeWindow() {
           <motion.span
             animate={{ opacity: [1, 0] }}
             transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-            className="inline-block w-1.5 h-4 bg-[#E87E53] ml-1"
+            className="inline-block w-1.5 h-4 bg-[#00D1FF] ml-1"
           />
         )}
       </div>
@@ -183,7 +183,7 @@ export default function CodeWindow() {
             <div
               key={i}
               className={`w-1 h-1 rounded-full transition-all duration-300 ${
-                i === currentIndex ? 'bg-[#E87E53] w-3' : 'bg-white/10'
+                i === currentIndex ? 'bg-[#00D1FF] w-3' : 'bg-white/10'
               }`}
             />
           ))}

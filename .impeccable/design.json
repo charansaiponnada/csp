@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2024-05-25T10:00:00Z",
+  "title": "Design System: Neural Laboratory",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Neural Ember",
+        "canonical": "oklch(68% 0.18 45)",
+        "tonalRamp": [
+          "#2d1208",
+          "#5a2411",
+          "#873619",
+          "#b44821",
+          "#e15a2a",
+          "#e87e53",
+          "#ef9d7c",
+          "#f6bda5"
+        ]
+      },
+      "neutral-bg": {
+        "role": "neutral",
+        "displayName": "Deep Void",
+        "canonical": "#0A0A0A",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#0a0a0a",
+          "#141414",
+          "#1f1f1f",
+          "#2b2b2b",
+          "#383838",
+          "#464646"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display Heading",
+        "purpose": "Hero headlines for maximum impact."
+      },
+      "label": {
+        "displayName": "Technical Label",
+        "purpose": "Technical metadata and monospaced indicators."
+      }
+    },
+    "motion": [
+      {
+        "name": "Surgical Ease",
+        "value": "[0.16, 1, 0.3, 1]",
+        "purpose": "Smooth, exponential entry for all components."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary CTA",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "High-contrast primary action button.",
+      "html": "<button class=\"ds-btn-primary\">EXPLORE RESEARCH</button>",
+      "css": ".ds-btn-primary { background: #FFFFFF; color: #000000; padding: 16px 32px; font-size: 14px; font-weight: 500; border-radius: 9999px; border: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; } .ds-btn-primary:hover { padding-right: 40px; background: #f0f0f0; }"
+    },
+    {
+      "name": "Social Link",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Subtle glass button for secondary links.",
+      "html": "<button class=\"ds-btn-secondary\">GITHUB</button>",
+      "css": ".ds-btn-secondary { background: rgba(255, 255, 255, 0.05); color: #FFFFFF; padding: 16px 32px; font-size: 14px; font-weight: 500; border-radius: 9999px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s; cursor: pointer; } .ds-btn-secondary:hover { background: rgba(255, 255, 255, 0.1); }"
+    },
+    {
+      "name": "Status Badge",
+      "kind": "chip",
+      "description": "Monospaced status indicator with pulse.",
+      "html": "<div class=\"ds-badge\"><span class=\"ds-dot\"></span> AVAILABLE FOR HIRE</div>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 9999px; color: rgba(255, 255, 255, 0.6); font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; } .ds-dot { width: 4px; height: 4px; border-radius: 9999px; background: #E87E53; animation: ds-pulse 2s infinite; } @keyframes ds-pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Neural Laboratory",
+    "overview": "The Neural Laboratory is a visual system designed to feel like a high-precision research instrument. It balances the raw, experimental energy of cutting-edge AI with the surgical precision of an engineer who masters multiple domains.",
+    "keyCharacteristics": [
+      "Surgical Precision: Perfect alignment and generous, intentional whitespace.",
+      "Experimental Glows: Subtle radial gradients and blurs mimic neural activity.",
+      "Tactile Interactivity: Reactive elements with smooth, exponential motion."
+    ],
+    "dos": [
+      "Do use linear-gradient text for primary brand names.",
+      "Do maintain a strict grid even in experimental sections."
+    ],
+    "donts": [
+      "Don't use generic box-shadows; use tonal or glass layering instead.",
+      "Don't use more than one accent color (Neural Ember only)."
+    ]
+  }
+}

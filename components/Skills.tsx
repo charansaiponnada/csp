@@ -5,28 +5,28 @@ import { useRef } from 'react'
 
 const skillGroups = [
   {
-    title: 'AI / ML',
-    skills: ['PyTorch', 'TensorFlow', 'Keras', 'LoRA', 'Fine-Tuning'],
+    title: 'AI / ML Core',
+    skills: ['PyTorch', 'TensorFlow', 'Keras', 'LoRA', 'Fine-Tuning', 'PEFT'],
   },
   {
-    title: 'LLM Systems',
-    skills: ['RAG', 'Prompt Eng.', 'LangChain', 'LLM Eval', 'Vector Retrieval'],
+    title: 'Neural Architectures',
+    skills: ['RAG', 'Prompt Eng.', 'LangChain', 'LLM Eval', 'Vector Retrieval', 'Multi-Agent'],
   },
   {
-    title: 'Backend',
-    skills: ['FastAPI', 'Flask', 'Node.js', 'REST APIs', 'Microservices'],
+    title: 'System Backend',
+    skills: ['FastAPI', 'Flask', 'Node.js', 'REST APIs', 'Microservices', 'Inference Ops'],
   },
   {
-    title: 'Data Engineering',
-    skills: ['Pandas', 'NumPy', 'PySpark', 'MySQL', 'MongoDB', 'ChromaDB'],
+    title: 'Data Laboratory',
+    skills: ['Pandas', 'NumPy', 'MySQL', 'MongoDB', 'ChromaDB', 'VectorDB'],
   },
   {
-    title: 'Cloud & Deploy',
-    skills: ['AWS', 'GCP', 'Docker', 'Scalable Inference', 'Git'],
+    title: 'Cloud Deployment',
+    skills: ['AWS', 'GCP', 'Docker', 'Git', 'CI/CD'],
   },
   {
-    title: 'Frontend',
-    skills: ['Next.js', 'React', 'Streamlit', 'Gradio'],
+    title: 'Interface',
+    skills: ['Next.js', 'React', 'Streamlit', 'Gradio', 'Tailwind'],
   },
 ]
 
@@ -35,37 +35,39 @@ export default function Skills() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="skills" className="py-32 bg-[#0A0A0A] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-24 text-center"
-        >
-          <span className="text-[#E87E53] font-mono text-[10px] tracking-[0.4em] uppercase mb-4 block">03 / Tech Stack</span>
-          <h2 className="font-display text-5xl md:text-7xl font-medium tracking-tight">Abilities <span className="text-white/20">&</span> Tools</h2>
-        </motion.div>
+    <section id="skills" className="bg-white relative overflow-hidden border-t border-black/5">
+      <div className="grid lg:grid-cols-4 w-full">
+        {/* Header Cell */}
+        <div className="lg:col-span-1 p-12 border-r border-b border-black/5 flex flex-col justify-between min-h-[400px]">
+          <div>
+            <span className="text-[#0055FF] font-mono text-[10px] tracking-[0.4em] uppercase mb-4 block">03 / STACK</span>
+            <h2 className="font-display text-5xl font-bold tracking-tight uppercase text-black leading-none">OPERATIONAL<br/>STACK</h2>
+          </div>
+          <p className="text-black/30 text-xs font-light leading-relaxed max-w-[200px]">
+            High-performance tools for intelligence, design, and behavioral engineering.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Skills Grid */}
+        <div className="lg:col-span-3 grid md:grid-cols-3">
           {skillGroups.map((group, groupIndex) => (
             <motion.div
               key={group.title}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.8, delay: groupIndex * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="glass p-8 rounded-[2rem] group hover:border-white/20 transition-all"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: groupIndex * 0.1 }}
+              className="p-12 border-r border-b border-black/5 hover:bg-black/[0.02] transition-all group"
             >
-              <h4 className="text-white/30 font-mono text-[10px] tracking-widest uppercase mb-8">{group.title}</h4>
-              <div className="flex flex-wrap gap-2">
+              <h4 className="text-[#0055FF] font-mono text-[10px] tracking-widest uppercase mb-10">{group.title}</h4>
+              <div className="flex flex-col gap-y-4">
                 {group.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-4 py-2 bg-white/5 border border-white/5 text-white/50 text-xs font-mono rounded-full group-hover:border-white/10 group-hover:text-white transition-all"
-                  >
-                    {skill}
-                  </span>
+                  <div key={skill} className="flex items-center gap-3 group/skill">
+                    <div className="w-1 h-1 rounded-full bg-[#0055FF]/40 group-hover/skill:bg-[#0055FF] transition-colors" />
+                    <span className="text-black/40 text-xs font-mono tracking-tight group-hover/skill:text-black transition-colors uppercase">
+                      {skill}
+                    </span>
+                  </div>
                 ))}
               </div>
             </motion.div>

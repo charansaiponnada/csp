@@ -44,36 +44,42 @@ export default function Recognition() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="recognition" className="py-32 bg-[#0A0A0A] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-24"
-        >
-          <span className="text-[#E87E53] font-mono text-[10px] tracking-[0.4em] uppercase mb-4 block">04 / Recognition</span>
-          <h2 className="font-display text-5xl md:text-7xl font-medium tracking-tight">Milestones <span className="text-white/20">&</span> Awards</h2>
-        </motion.div>
+    <section id="recognition" className="bg-white relative overflow-hidden border-t border-black/5">
+      <div className="grid lg:grid-cols-4 w-full">
+        {/* Header Cell */}
+        <div className="lg:col-span-1 p-12 border-r border-b border-black/5 flex flex-col justify-between min-h-[400px]">
+          <div>
+            <span className="text-[#0055FF] font-mono text-[10px] tracking-[0.4em] uppercase mb-4 block">04 / MILESTONES</span>
+            <h2 className="font-display text-5xl font-bold tracking-tight uppercase text-black leading-none">PROFESSIONAL<br/>RECOGNITION</h2>
+          </div>
+          <p className="text-black/30 text-xs font-light leading-relaxed max-w-[200px]">
+            Validated impact through competitive hackathons and academic contributions.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Milestones Grid */}
+        <div className="lg:col-span-3 grid md:grid-cols-2 lg:grid-cols-4">
           {accomplishments.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="glass p-10 rounded-[2.5rem] group hover:border-white/20 transition-all text-center"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="p-12 border-r border-b border-black/5 hover:bg-black/[0.02] transition-all group flex flex-col justify-between min-h-[350px]"
             >
-              <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:bg-[#E87E53]/10 transition-colors">
-                <item.icon size={28} className="text-white/20 group-hover:text-[#E87E53] transition-colors" />
+              <div>
+                <div className="w-10 h-10 bg-black/5 rounded-full flex items-center justify-center mb-8 group-hover:bg-[#0055FF]/10 transition-colors"> 
+                  <item.icon size={20} className="text-black/20 group-hover:text-[#0055FF] transition-colors" />
+                </div>
+                <h4 className="text-3xl font-bold text-black mb-2 uppercase leading-none group-hover:text-[#0055FF] transition-colors">{item.title}</h4>
+                <p className="text-[#0055FF] text-[9px] font-mono tracking-widest uppercase mb-6">{item.org}</p>
+                <p className="text-black/40 text-xs font-light leading-relaxed">{item.desc}</p>
               </div>
-              <h4 className="text-3xl font-medium mb-1 group-hover:text-white transition-colors">{item.title}</h4>
-              <p className="text-[#E87E53] font-mono text-[10px] tracking-widest uppercase mb-6">{item.org}</p>
-              <div className="w-8 h-[1px] bg-white/10 mx-auto mb-6" />
-              <p className="text-white/40 text-sm font-light mb-2">{item.desc}</p>
-              <p className="text-white/20 text-[10px] font-mono">{item.detail} • {item.year}</p>
+
+              <div className="mt-8 pt-6 border-t border-black/5">
+                <p className="text-black/20 text-[9px] font-mono uppercase tracking-tighter">{item.detail} • {item.year}</p>
+              </div>
             </motion.div>
           ))}
         </div>

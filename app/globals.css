@@ -3,16 +3,48 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #0A0A0A;
-  --bg-surface: rgba(18, 18, 18, 0.8);
-  --text-primary: #FFFFFF;
-  --text-secondary: #A1A1A1;
-  --text-muted: #666666;
-  --accent: #E87E53;
-  --accent-hover: #F29976;
-  --border: rgba(255, 255, 255, 0.1);
-  --code-bg: #111111;
-  --glow-color: rgba(232, 126, 83, 0.15);
+  /* Innovation Tech Tokens - Light Theme */
+  --accent: #0055FF; /* Vibrant Innovation Blue */
+  --accent-hover: #0044CC;
+  --accent-glow: rgba(0, 85, 255, 0.1);
+
+  /* Clean Clinical Neutrals */
+  --bg-primary: #FFFFFF;
+  --bg-surface: #F8F9FA;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+
+  --text-primary: #000000;
+  --text-secondary: #4A4A4A;
+  --text-muted: #A0A0A0;
+
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.15);
+  --grid-line: rgba(0, 0, 0, 0.04);
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+}
+
+.grid-cell {
+  border: 1px solid var(--grid-line);
+}
+
+.grid-bg {
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.font-caps {
+  font-family: 'Inter', system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 700;
 }
 
 * {
@@ -29,6 +61,48 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+/* Glass Layer Rule: No shadows, depth via backdrop blurs and tonal layering */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+}
+
+.font-display {
+  font-family: 'Inter', system-ui, sans-serif;
+  letter-spacing: -0.04em; /* Surgical Precision tracking */
+}
+
+.font-mono {
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.2em; /* Technical Label tracking */
+}
+
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    #000000 0%,
+    var(--accent) 50%,
+    #000000 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shine 8s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.accent-glow {
+  background: radial-gradient(circle at 50% 50%, var(--glow-color) 0%, transparent 70%);
 }
 
 ::selection {
@@ -51,44 +125,4 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
-}
-
-.glass {
-  background: var(--bg-surface);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border);
-}
-
-.font-display {
-  font-family: 'Inter', system-ui, sans-serif;
-  letter-spacing: -0.02em;
-}
-
-.font-mono {
-  font-family: 'IBM Plex Mono', monospace;
-}
-
-.gradient-text {
-  background: linear-gradient(
-    135deg, 
-    #FFFFFF 0%, 
-    #E87E53 50%, 
-    #FFFFFF 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shine 8s linear infinite;
-}
-
-@keyframes shine {
-  to {
-    background-position: 200% center;
-  }
-}
-
-.accent-glow {
-  background: radial-gradient(circle at 50% 50%, var(--glow-color) 0%, transparent 70%);
 }

@@ -1,104 +1,143 @@
-# Portfolio Design Document
-
-## Current Design Analysis (8/10)
-
-### Module Structure
-
-| Module | Purpose | Depth | Issues |
-|--------|--------|-------|--------|
-| Navigation | Fixed nav with scroll detection | Deep | Clean, minimal interfaces |
-| Hero | Name intro + code window | Deep | Good abstraction |
-| About | Personal narrative | Deep | Clear information hiding |
-| Experience | Work history | Deep | Well-organized |
-| Projects | Case studies | Deep (for each project) | Could merge similar structure |
-| Skills | Tech grid | Shallow | Simple display, minimal interface |
-| Contact | Links | Deep | Simple interface |
-| Footer | Social links | Deep | Minimal |
-
-### Complexity Analysis
-
-**Positive (low complexity):**
-- Each section is self-contained
-- Clear information hiding between sections
-- Consistent props structure (isInView, ref, motion)
-- No cross-section dependencies
-- Data is well-encapsulated in each component
-
-**Issues Identified:**
-
-1. **Cognitive Load**: Dev must understand Framer Motion patterns for each section
-2. **Unknown Unknowns**: Code window behavior (typing animation) not obvious
-3. **Shallow Module**: Skills section is minimal - just displays badges
-
-### Design Scores
-
-| Principle | Score | Issue |
-|-----------|-------|-------|
-| Deep Modules | 8/10 | Skills is shallow, rest are deep |
-| Information Hiding | 9/10 | Colors leaking into component props |
-| General-Purpose | 9/10 | Components are appropriately specific |
-| Comments | 6/10 | No interface comments explaining design |
-| Strategic | 7/10 | Some inconsistency in motion configs |
-
+---
+name: Intelligence Workspace
+description: A premium, precise, and interactive showcase for an AI Engineer.
+colors:
+  primary: "#0055FF"
+  primary-hover: "#0044CC"
+  neutral-bg: "#FFFFFF"
+  neutral-surface: "#F8F9FA"
+  text-primary: "#000000"
+  text-secondary: "#4A4A4A"
+  text-muted: "#A0A0A0"
+  border: "rgba(0, 0, 0, 0.08)"
+typography:
+  display:
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "clamp(3rem, 10vw, 6rem)"
+    fontWeight: 500
+    lineHeight: 0.95
+    letterSpacing: "-0.04em"
+  headline:
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "2.5rem"
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: "-0.02em"
+  body:
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 300
+    lineHeight: 1.6
+  label:
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 400
+    letterSpacing: "0.1em"
+rounded:
+  sm: "4px"
+  md: "8px"
+  lg: "12px"
+  full: "9999px"
+spacing:
+  xs: "4px"
+  sm: "8px"
+  md: "16px"
+  lg: "24px"
+  xl: "32px"
+components:
+  button-primary:
+    backgroundColor: "#000000"
+    textColor: "#FFFFFF"
+    rounded: "{rounded.full}"
+    padding: "16px 32px"
+  button-secondary:
+    backgroundColor: "rgba(0, 0, 0, 0.05)"
+    textColor: "#000000"
+    rounded: "{rounded.full}"
+    padding: "16px 32px"
+  glass-card:
+    backgroundColor: "rgba(255, 255, 255, 0.85)"
+    rounded: "{rounded.lg}"
+    padding: "24px"
 ---
 
-## Proposed Improvements
+# Design System: Intelligence Workspace
 
-### 1. Extract Shared Motion Config (Information Hiding)
+## 1. Overview
 
-```typescript
-// lib/motion-config.ts (NEW)
-export const motionConfig = {
-  duration: 0.8,
-  ease: [0.16, 1, 0.3, 1],
-  stagger: 0.15,
-}
-```
+**Creative North Star: "The Clinical Innovation Hub"**
 
-### 2. Add Design Comments (Comments as Documentation)
+The Intelligence Workspace is a visual system designed to feel like a high-performance personal engineering environment. It utilizes a clean, high-contrast light theme to project authority, clarity, and technical precision. The interface uses pure whites and a vibrant innovation blue accent to create a professional yet cutting-edge atmosphere.
 
-```typescript
-/**
- * Hero section with animated introduction.
- * 
- * Design: Minimal interface, deep implementation hiding
- * the code window typing animation complexity.
- * 
- * @Complexity: Change amplification avoided through
- * single source of truth for time display.
- */
-```
+Aesthetic Philosophy: Refined, Efficient, and Professional. The system takes cues from high-end innovation platforms (Hackculture) and clinical laboratory aesthetics.
 
-### 3. Improve Skills Section (Make Deeper)
+**Key Characteristics:**
+- **Innovation Focus**: Centered layouts with high-impact bold typography.
+- **Modern Minimalism**: Clean white surfaces with a strict 4pt grid and intentional whitespace.
+- **Refined Interactivity**: Motion and interaction are used to prove engineering competence.
 
-Current: Just badges
-Proposed: Group by domain with descriptions
+## 2. Colors
 
-### 4. Interactive Project Preview (Strategic Investment)
+The palette is professional and high-contrast, using blue to draw attention to high-value actions.
 
-Add hover/interaction to project cards rather than just links.
+### Primary
+- **Innovation Blue** (#0055FF): Used for high-impact CTAs, highlights, and status indicators. It represents high-tech innovation and precision.
 
----
+### Neutral
+- **Pure White** (#FFFFFF): The base surface. A clean, focused background for maximum clarity.
+- **Surface Elevation** (#F8F9FA): Used for containers to create depth through tonal layering.
+- **Primary Text** (#000000): High-signal communication.
+- **Secondary Text** (#4A4A4A): Supporting details and descriptions.
 
-## Implementation Priority
+### Named Rules
+**The Focus Rule.** Accent color is restricted to functional elements and key highlights (≤10% weight). It should act as a beacon for the visitor's eye.
 
-| Priority | Change | Impact |
-|----------|--------|--------|
-| P0 | Fix colors consistency | Visual |
-| P1 | Add motion config | Maintainability |
-| P2 | Interactive elements | Engagement |
-| P3 | Skills enhancement | Depth |
+## 3. Typography
 
----
+The system uses Inter for its versatility and precision across all roles.
 
-## Design Review Checklist
+**Display Font:** Inter
+**Body Font:** Inter
+**Label Font:** Inter
 
-- [x] Can describe each module in one sentence?
-- [x] Are interfaces simpler than implementations?
-- [x] Can change implementation without affecting callers?
-- [ ] Do interface comments exist?
-- [x] Is design discussion part of development?
+**Character:** Modern, clean, and clinical. Strong weight contrast and tight tracking create a technical yet accessible feel.
 
----
+### Hierarchy
+- **Display** (500, 6rem, 0.95): Used for the personal name and main hero headers.
+- **Headline** (500, 2.5rem, 1.2): Section titles.
+- **Title** (500, 1.25rem, 1.4): Card and item headings.
+- **Body** (300, 1rem, 1.6): Narrative and descriptions.
+- **Label** (400, 0.75rem, 0.1em tracking): Metadata and small indicators.
 
-*Based on "A Philosophy of Software Design" framework*
+## 4. Elevation
+
+The system is flat-by-default, using tonal layering and backdrop blurs to establish hierarchy.
+
+### Named Rules
+**The Tonal Stack Rule.** Higher elevation elements are represented by lighter surfaces and backdrop blurs. No generic box-shadows are used for structural layout.
+
+## 5. Components
+
+### Buttons
+- **Primary**: Solid black background, pill-shaped. Maximum contrast for conversion.
+- **Secondary**: Light gray background with 1px border. Used for profile links and secondary actions.
+
+### Cards
+- **Style**: Semi-transparent white surface (#FFFFFF at 0.85 opacity) with 12px corner radius.
+- **Interaction**: Hover increases border brightness and adds subtle depth.
+
+### Interactive Elements
+- **Code Window**: Centrally integrated to show actual implementation work.
+- **AI Console**: A personal tool for direct engagement with Charan's engineering philosophy.
+
+## 6. Do's and Don'ts
+
+### Do:
+- **Do** prioritize the personal name in the Hero section.
+- **Do** use fluid `clamp()` for responsive typography.
+- **Do** maintain a clean, organized "workspace" feel.
+
+### Don't:
+- **Don't** refer to the site as a "Laboratory."
+- **Don't** use overly abstract instrument metaphors.
+- **Don't** sacrifice readability for "experimental" effects.

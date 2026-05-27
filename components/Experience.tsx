@@ -39,90 +39,54 @@ export default function Experience() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="experience" className="py-32 bg-[#0A0A0A] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-24"
-        >
-          <span className="text-[#E87E53] font-mono text-[10px] tracking-[0.4em] uppercase mb-4 block">01 / Career Path</span>
-          <h2 className="font-display text-5xl md:text-7xl font-medium tracking-tight">Experience <span className="text-white/20">&</span> Research</h2>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Experience Column */}
-          <div className="space-y-12">
-            <h3 className="text-white/30 font-mono text-[10px] tracking-widest uppercase mb-8">Professional</h3>
-            {experiences.map((exp, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.2 + i * 0.1 }}
-                className="glass p-8 rounded-3xl group hover:border-white/20 transition-all"
-              >
-                <div className="flex justify-between items-start mb-6">
-                  <div>
-                    <h4 className="text-2xl font-medium mb-1">{exp.role}</h4>
-                    <p className="text-[#E87E53] font-mono text-xs">{exp.company}</p>
-                  </div>
-                  <span className="text-white/30 font-mono text-[10px] uppercase tracking-tighter">{exp.period}</span>
-                </div>
-                <p className="text-white/50 text-sm mb-8 leading-relaxed font-light">{exp.description}</p>
-                <ul className="space-y-4 mb-8">
-                  {exp.highlights.map((h, j) => (
-                    <li key={j} className="flex gap-4 text-xs text-white/40 leading-relaxed font-light">
-                      <span className="text-[#E87E53] font-mono">0{j+1}</span>
-                      <span>{h}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-2">
-                  {exp.tech.map((t) => (
-                    <span key={t} className="px-3 py-1 bg-white/5 border border-white/5 text-[10px] font-mono text-white/40 rounded-full group-hover:border-white/10 transition-all">{t}</span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+    <section id="experience" className="bg-white relative overflow-hidden border-t border-black/5">
+      <div className="grid lg:grid-cols-4 w-full">
+        {/* Header Cell */}
+        <div className="lg:col-span-1 p-12 border-r border-b border-black/5 flex flex-col justify-between min-h-[400px]">
+          <div>
+            <span className="text-[#0055FF] font-mono text-[10px] tracking-[0.4em] uppercase mb-4 block">02 / PATH</span>
+            <h2 className="font-display text-5xl font-bold tracking-tight uppercase text-black leading-none">PROFESSIONAL<br/>TIMELINE</h2>
           </div>
+          <p className="text-black/30 text-xs font-light leading-relaxed max-w-[200px]">
+            A documented path of systems engineering and research publications.
+          </p>
+        </div>
 
-          {/* Research Column */}
-          <div className="space-y-12">
-            <h3 className="text-white/30 font-mono text-[10px] tracking-widest uppercase mb-8">Academic</h3>
-            {research.map((res, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.3 + i * 0.1 }}
-                className="glass p-8 rounded-3xl group hover:border-white/20 transition-all"
-              >
-                <div className="flex justify-between items-start mb-6">
-                  <div>
-                    <h4 className="text-2xl font-medium mb-1">{res.title}</h4>
-                    <p className="text-[#E87E53] font-mono text-xs">{res.venue}</p>
-                  </div>
+        {/* Experience Grid */}
+        <div className="lg:col-span-3 grid md:grid-cols-2">
+          {[...experiences, ...research].map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: i * 0.1 }}
+              className="p-12 border-r border-b border-black/5 hover:bg-black/[0.02] transition-all group"
+            >
+              <div className="flex justify-between items-start mb-8">
+                <div>
+                  <h4 className="text-2xl font-bold text-black mb-2 uppercase leading-tight group-hover:text-[#0055FF] transition-colors">
+                    {'role' in item ? (item as any).role : (item as any).title}
+                  </h4>
+                  <p className="text-[#0055FF] font-mono text-[10px] uppercase tracking-widest">
+                    {'company' in item ? (item as any).company : (item as any).venue}
+                  </p>
                 </div>
-                <p className="text-white/50 text-sm mb-8 leading-relaxed font-light">{res.description}</p>
-                <ul className="space-y-4 mb-8">
-                  {res.highlights.map((h, j) => (
-                    <li key={j} className="flex gap-4 text-xs text-white/40 leading-relaxed font-light">
-                      <span className="text-[#E87E53] font-mono">0{j+1}</span>
-                      <span>{h}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-2">
-                  {res.tech.map((t) => (
-                    <span key={t} className="px-3 py-1 bg-white/5 border border-white/5 text-[10px] font-mono text-white/40 rounded-full group-hover:border-white/10 transition-all">{t}</span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                <span className="text-black/20 font-mono text-[9px] uppercase tracking-tighter">
+                  {'period' in item ? (item as any).period : '2025'}
+                </span>
+              </div>
+              
+              <ul className="space-y-4">
+                {item.highlights.map((h, j) => (
+                  <li key={j} className="flex gap-4 text-xs text-black/40 leading-relaxed font-light">
+                    <span className="text-[#0055FF] font-mono">0{j+1}</span>
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
