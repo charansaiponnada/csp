@@ -27,7 +27,7 @@ export default function Projects() {
         
         <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
           <h2 className="font-display text-[60px] md:text-[100px] font-bold tracking-tighter uppercase leading-[0.8]">
-            <span className="text-outline text-transparent">Selected</span> <br /> Works
+            <span className="text-outline text-transparent">Selected</span> <br /> Projects
           </h2>
           <a href="https://github.com/charansaiponnada" target="_blank" className="font-sans text-lg font-bold text-dribbble-accent hover:text-white transition-colors flex items-center gap-2">
             VIEW ALL ON GITHUB <ArrowUpRight weight="bold" />

@@ -12,11 +12,11 @@ const skillGroups = [
     skills: ['RAG', 'LangChain', 'LLM Eval', 'Multi-Agent'],
   },
   {
-    title: 'Data Laboratory',
+    title: 'Data & Backend',
     skills: ['Pandas', 'MongoDB', 'MySQL', 'ChromaDB'],
   },
   {
-    title: 'Cloud / Ops',
+    title: 'Cloud & Ops',
     skills: ['FastAPI', 'AWS', 'Docker', 'CI/CD'],
   }
 ]
@@ -28,7 +28,7 @@ export default function Skills() {
         
         <div className="text-center mb-24">
           <h2 className="font-display text-[60px] md:text-[100px] font-bold tracking-tighter uppercase leading-[0.8] mb-6">
-            Tech <br /> <span className="text-dribbble-accent">Arsenal.</span>
+            Technical <br /> <span className="text-dribbble-accent">Skills.</span>
           </h2>
         </div>
 

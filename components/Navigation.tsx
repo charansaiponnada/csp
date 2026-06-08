@@ -16,7 +16,7 @@ export default function Navigation() {
         </a>
         
         <div className="hidden md:flex items-center gap-8">
-          {['Experience', 'Projects', 'Research', 'Stack'].map((item) => (
+          {['Experience', 'Projects', 'Research', 'Skills'].map((item) => (
             <a 
               key={item} 
               href={`#${item.toLowerCase()}`}

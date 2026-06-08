@@ -10,7 +10,7 @@ export default function Experience() {
         
         <div className="lg:col-span-5 sticky top-32">
           <h2 className="font-display text-[60px] md:text-[80px] font-bold tracking-tighter uppercase leading-[0.9] mb-6">
-            Professional <br /> <span className="text-dribbble-accent">Trajectory.</span>
+            Professional <br /> <span className="text-dribbble-accent">Experience.</span>
           </h2>
           <p className="font-sans text-xl text-dribbble-muted max-w-sm">
             Architecting high-stakes evaluation infrastructure and reliable AI pipelines for production environments.
