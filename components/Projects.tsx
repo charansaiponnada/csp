@@ -13,22 +13,6 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200'
   },
   {
-    title: 'Hive Agent Framework',
-    metric: 'Evolving',
-    metricLabel: 'AI Framework',
-    desc: 'An outcome-driven agent development framework built in Python that evolves through usage. Designed for adaptable, highly-autonomous AI agent pipelines.',
-    link: 'https://github.com/charansaiponnada/hive',
-    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1200'
-  },
-  {
-    title: 'VHR Vehicle Routing',
-    metric: 'Vision',
-    metricLabel: 'Satellite Data',
-    desc: 'Optimized Vehicle Routing based on Context Reasoning extracted from Very High-Resolution Satellite images. Fusing computer vision with logistical mapping.',
-    link: 'https://github.com/charansaiponnada/vehicle_width_routing',
-    image: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200'
-  },
-  {
     title: 'AyurMind RAG',
     metric: '84%',
     metricLabel: 'Top-3 Accuracy',
