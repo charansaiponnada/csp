@@ -2,57 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
 :root {
-  /* Apple Design System Tokens */
-  --primary: #0066cc;
-  --primary-focus: #0071e3;
-  --primary-on-dark: #2997ff;
-  
-  --ink: #1d1d1f;
-  --ink-muted-80: #333333;
-  --ink-muted-48: #7a7a7a;
-  
-  --canvas: #ffffff;
-  --canvas-parchment: #f5f5f7;
-  --surface-pearl: #fafafc;
-  --surface-tile-1: #272729;
-  --surface-tile-2: #2a2a2c;
-  --surface-tile-3: #252527;
-  --surface-black: #000000;
-  
-  --divider-soft: #f0f0f0;
-  --hairline: #e0e0e0;
+  --claude-primary: #cc785c;
+  --claude-ink: #141413;
+  --claude-canvas: #faf9f5;
+  --claude-surface-card: #efe9de;
+  --claude-surface-dark: #181715;
+  --claude-hairline: #e6dfd8;
 }
 
 @layer base {
   body {
-    @apply bg-[var(--canvas)] text-[var(--ink)] antialiased;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 17px;
-    line-height: 1.47;
-    letter-spacing: -0.022em;
+    @apply bg-claude-canvas text-claude-body antialiased;
   }
 }
 
 @layer utilities {
-  .sf-display {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    letter-spacing: -0.015em;
+  .tracking-claude-tight {
+    letter-spacing: -0.04em;
+  }
+  .tracking-claude-tightest {
+    letter-spacing: -0.06em;
+  }
+  
+  .claude-card {
+    @apply bg-claude-surface-card rounded-[12px] p-[32px];
+  }
+  
+  .claude-dark-card {
+    @apply bg-claude-surface-dark text-claude-on-dark rounded-[12px] p-[32px];
   }
 
-  /* Apple's signature tight tracking for large headlines */
-  .tracking-apple-tight {
-    letter-spacing: -0.02em;
+  .btn-coral {
+    @apply bg-claude-primary text-white font-medium rounded-[8px] px-5 py-3 hover:bg-claude-primary-active transition-colors active:scale-[0.98] flex items-center justify-center;
   }
   
-  /* Button reset for active states */
-  .btn-active-scale:active {
-    transform: scale(0.95);
+  .btn-outline {
+    @apply bg-transparent text-claude-ink border border-claude-hairline font-medium rounded-[8px] px-5 py-3 hover:bg-claude-surface-card transition-colors active:scale-[0.98] flex items-center justify-center;
   }
   
-  /* Product shadow */
-  .product-shadow {
-    box-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+  .btn-dark {
+    @apply bg-claude-surface-dark-elevated text-claude-on-dark font-medium rounded-[8px] px-5 py-3 hover:bg-claude-surface-dark-soft transition-colors active:scale-[0.98] flex items-center justify-center;
   }
 }
 
@@ -65,10 +57,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--canvas-parchment);
+  background: var(--claude-canvas);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--ink-muted-48);
+  background: var(--claude-hairline);
   border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4ccbf;
 }

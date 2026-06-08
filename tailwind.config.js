@@ -8,27 +8,26 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        apple: {
-          blue: '#0066cc',
-          'blue-focus': '#0071e3',
-          'blue-dark': '#2997ff',
-          ink: '#1d1d1f',
-          'ink-muted': '#7a7a7a',
-          canvas: '#ffffff',
-          parchment: '#f5f5f7',
-          'tile-1': '#272729',
-          'tile-2': '#2a2a2c',
-          black: '#000000',
-          hairline: '#e0e0e0',
+        claude: {
+          primary: '#cc785c',
+          'primary-active': '#a9583e',
+          ink: '#141413',
+          body: '#3d3d3a',
+          muted: '#6c6a64',
+          canvas: '#faf9f5',
+          'surface-card': '#efe9de',
+          'surface-dark': '#181715',
+          'surface-dark-soft': '#1f1e1b',
+          'surface-dark-elevated': '#252320',
+          'on-dark': '#faf9f5',
+          hairline: '#e6dfd8',
         }
       },
       fontFamily: {
-        sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', 'sans-serif'],
-        display: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        display: ['"Cormorant Garamond"', 'EB Garamond', 'serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
       },
-      fontSize: {
-        'apple-body': ['17px', '1.47'],
-      }
     },
   },
   plugins: [],

@@ -1,48 +1,58 @@
 'use client'
 
-import { MagnifyingGlass, ShoppingBag, List } from '@phosphor-icons/react'
+import { List } from '@phosphor-icons/react'
 
 const navItems = [
-  { name: 'Identity', href: '#hero' },
-  { name: 'Path', href: '#experience' },
-  { name: 'Initiatives', href: '#projects' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Projects', href: '#projects' },
   { name: 'Research', href: '#research' },
   { name: 'Stack', href: '#skills' },
 ]
 
 export default function Navigation() {
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-apple-black text-white h-[44px] flex items-center justify-center px-4">
-      <div className="w-full max-w-[1024px] flex items-center justify-between text-[12px] tracking-[-0.012em]">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-claude-canvas border-b border-claude-hairline h-[64px] flex items-center px-6">
+      <div className="w-full max-w-[1200px] mx-auto flex items-center justify-between">
         
-        {/* Mobile Menu Icon */}
-        <button className="md:hidden text-white/80 hover:text-white transition-colors">
-          <List size={18} />
-        </button>
+        <div className="flex items-center gap-8">
+          {/* Brand Mark */}
+          <a href="#hero" className="flex items-center gap-2 group">
+            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-claude-ink group-hover:fill-claude-primary transition-colors">
+              <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" />
+            </svg>
+            <span className="font-display text-xl font-medium tracking-tight text-claude-ink">Charan</span>
+          </a>
 
-        {/* Logo / Brand */}
-        <a href="#hero" className="font-display font-semibold hover:text-white/80 transition-colors">
-          CSP
-        </a>
-
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center justify-center space-x-8">
-          {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-white/80 hover:text-white transition-colors"
-            >
-              {item.name}
-            </a>
-          ))}
+          {/* Desktop Links */}
+          <div className="hidden md:flex items-center gap-6">
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="font-sans text-[14px] font-medium text-claude-body hover:text-claude-primary transition-colors"
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* Right Actions */}
-        <div className="flex items-center space-x-6 text-white/80">
-          <a href="mailto:charansaiponnada06@gmail.com" className="hover:text-white transition-colors">
-            Contact
+        <div className="flex items-center gap-4">
+          <a 
+            href="https://github.com/charansaiponnada" 
+            target="_blank"
+            className="hidden sm:block font-sans text-[14px] font-medium text-claude-ink hover:text-claude-primary transition-colors"
+          >
+            GitHub
           </a>
+          <a href="#contact" className="btn-coral text-[14px] h-[40px] px-[20px]">
+            Collaborate
+          </a>
+          
+          <button className="md:hidden text-claude-ink ml-2">
+            <List size={24} />
+          </button>
         </div>
 
       </div>

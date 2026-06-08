@@ -1,66 +1,62 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 
 const skillGroups = [
   {
     title: 'AI / ML Core',
     skills: ['PyTorch', 'TensorFlow', 'LoRA', 'Fine-Tuning', 'PEFT'],
-    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=400'
   },
   {
     title: 'Neural Systems',
     skills: ['RAG', 'LangChain', 'LLM Eval', 'Prompt Eng.', 'Multi-Agent'],
-    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=400'
   },
   {
-    title: 'Data & Ops',
-    skills: ['FastAPI', 'Pandas', 'MongoDB', 'AWS', 'Docker'],
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=400'
+    title: 'Data & Backend',
+    skills: ['FastAPI', 'Pandas', 'MongoDB', 'REST APIs', 'MySQL'],
+  },
+  {
+    title: 'Infrastructure',
+    skills: ['AWS', 'GCP', 'Docker', 'CI/CD', 'Git'],
   }
 ]
 
 export default function Skills() {
   return (
-    <section id="skills" className="bg-apple-canvas py-[80px] w-full flex flex-col items-center">
-      <div className="max-w-[1024px] w-full px-6">
+    <section id="skills" className="py-[96px] px-6">
+      <div className="max-w-[1200px] mx-auto">
         
-        <div className="text-center mb-16">
-          <h2 className="font-display text-[40px] font-semibold leading-[1.1] tracking-apple-tight text-apple-ink mb-2">
-            Operational Stack.
+        <div className="mb-12">
+          <h2 className="font-display text-[36px] md:text-[48px] tracking-claude-tight text-claude-ink mb-4">
+            Operational Stack
           </h2>
-          <p className="font-sans text-apple-body text-apple-ink-muted">
-            The foundation for reliable intelligence systems.
+          <p className="font-sans text-[18px] text-claude-muted max-w-2xl">
+            The foundation for reliable intelligence systems, from deep learning primitives to scalable backend orchestration.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {skillGroups.map((group, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-apple-canvas border border-apple-hairline rounded-[18px] p-6 flex flex-col items-center text-center"
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className="claude-card"
             >
-              <div className="relative w-full aspect-square mb-6 rounded-lg overflow-hidden bg-apple-parchment">
-                <Image
-                  src={group.image}
-                  alt={group.title}
-                  fill
-                  className="object-cover opacity-90"
-                />
-              </div>
-              
-              <h3 className="font-sans text-[17px] font-semibold tracking-[-0.022em] text-apple-ink mb-2">
+              <h3 className="font-sans text-[18px] font-medium text-claude-ink mb-6 pb-4 border-b border-claude-hairline">
                 {group.title}
               </h3>
               
-              <p className="font-sans text-[17px] font-normal leading-[1.47] text-apple-ink-muted">
-                {group.skills.join(', ')}
-              </p>
+              <ul className="space-y-4">
+                {group.skills.map((skill) => (
+                  <li key={skill} className="font-sans text-[16px] text-claude-body flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-claude-muted shrink-0" />
+                    {skill}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>
