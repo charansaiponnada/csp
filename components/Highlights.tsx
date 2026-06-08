@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { GithubLogo, LinkedinLogo, BookOpen, Star, UsersThree, Trophy } from '@phosphor-icons/react'
+import { BookOpen, Star, UsersThree, Trophy } from '@phosphor-icons/react'
 
 const capabilities = [
   {
@@ -54,42 +54,43 @@ export default function Highlights() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="highlights" className="bg-white relative overflow-hidden border-t border-black/5">
-      <div className="grid lg:grid-cols-4 w-full">
-        {/* Header Cell */}
-        <div className="lg:col-span-1 p-12 border-r border-b border-black/5 flex flex-col justify-between min-h-[400px]">
-          <div>
-            <span className="text-[#0055FF] font-mono text-[10px] tracking-[0.4em] uppercase mb-4 block">01 / CAPABILITIES</span>
-            <h2 className="font-display text-5xl font-bold tracking-tight uppercase text-black leading-none">CORE<br/>IMPACT</h2>
-          </div>
-          <p className="text-black/30 text-xs font-light leading-relaxed max-w-[200px]">
+    <section id="highlights" className="bg-white relative max-w-7xl mx-auto border-t border-black/5">
+      <div className="grid lg:grid-cols-12 w-full border-l border-black/5">
+        {/* Section Header */}
+        <div className="lg:col-span-4 p-8 md:p-12 border-r border-b border-black/5 flex flex-col min-h-[400px]">
+          <span className="text-[#0055FF] font-mono text-[9px] tracking-[0.4em] uppercase mb-12 block">01 / Capabilities</span>
+          <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight uppercase text-black leading-[0.9] mt-auto">
+            Core<br />
+            Impact.
+          </h2>
+          <p className="text-black/40 text-xs font-light mt-8 leading-relaxed max-w-[250px]">
             A multidisciplinary matrix designed to bridge technical engineering with human understanding.
           </p>
         </div>
 
         {/* Capabilities Grid */}
-        <div className="lg:col-span-3 grid md:grid-cols-3">
+        <div className="lg:col-span-8 grid md:grid-cols-2">
           {capabilities.map((item, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 * i }}
-              className="p-12 border-r border-b border-black/5 hover:bg-black/[0.02] transition-all group relative overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8, delay: 0.1 * i, ease: [0.16, 1, 0.3, 1] }}
+              className="p-8 md:p-12 border-r border-b border-black/5 hover:bg-black/[0.01] transition-all group relative overflow-hidden flex flex-col"
             >
-              <div className="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="text-[#0055FF]">{item.icon}</div>
+              <div className="absolute top-0 right-0 p-8 text-black/10 group-hover:text-[#0055FF] transition-colors">
+                {item.icon}
               </div>
 
-              <div className="relative z-10">
-                <span className="text-[#0055FF] font-mono text-[9px] uppercase tracking-[0.2em] mb-4 block">{item.type}</span>
-                <h3 className="text-2xl font-bold text-black mb-6 uppercase leading-tight group-hover:text-[#0055FF] transition-colors">{item.title}</h3>
-                <p className="text-black/40 text-sm font-light leading-relaxed mb-8">{item.desc}</p>
+              <div className="relative z-10 flex-grow flex flex-col">
+                <span className="text-[#0055FF] font-mono text-[9px] uppercase tracking-[0.2em] mb-6 block">{item.type}</span>
+                <h3 className="text-xl md:text-2xl font-bold text-black mb-4 uppercase leading-tight group-hover:text-[#0055FF] transition-colors">{item.title}</h3>
+                <p className="text-black/50 text-sm font-light leading-relaxed mb-8 flex-grow">{item.desc}</p>
                 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 pt-6 border-t border-black/5 mt-auto">
                   {item.tags.map((t) => (
-                    <span key={t} className="px-3 py-1 bg-black/5 border border-black/5 text-[8px] font-mono text-black/30 rounded-full">
+                    <span key={t} className="px-3 py-1 bg-black/5 border border-black/5 text-[9px] font-mono text-black/40 rounded-full uppercase tracking-widest">
                       {t}
                     </span>
                   ))}

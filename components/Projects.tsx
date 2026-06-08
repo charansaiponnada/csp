@@ -1,8 +1,7 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { GithubLogo, ArrowSquareOut, BookOpen } from '@phosphor-icons/react'
+import { motion } from 'framer-motion'
+import { GithubLogo, ArrowUpRight } from '@phosphor-icons/react'
 
 const projects = [
   {
@@ -34,68 +33,72 @@ const projects = [
 ]
 
 export default function Projects() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-
   return (
-    <section id="projects" className="bg-white relative overflow-hidden border-t border-black/5">
-      <div className="grid lg:grid-cols-4 w-full">
-        {/* Header Cell */}
-        <div className="lg:col-span-1 p-12 border-r border-b border-black/5 flex flex-col justify-between min-h-[400px]">
-          <div>
-            <span className="text-[#0055FF] font-mono text-[10px] tracking-[0.4em] uppercase mb-4 block">02 / INITIATIVES</span>
-            <h2 className="font-display text-5xl font-bold tracking-tight uppercase text-black leading-none">TECHNICAL<br/>PROJECTS</h2>
-          </div>
-          <p className="text-black/30 text-xs font-light leading-relaxed max-w-[200px]">
+    <section id="projects" className="bg-white relative max-w-7xl mx-auto">
+      <div className="grid lg:grid-cols-12 w-full border-l border-black/5">
+        {/* Section Header */}
+        <div className="lg:col-span-4 p-8 md:p-12 border-r border-b border-black/5 flex flex-col min-h-[400px] bg-black/[0.01]">
+          <span className="text-[#0055FF] font-mono text-[9px] tracking-[0.4em] uppercase mb-12 block">03 / Initiatives</span>
+          <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight uppercase text-black leading-[0.9] mt-auto">
+            Technical<br />
+            Projects.
+          </h2>
+          <p className="text-black/40 text-xs font-light mt-8 leading-relaxed max-w-[250px]">
             High-stakes systems engineering from fintech RAG to domain-specific intelligence.
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="lg:col-span-3 grid md:grid-cols-2">
+        {/* Project Cards */}
+        <div className="lg:col-span-8 flex flex-col sm:flex-row border-b border-black/5">
           {projects.map((project, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 * i }}
-              className="p-12 border-r border-b border-black/5 hover:bg-black/[0.02] transition-all group flex flex-col"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className={`p-8 md:p-12 border-r border-black/5 flex flex-col w-full sm:w-1/2 group hover:bg-[#0055FF]/[0.02] transition-colors relative overflow-hidden`}
             >
-              <div className="mb-8">
-                <span className="px-3 py-1 bg-[#0055FF]/10 text-[#0055FF] text-[9px] font-mono tracking-widest uppercase rounded-full border border-[#0055FF]/20 mb-6 inline-block">
-                  {project.badge}
-                </span>
-                <h3 className="text-3xl font-bold text-black mb-2 uppercase group-hover:text-[#0055FF] transition-colors">{project.title}</h3>
-                <p className="text-black/40 text-xs font-mono uppercase tracking-widest">{project.role}</p>
+              <div className="absolute top-8 right-8 text-black/10 group-hover:text-[#0055FF] transition-colors">
+                <ArrowUpRight size={24} />
               </div>
 
-              <p className="text-black/50 text-sm mb-8 leading-relaxed font-light">
+              <div className="mb-12">
+                <span className="px-3 py-1 bg-black border border-black text-[9px] font-mono tracking-widest uppercase rounded-full text-white mb-6 inline-block">
+                  {project.badge}
+                </span>
+                <h3 className="text-2xl md:text-3xl font-bold text-black mb-3 uppercase leading-[1.1] group-hover:text-[#0055FF] transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-black/40 text-[10px] font-mono uppercase tracking-[0.2em]">{project.role}</p>
+              </div>
+
+              <p className="text-black/60 text-sm mb-10 leading-relaxed font-light">
                 {project.description}
               </p>
 
-              <div className="space-y-4 mb-10 flex-grow">
+              <div className="space-y-4 flex-grow mb-12">
                 {project.achievements.map((a, j) => (
                   <div key={j} className="flex gap-4 items-start">
-                    <div className="w-1 h-1 rounded-full bg-[#0055FF] mt-2 flex-shrink-0" />
-                    <p className="text-xs text-black/40 leading-relaxed font-light">{a}</p>
+                    <div className="w-1 h-1 rounded-full bg-black/20 mt-2 flex-shrink-0 group-hover:bg-[#0055FF] transition-colors" />
+                    <p className="text-xs text-black/50 leading-relaxed font-light">{a}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="flex items-center justify-between pt-8 border-t border-black/5">
-                <div className="flex gap-2">
+              <div className="flex items-center justify-between pt-6 border-t border-black/10 mt-auto">
+                <div className="flex gap-2 flex-wrap max-w-[80%]">
                   {project.stack.map((s) => (
-                    <span key={s} className="px-3 py-1 bg-black/5 border border-black/5 text-[9px] font-mono text-black/30 rounded-full group-hover:text-black transition-colors">{s}</span>
+                    <span key={s} className="text-[9px] font-mono tracking-widest uppercase text-black/40">{s}</span>
                   ))}
                 </div>
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center text-black/50 hover:bg-[#0055FF] hover:text-white transition-all"
+                  className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center text-black hover:bg-[#0055FF] hover:border-[#0055FF] hover:text-white transition-all shadow-sm shrink-0"
                 >
-                  <GithubLogo size={20} />
+                  <GithubLogo size={18} />
                 </a>
               </div>
             </motion.div>
