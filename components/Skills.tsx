@@ -1,64 +1,70 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const skillGroups = [
   {
     title: 'AI / ML Core',
     skills: ['PyTorch', 'TensorFlow', 'LoRA', 'Fine-Tuning', 'PEFT'],
+    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=400'
   },
   {
     title: 'Neural Systems',
     skills: ['RAG', 'LangChain', 'LLM Eval', 'Prompt Eng.', 'Multi-Agent'],
-  },
-  {
-    title: 'Backend / APIs',
-    skills: ['FastAPI', 'Flask', 'Node.js', 'REST APIs', 'Microservices'],
+    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=400'
   },
   {
     title: 'Data & Ops',
-    skills: ['Pandas', 'NumPy', 'MongoDB', 'AWS', 'Docker'],
+    skills: ['FastAPI', 'Pandas', 'MongoDB', 'AWS', 'Docker'],
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=400'
   }
 ]
 
 export default function Skills() {
   return (
-    <section id="skills" className="border-t border-black/5">
-      <div className="max-w-7xl mx-auto border-x border-black/5 flex flex-col md:flex-row">
+    <section id="skills" className="bg-apple-canvas py-[80px] w-full flex flex-col items-center">
+      <div className="max-w-[1024px] w-full px-6">
         
-        <div className="md:w-1/3 p-6 md:p-12 border-b md:border-b-0 md:border-r border-black/5 bg-[#0055FF]/[0.02]">
-          <span className="text-[#0055FF] font-mono text-[9px] tracking-[0.4em] uppercase mb-12 block">03 / Matrices</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight uppercase leading-[0.9] mb-6">
-            Operational<br /> Stack
+        <div className="text-center mb-16">
+          <h2 className="font-display text-[40px] font-semibold leading-[1.1] tracking-apple-tight text-apple-ink mb-2">
+            Operational Stack.
           </h2>
-          <p className="text-black/40 text-xs font-light leading-relaxed max-w-[200px]">
-            The toolset enabling reliable intelligence systems and backend execution.
+          <p className="font-sans text-apple-body text-apple-ink-muted">
+            The foundation for reliable intelligence systems.
           </p>
         </div>
 
-        <div className="md:w-2/3 p-6 md:p-12 grid sm:grid-cols-2 gap-x-12 gap-y-16">
+        <div className="grid md:grid-cols-3 gap-6">
           {skillGroups.map((group, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
+              className="bg-apple-canvas border border-apple-hairline rounded-[18px] p-6 flex flex-col items-center text-center"
             >
-              <h3 className="text-[10px] font-bold font-mono uppercase tracking-[0.2em] mb-6 pb-4 border-b border-black/5 text-black">
+              <div className="relative w-full aspect-square mb-6 rounded-lg overflow-hidden bg-apple-parchment">
+                <Image
+                  src={group.image}
+                  alt={group.title}
+                  fill
+                  className="object-cover opacity-90"
+                />
+              </div>
+              
+              <h3 className="font-sans text-[17px] font-semibold tracking-[-0.022em] text-apple-ink mb-2">
                 {group.title}
               </h3>
-              <ul className="space-y-3">
-                {group.skills.map((skill) => (
-                  <li key={skill} className="text-sm text-black/60 font-light tracking-wide">
-                    {skill}
-                  </li>
-                ))}
-              </ul>
+              
+              <p className="font-sans text-[17px] font-normal leading-[1.47] text-apple-ink-muted">
+                {group.skills.join(', ')}
+              </p>
             </motion.div>
           ))}
         </div>
-        
+
       </div>
     </section>
   )

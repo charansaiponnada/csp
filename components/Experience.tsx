@@ -2,76 +2,66 @@
 
 import { motion } from 'framer-motion'
 
-const experiences = [
-  {
-    role: 'AI Engineer Intern',
-    company: 'Aynstyn Technologies Pvt. Ltd.',
-    period: 'Jan 2026 – Present',
-    description: 'Engineering AI-powered SaaS modules for interview simulation and candidate assessment. Building high-stakes evaluation infrastructure for LLM reliability.',
-    highlights: [
-      'Built LLM evaluation pipeline validating model performance across 200+ structured test cases.',
-      'Optimized prompt architectures and inference workflows, reducing unstable outputs.',
-      'Integrated LLM-based components into scalable SaaS infrastructure for real-time inference.'
-    ],
-    tech: ['FastAPI', 'LangChain', 'PyTorch', 'LLM Eval', 'RAG']
-  }
-]
-
 export default function Experience() {
   return (
-    <section id="experience" className="border-t border-black/5">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row border-x border-black/5">
+    <section id="experience" className="bg-apple-parchment py-[80px] w-full flex flex-col items-center">
+      <div className="max-w-[1024px] w-full px-6 flex flex-col items-center text-center">
         
-        {/* Section Header Column */}
-        <div className="lg:w-1/3 p-6 md:p-12 border-b lg:border-b-0 lg:border-r border-black/5 flex flex-col">
-          <span className="text-[#0055FF] font-mono text-[9px] tracking-[0.4em] uppercase mb-12 block">01 / Trajectory</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight uppercase leading-[0.9] mt-auto">
-            Professional<br /> Path
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="font-display text-[40px] font-semibold leading-[1.1] tracking-apple-tight text-apple-ink mb-2">
+            AI Engineer Intern
           </h2>
-        </div>
+          <p className="font-display text-[28px] font-normal leading-[1.14] tracking-[0.01em] text-apple-ink mb-6">
+            Aynstyn Technologies Pvt. Ltd.
+          </p>
+        </motion.div>
 
-        {/* Experience Content Column */}
-        <div className="lg:w-2/3 flex flex-col">
-          {experiences.map((exp, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className="p-6 md:p-12 hover:bg-black/[0.01] transition-colors"
-            >
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-                <div>
-                  <h3 className="text-2xl font-bold uppercase tracking-tight mb-1">{exp.role}</h3>
-                  <p className="text-[#0055FF] font-mono text-[10px] tracking-widest uppercase">{exp.company}</p>
-                </div>
-                <div className="text-[10px] font-mono text-black/40 uppercase tracking-widest">
-                  {exp.period}
-                </div>
-              </div>
-              
-              <div className="pl-0 md:pl-8 border-l-0 md:border-l border-black/5">
-                <p className="text-black/60 text-sm leading-relaxed font-light mb-8 max-w-2xl">{exp.description}</p>
-                
-                <ul className="space-y-4 mb-10 max-w-2xl">
-                  {exp.highlights.map((h, j) => (
-                    <li key={j} className="flex gap-4 items-start text-sm text-black/50 leading-relaxed font-light">
-                      <span className="text-black/20 font-mono text-[9px] mt-1 shrink-0">{(j+1).toString().padStart(2, '0')}</span>
-                      {h}
-                    </li>
-                  ))}
-                </ul>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="font-sans text-apple-body text-apple-ink mb-12 max-w-2xl"
+        >
+          Engineering AI-powered SaaS modules for interview simulation and candidate assessment. 
+          Building high-stakes evaluation infrastructure for LLM reliability.
+        </motion.p>
 
-                <div className="flex flex-wrap gap-2">
-                  {exp.tech.map((t) => (
-                    <span key={t} className="px-3 py-1 bg-black/5 text-[9px] font-mono text-black/40 uppercase tracking-widest">{t}</span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="w-full grid md:grid-cols-3 gap-8 text-left"
+        >
+          {[
+            { title: "LLM Pipeline", desc: "Validating model performance across 200+ structured test cases." },
+            { title: "Optimization", desc: "Reducing unstable outputs through prompt architectures and inference workflows." },
+            { title: "Integration", desc: "Deploying scalable SaaS infrastructure for real-time concurrent inference." }
+          ].map((item, i) => (
+            <div key={i} className="flex flex-col">
+              <h3 className="font-sans text-[17px] font-semibold tracking-[-0.022em] text-apple-ink mb-2">{item.title}</h3>
+              <p className="font-sans text-[17px] font-normal leading-[1.47] tracking-[-0.022em] text-apple-ink">{item.desc}</p>
+            </div>
           ))}
-        </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-16 text-center"
+        >
+          <p className="font-sans text-[12px] font-normal tracking-[-0.012em] text-apple-ink-muted">
+            Jan 2026 – Present • Remote
+          </p>
+        </motion.div>
 
       </div>
     </section>
