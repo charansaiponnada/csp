@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Briefcase, GraduationCap, Calendar } from '@phosphor-icons/react'
 
 const experiences = [
   {
@@ -18,57 +17,47 @@ const experiences = [
   }
 ]
 
-const education = [
-  {
-    degree: 'B.Tech in Artificial Intelligence and Data Science',
-    institution: 'Velagapudi Ramakrishna Siddhartha Engineering College',
-    period: '2023 – 2027',
-    details: 'CGPA: 8.76. Focused on deep learning, neural architectures, and data engineering.'
-  }
-]
-
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 uppercase">Professional <span className="text-blue-500">Path.</span></h2>
-          <p className="text-slate-400 font-light">Documented journey of systems engineering and research.</p>
-        </motion.div>
+    <section id="experience" className="border-t border-black/5">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row border-x border-black/5">
+        
+        {/* Section Header Column */}
+        <div className="lg:w-1/3 p-6 md:p-12 border-b lg:border-b-0 lg:border-r border-black/5 flex flex-col">
+          <span className="text-[#0055FF] font-mono text-[9px] tracking-[0.4em] uppercase mb-12 block">01 / Trajectory</span>
+          <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight uppercase leading-[0.9] mt-auto">
+            Professional<br /> Path
+          </h2>
+        </div>
 
-        <div className="grid lg:grid-cols-12 gap-12">
-          {/* Experience Timeline */}
-          <div className="lg:col-span-8 space-y-12">
-            {experiences.map((exp, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="spatial-card p-8 md:p-12"
-              >
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-white mb-1 uppercase tracking-tight">{exp.role}</h3>
-                    <p className="text-blue-400 font-mono text-sm tracking-widest uppercase">{exp.company}</p>
-                  </div>
-                  <div className="flex items-center gap-2 px-4 py-2 glass rounded-full text-xs font-mono text-slate-400">
-                    <Calendar size={14} /> {exp.period}
-                  </div>
+        {/* Experience Content Column */}
+        <div className="lg:w-2/3 flex flex-col">
+          {experiences.map((exp, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+              className="p-6 md:p-12 hover:bg-black/[0.01] transition-colors"
+            >
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+                <div>
+                  <h3 className="text-2xl font-bold uppercase tracking-tight mb-1">{exp.role}</h3>
+                  <p className="text-[#0055FF] font-mono text-[10px] tracking-widest uppercase">{exp.company}</p>
                 </div>
+                <div className="text-[10px] font-mono text-black/40 uppercase tracking-widest">
+                  {exp.period}
+                </div>
+              </div>
+              
+              <div className="pl-0 md:pl-8 border-l-0 md:border-l border-black/5">
+                <p className="text-black/60 text-sm leading-relaxed font-light mb-8 max-w-2xl">{exp.description}</p>
                 
-                <p className="text-slate-400 mb-8 leading-relaxed font-light">{exp.description}</p>
-                
-                <ul className="grid md:grid-cols-2 gap-4 mb-10">
+                <ul className="space-y-4 mb-10 max-w-2xl">
                   {exp.highlights.map((h, j) => (
-                    <li key={j} className="flex gap-3 text-xs text-slate-500 leading-relaxed font-light">
-                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1 shrink-0" />
+                    <li key={j} className="flex gap-4 items-start text-sm text-black/50 leading-relaxed font-light">
+                      <span className="text-black/20 font-mono text-[9px] mt-1 shrink-0">{(j+1).toString().padStart(2, '0')}</span>
                       {h}
                     </li>
                   ))}
@@ -76,38 +65,14 @@ export default function Experience() {
 
                 <div className="flex flex-wrap gap-2">
                   {exp.tech.map((t) => (
-                    <span key={t} className="px-3 py-1 glass rounded-full text-[10px] font-mono text-slate-400 uppercase tracking-widest">{t}</span>
+                    <span key={t} className="px-3 py-1 bg-black/5 text-[9px] font-mono text-black/40 uppercase tracking-widest">{t}</span>
                   ))}
                 </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Education Sidebar */}
-          <div className="lg:col-span-4 space-y-8">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="glass p-8 rounded-3xl"
-            >
-              <div className="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 border border-blue-500/20">
-                <GraduationCap size={24} className="text-blue-400" />
               </div>
-              <h3 className="text-lg font-bold mb-4 uppercase tracking-tight">Academic Foundation</h3>
-              {education.map((edu, i) => (
-                <div key={i} className="space-y-4">
-                  <p className="text-sm font-medium leading-tight">{edu.degree}</p>
-                  <p className="text-xs text-slate-400 leading-relaxed font-light">{edu.institution}</p>
-                  <div className="flex items-center justify-between pt-4 border-t border-white/5">
-                    <span className="text-[10px] font-mono text-blue-400 uppercase tracking-widest">{edu.period}</span>
-                    <span className="text-[10px] font-mono text-slate-500 uppercase">CGPA: 8.76</span>
-                  </div>
-                </div>
-              ))}
             </motion.div>
-          </div>
+          ))}
         </div>
+
       </div>
     </section>
   )

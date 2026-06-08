@@ -3,68 +3,53 @@
 @tailwind utilities;
 
 :root {
-  /* Spatial/Immersive Palette */
-  --bg: 240 10% 3.9%;
-  --fg: 0 0% 98%;
-  --primary: 217.2 91.2% 59.8%;
-  --primary-glow: rgba(59, 130, 246, 0.15);
-  --accent: 263.4 70% 50.4%;
-  --surface: 240 10% 10%;
-  --border: 240 3.7% 15.9%;
+  /* Innovation Tech Tokens - Light Theme */
+  --accent: #0055FF; /* Vibrant Innovation Blue */
+  --bg-primary: #FFFFFF;
+  --bg-surface: #F8F9FA;
   
-  /* Spatial Depth */
-  --glass: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --text-primary: #000000;
+  --text-secondary: #4A4A4A;
+  --text-muted: #A0A0A0;
+
+  --border: rgba(0, 0, 0, 0.08);
 }
 
 @layer base {
   body {
-    @apply bg-[#0a0a0c] text-slate-50 antialiased;
-    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+    @apply bg-white text-black antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
 }
 
 @layer utilities {
-  .glass {
-    background: var(--glass);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
+  .font-display {
+    letter-spacing: -0.04em;
   }
   
-  .spatial-card {
-    @apply relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] transition-all duration-500 hover:bg-white/[0.04] hover:border-white/10;
-  }
-  
-  .text-glow {
-    text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  .font-caps {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 700;
   }
 }
 
 * {
-  cursor: crosshair !important;
+  scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #222;
-  border-radius: 10px;
+  background: var(--border);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #333;
-}
-
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-.preserve-3d {
-  transform-style: preserve-3d;
+  background: var(--text-muted);
 }

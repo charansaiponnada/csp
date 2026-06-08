@@ -1,79 +1,67 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { GithubLogo, LinkedinLogo, Envelope, ArrowRight, MapPin } from '@phosphor-icons/react'
+import { ArrowUpRight } from '@phosphor-icons/react'
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12">
-          {/* Contact Info */}
-          <div className="lg:col-span-5">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 uppercase leading-none">
-                Initialize <br />
-                <span className="text-blue-500">Connection.</span>
-              </h2>
-              <p className="text-slate-400 text-lg font-light leading-relaxed mb-12">
-                Open for high-stakes AI engineering roles, research collaborations, and ambitious technical projects.
-              </p>
-              
-              <div className="space-y-6">
-                <div className="flex items-center gap-4 group cursor-pointer">
-                  <div className="w-12 h-12 glass rounded-2xl flex items-center justify-center text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all">
-                    <Envelope size={24} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Email Protocol</p>
-                    <p className="text-white font-medium">charansaiponnada06@gmail.com</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 group cursor-pointer">
-                  <div className="w-12 h-12 glass rounded-2xl flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-all">
-                    <MapPin size={24} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Location Status</p>
-                    <p className="text-white font-medium">Kakinada, Andhra Pradesh, India</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+    <section id="contact" className="border-t border-black/5 bg-[#0055FF]/[0.02]">
+      <div className="max-w-7xl mx-auto border-x border-black/5 flex flex-col md:flex-row">
+        
+        <div className="md:w-1/2 p-6 md:p-12 border-b md:border-b-0 md:border-r border-black/5 flex flex-col justify-between">
+          <div>
+            <span className="text-[#0055FF] font-mono text-[9px] tracking-[0.4em] uppercase mb-12 block">05 / Initialize Link</span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight uppercase leading-[0.9] mb-8">
+              Open to <br /> Collaboration
+            </h2>
+            <p className="text-black/60 text-sm font-light leading-relaxed max-w-sm mb-12">
+              Accepting queries for AI engineering roles, high-stakes infrastructure, and applied research initiatives.
+            </p>
           </div>
-
-          {/* Contact Links Grid */}
-          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
-            {[
-              { label: 'GitHub', value: '@charansaiponnada', href: 'https://github.com/charansaiponnada', icon: GithubLogo, color: 'blue' },
-              { label: 'LinkedIn', value: 'Charan Sai Ponnada', href: 'https://linkedin.com/in/charansaiponnada', icon: LinkedinLogo, color: 'purple' }
-            ].map((link, i) => (
-              <motion.a
-                key={i}
-                whileHover={{ y: -5 }}
-                href={link.href}
-                target="_blank"
-                className="spatial-card p-8 flex flex-col justify-between aspect-square"
-              >
-                <div className="w-12 h-12 glass rounded-2xl flex items-center justify-center text-slate-400">
-                  <link.icon size={24} />
-                </div>
-                <div>
-                  <p className="text-[10px] font-mono text-slate-500 uppercase tracking-[0.3em] mb-2">{link.label}</p>
-                  <p className="text-xl font-bold text-white mb-6 uppercase tracking-tight">{link.value}</p>
-                  <div className="flex items-center gap-2 text-blue-400 text-[10px] font-mono uppercase tracking-widest">
-                    Execute Link <ArrowRight size={14} />
-                  </div>
-                </div>
-              </motion.a>
-            ))}
+          
+          <div className="flex items-center gap-3">
+            <div className="w-1.5 h-1.5 bg-[#0055FF] animate-pulse" />
+            <span className="text-[9px] font-mono font-bold text-black/50 uppercase tracking-widest">Systems Operational</span>
           </div>
         </div>
+
+        <div className="md:w-1/2 flex flex-col">
+          <a 
+            href="mailto:charansaiponnada06@gmail.com" 
+            className="p-6 md:p-12 border-b border-black/5 group hover:bg-[#0055FF] hover:text-white transition-colors flex flex-col h-full justify-center"
+          >
+            <span className="text-black/30 group-hover:text-white/50 font-mono text-[9px] uppercase tracking-[0.3em] mb-4">Direct Communication</span>
+            <div className="flex justify-between items-end">
+              <span className="text-xl md:text-3xl font-bold uppercase tracking-tight">Email</span>
+              <ArrowUpRight size={24} className="text-[#0055FF] group-hover:text-white transition-colors" />
+            </div>
+          </a>
+          
+          <div className="flex flex-col sm:flex-row h-full">
+            <a 
+              href="https://github.com/charansaiponnada" 
+              target="_blank"
+              className="flex-1 p-6 md:p-12 border-b sm:border-b-0 sm:border-r border-black/5 group hover:bg-[#0055FF]/10 transition-colors flex flex-col justify-between"
+            >
+              <span className="text-black/30 font-mono text-[9px] uppercase tracking-[0.3em] mb-4">Source Code</span>
+              <div className="flex justify-between items-end">
+                <span className="text-lg md:text-xl font-bold uppercase tracking-tight group-hover:text-[#0055FF] transition-colors">GitHub</span>
+              </div>
+            </a>
+            
+            <a 
+              href="https://linkedin.com/in/charansaiponnada" 
+              target="_blank"
+              className="flex-1 p-6 md:p-12 group hover:bg-[#0055FF]/10 transition-colors flex flex-col justify-between"
+            >
+              <span className="text-black/30 font-mono text-[9px] uppercase tracking-[0.3em] mb-4">Network</span>
+              <div className="flex justify-between items-end">
+                <span className="text-lg md:text-xl font-bold uppercase tracking-tight group-hover:text-[#0055FF] transition-colors">LinkedIn</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
   )

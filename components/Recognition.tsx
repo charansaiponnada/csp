@@ -1,72 +1,67 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Book, Microscope, ChartLineUp, FileText } from '@phosphor-icons/react'
+import { ArrowUpRight } from '@phosphor-icons/react'
 
 export default function Recognition() {
   return (
-    <section id="research" className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <span className="text-blue-400 font-mono text-xs uppercase tracking-[0.3em] mb-6 block">Primary Author</span>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 uppercase leading-none">
-              Vision-Language <br />
-              <span className="text-blue-500">Navigation.</span>
+    <section id="research" className="border-t border-black/5 bg-[#0055FF] text-white">
+      <div className="max-w-7xl mx-auto border-x border-white/10">
+        <div className="flex flex-col lg:flex-row">
+          
+          <div className="lg:w-1/3 p-6 md:p-12 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col justify-between min-h-[400px]">
+            <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-white/50 mb-12 block">04 / Publications</span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight uppercase leading-[0.9]">
+              Academic <br /> Research
             </h2>
-            <p className="text-slate-400 text-lg leading-relaxed font-light mb-10">
-              Published research in <span className="text-white font-medium">ISAECT 2025</span> focusing on assistive navigation for Indian traffic environments using BLIP and 3-stage LoRA fine-tuning.
-            </p>
-            
-            <div className="grid grid-cols-2 gap-8 mb-12">
-              {[
-                { label: 'Improvement', value: '+15.6%', desc: 'Across BLEU/METEOR' },
-                { label: 'Dataset', value: '427', desc: 'Unique Traffic Scenes' }
-              ].map((stat, i) => (
-                <div key={i}>
-                  <p className="text-3xl font-bold text-white mb-1 tracking-tight">{stat.value}</p>
-                  <p className="text-[10px] font-mono text-blue-400 uppercase tracking-widest mb-2">{stat.label}</p>
-                  <p className="text-xs text-slate-500 font-light leading-none">{stat.desc}</p>
-                </div>
-              ))}
-            </div>
+          </div>
 
-            <motion.a
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              href="https://huggingface.co/charansaiponnada"
-              className="inline-flex items-center gap-3 px-8 py-4 glass rounded-2xl text-sm font-bold uppercase tracking-widest hover:bg-white/[0.05] transition-colors"
+          <div className="lg:w-2/3 p-6 md:p-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
-              <FileText size={20} /> View Paper & Model
-            </motion.a>
-          </motion.div>
+              <div className="flex items-center gap-4 mb-8">
+                <span className="px-3 py-1 bg-white text-[#0055FF] text-[9px] font-bold font-mono uppercase tracking-widest">Primary Author</span>
+                <span className="text-white/60 text-[10px] font-mono tracking-widest uppercase">ISAECT 2025</span>
+              </div>
+              
+              <h3 className="font-display text-3xl md:text-5xl font-bold uppercase tracking-tight leading-[0.95] mb-8 max-w-2xl">
+                Vision-Language Assistive Navigation System.
+              </h3>
+              
+              <div className="grid md:grid-cols-2 gap-12 mb-12">
+                <p className="text-white/80 text-sm leading-relaxed font-light">
+                  Built a multimodal assistive navigation system using the BLIP vision-language model for deep scene understanding in complex, unstructured traffic environments.
+                </p>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center border-b border-white/20 pb-2">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/50">Performance Gain</span>
+                    <span className="font-bold">+15.6%</span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-white/20 pb-2">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/50">Training Method</span>
+                    <span className="font-bold">3-Stage LoRA</span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-white/20 pb-2">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/50">Dataset Size</span>
+                    <span className="font-bold">427 Scenes</span>
+                  </div>
+                </div>
+              </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div className="absolute inset-0 bg-blue-500/10 blur-[100px] -z-10" />
-            <div className="spatial-card p-12 aspect-[4/5] flex flex-col justify-center items-center text-center">
-              <div className="w-20 h-20 bg-blue-500/10 rounded-3xl flex items-center justify-center mb-8 border border-blue-500/20">
-                <Microscope size={40} className="text-blue-400" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 uppercase tracking-tight">ISAECT 2025</h3>
-              <p className="text-slate-500 text-sm leading-relaxed font-light mb-8 max-w-[250px]">
-                Multimodal scene understanding using BLIP vision-language models for assistive technologies.
-              </p>
-              <div className="flex gap-4">
-                {['PyTorch', 'BLIP', 'LoRA'].map(t => (
-                  <span key={t} className="text-[10px] font-mono text-blue-400 uppercase tracking-widest">{t}</span>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+              <a 
+                href="https://huggingface.co/charansaiponnada" 
+                target="_blank"
+                className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-white hover:text-white/70 transition-colors"
+              >
+                Access Model & Paper <ArrowUpRight size={16} />
+              </a>
+            </motion.div>
+          </div>
+
         </div>
       </div>
     </section>

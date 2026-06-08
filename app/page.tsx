@@ -9,7 +9,6 @@ import Skills from '@/components/Skills'
 import Recognition from '@/components/Recognition'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
-import HireMe from '@/components/HireMe'
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -19,8 +18,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main className={`min-h-screen transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-      <div className="fixed inset-0 bg-[#0a0a0c] -z-20" />
+    <main className={`min-h-screen bg-white transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       <Navigation />
       <Hero />
       <Experience />
@@ -29,7 +27,6 @@ export default function Home() {
       <Recognition />
       <Contact />
       <Footer />
-      <HireMe />
     </main>
   )
 }
