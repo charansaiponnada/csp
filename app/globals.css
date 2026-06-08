@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  --canvas: #050505;
-  --text: #FFFFFF;
+  --canvas: #030303;
+  --text: #F3F3F3;
 }
 
 @layer base {
@@ -17,21 +17,26 @@
 
 @layer utilities {
   .text-outline {
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.15);
     color: transparent;
   }
   
   .text-outline:hover {
-    -webkit-text-stroke: 1px var(--accent);
+    -webkit-text-stroke: 1.5px var(--accent);
     color: #D4FF00;
   }
 
+  .text-outline-accent {
+    -webkit-text-stroke: 1.5px #D4FF00;
+    color: transparent;
+  }
+
   .btn-acid {
-    @apply inline-flex items-center justify-center bg-dribbble-accent text-black font-display font-bold text-lg px-8 py-4 rounded-full hover:scale-105 hover:bg-white transition-all active:scale-95;
+    @apply inline-flex items-center justify-center bg-dribbble-accent text-black font-display font-extrabold text-lg px-8 py-4 rounded-full hover:scale-105 hover:bg-white transition-all active:scale-95 uppercase tracking-wide;
   }
   
   .btn-ghost {
-    @apply inline-flex items-center justify-center bg-transparent border border-dribbble-border text-white font-display font-bold text-lg px-8 py-4 rounded-full hover:border-dribbble-accent hover:text-dribbble-accent transition-all active:scale-95;
+    @apply inline-flex items-center justify-center bg-transparent border border-dribbble-border text-white font-display font-extrabold text-lg px-8 py-4 rounded-full hover:border-dribbble-accent hover:text-dribbble-accent transition-all active:scale-95 uppercase tracking-wide;
   }
 }
 
@@ -40,16 +45,15 @@
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #030303;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #222222;
-  border-radius: 4px;
+  background: #333333;
 }
 
 ::-webkit-scrollbar-thumb:hover {

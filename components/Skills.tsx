@@ -2,62 +2,47 @@
 
 import { motion } from 'framer-motion'
 
-const skillGroups = [
-  {
-    title: 'AI / ML Core',
-    skills: ['PyTorch', 'TensorFlow', 'LoRA', 'PEFT'],
-  },
-  {
-    title: 'Neural Systems',
-    skills: ['RAG', 'LangChain', 'LLM Eval', 'Multi-Agent'],
-  },
-  {
-    title: 'Data & Backend',
-    skills: ['Pandas', 'MongoDB', 'MySQL', 'ChromaDB'],
-  },
-  {
-    title: 'Cloud & Ops',
-    skills: ['FastAPI', 'AWS', 'Docker', 'CI/CD'],
-  }
+const allSkills = [
+  'PyTorch', 'TensorFlow', 'LoRA', 'PEFT', 'RAG Architecture', 'LangChain', 
+  'LLM Evaluation', 'Multi-Agent', 'FastAPI', 'Pandas', 'MongoDB', 'MySQL', 
+  'ChromaDB', 'AWS', 'Docker', 'CI/CD', 'Git'
 ]
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-32 px-6 bg-dribbble-surface-2 border-t border-dribbble-border">
-      <div className="max-w-[1400px] mx-auto">
+    <section id="skills" className="py-32 px-6 bg-dribbble-surface-2 border-t border-dribbble-border overflow-hidden">
+      <div className="max-w-[1400px] mx-auto flex flex-col items-center">
         
-        <div className="text-center mb-24">
-          <h2 className="font-display text-[60px] md:text-[100px] font-bold tracking-tighter uppercase leading-[0.8] mb-6">
-            Technical <br /> <span className="text-dribbble-accent">Skills.</span>
+        <div className="text-center mb-24 relative z-10">
+          <h2 className="font-display text-[clamp(3rem,8vw,8rem)] font-extrabold tracking-[-0.04em] uppercase leading-[0.85] mb-6">
+            Technical <br /> <span className="text-dribbble-accent">Arsenal.</span>
           </h2>
+          <p className="font-sans text-xl text-dribbble-muted max-w-lg mx-auto font-medium">
+            The foundation for reliable intelligence systems and backend infrastructure.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skillGroups.map((group, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-dribbble-surface-1 border border-dribbble-border rounded-3xl p-8 hover:border-dribbble-accent transition-colors group"
-            >
-              <h3 className="font-mono text-sm font-bold uppercase tracking-widest text-dribbble-accent mb-8">
-                {group.title}
-              </h3>
-              
-              <div className="flex flex-col gap-4">
-                {group.skills.map((skill) => (
-                  <div 
-                    key={skill} 
-                    className="font-sans text-xl font-bold text-white group-hover:translate-x-2 transition-transform"
-                  >
-                    {skill}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+        {/* Dense Typography Wall instead of cards */}
+        <div className="relative w-[150%] md:w-[120%] -ml-[25%] md:-ml-[10%] rotate-[-2deg]">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1 }}
+            className="flex flex-wrap justify-center gap-4 md:gap-8"
+          >
+            {allSkills.map((skill, i) => (
+              <span 
+                key={i} 
+                className={`font-display font-extrabold uppercase tracking-tighter leading-none transition-colors duration-500 cursor-crosshair
+                  ${i % 3 === 0 ? 'text-[40px] md:text-[80px] text-dribbble-accent hover:text-white' : 
+                    i % 2 === 0 ? 'text-[60px] md:text-[120px] text-outline hover:text-dribbble-accent' : 
+                    'text-[30px] md:text-[60px] text-dribbble-surface-1 hover:text-white'}`}
+              >
+                {skill}
+              </span>
+            ))}
+          </motion.div>
         </div>
 
       </div>
