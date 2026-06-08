@@ -1,88 +1,72 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { Trophy, Medal, BookOpen, UsersThree } from '@phosphor-icons/react'
-
-const accomplishments = [
-  {
-    icon: Medal,
-    title: '2nd Place',
-    org: 'YUVAAN 2026',
-    desc: 'IIT Hyderabad AI/ML Hackathon',
-    detail: 'Intelli-Credit system',
-    year: '2026',
-  },
-  {
-    icon: BookOpen,
-    title: 'Primary Author',
-    org: 'ISAECT 2025',
-    desc: 'Vision-Language Research',
-    detail: 'BLIP-based navigation',
-    year: '2025',
-  },
-  {
-    icon: Trophy,
-    title: 'AI Intern',
-    org: 'Aynstyn Tech',
-    desc: 'Production AI Systems',
-    detail: 'LLM Eval & RAG Pipelines',
-    year: '2026',
-  },
-  {
-    icon: UsersThree,
-    title: '1,303+',
-    org: 'LinkedIn Network',
-    desc: 'Community Growth',
-    detail: 'Sharing AI Insights',
-    year: 'Present',
-  },
-]
+import { motion } from 'framer-motion'
+import { Book, Microscope, ChartLineUp, FileText } from '@phosphor-icons/react'
 
 export default function Recognition() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-
   return (
-    <section id="recognition" className="bg-white relative max-w-7xl mx-auto border-t border-black/5">
-      <div className="grid lg:grid-cols-12 w-full border-l border-black/5">
-        {/* Section Header */}
-        <div className="lg:col-span-4 p-8 md:p-12 border-r border-b border-black/5 flex flex-col min-h-[400px]">
-          <span className="text-[#0055FF] font-mono text-[9px] tracking-[0.4em] uppercase mb-12 block">06 / Milestones</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight uppercase text-black leading-[0.9] mt-auto">
-            Professional<br />
-            Recognition.
-          </h2>
-          <p className="text-black/40 text-xs font-light mt-8 leading-relaxed max-w-[250px]">
-            Validated impact through competitive hackathons and academic contributions.
-          </p>
-        </div>
-
-        {/* Milestones Grid */}
-        <div className="lg:col-span-8 grid sm:grid-cols-2">
-          {accomplishments.map((item, index) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="p-8 md:p-12 border-r border-b border-black/5 hover:bg-black/[0.01] transition-all group flex flex-col justify-between min-h-[350px]"
-            >
-              <div>
-                <div className="w-12 h-12 bg-black/5 rounded-full flex items-center justify-center mb-8 group-hover:bg-[#0055FF]/10 transition-colors"> 
-                  <item.icon size={20} className="text-black/30 group-hover:text-[#0055FF] transition-colors" />
+    <section id="research" className="py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="text-blue-400 font-mono text-xs uppercase tracking-[0.3em] mb-6 block">Primary Author</span>
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 uppercase leading-none">
+              Vision-Language <br />
+              <span className="text-blue-500">Navigation.</span>
+            </h2>
+            <p className="text-slate-400 text-lg leading-relaxed font-light mb-10">
+              Published research in <span className="text-white font-medium">ISAECT 2025</span> focusing on assistive navigation for Indian traffic environments using BLIP and 3-stage LoRA fine-tuning.
+            </p>
+            
+            <div className="grid grid-cols-2 gap-8 mb-12">
+              {[
+                { label: 'Improvement', value: '+15.6%', desc: 'Across BLEU/METEOR' },
+                { label: 'Dataset', value: '427', desc: 'Unique Traffic Scenes' }
+              ].map((stat, i) => (
+                <div key={i}>
+                  <p className="text-3xl font-bold text-white mb-1 tracking-tight">{stat.value}</p>
+                  <p className="text-[10px] font-mono text-blue-400 uppercase tracking-widest mb-2">{stat.label}</p>
+                  <p className="text-xs text-slate-500 font-light leading-none">{stat.desc}</p>
                 </div>
-                <h4 className="text-2xl md:text-3xl font-bold text-black mb-3 uppercase leading-none group-hover:text-[#0055FF] transition-colors">{item.title}</h4>
-                <p className="text-[#0055FF] text-[10px] font-mono tracking-widest uppercase mb-6">{item.org}</p>
-                <p className="text-black/50 text-sm font-light leading-relaxed">{item.desc}</p>
-              </div>
+              ))}
+            </div>
 
-              <div className="mt-12 pt-6 border-t border-black/5">
-                <p className="text-black/30 text-[9px] font-mono uppercase tracking-widest">{item.detail} • {item.year}</p>
+            <motion.a
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              href="https://huggingface.co/charansaiponnada"
+              className="inline-flex items-center gap-3 px-8 py-4 glass rounded-2xl text-sm font-bold uppercase tracking-widest hover:bg-white/[0.05] transition-colors"
+            >
+              <FileText size={20} /> View Paper & Model
+            </motion.a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="absolute inset-0 bg-blue-500/10 blur-[100px] -z-10" />
+            <div className="spatial-card p-12 aspect-[4/5] flex flex-col justify-center items-center text-center">
+              <div className="w-20 h-20 bg-blue-500/10 rounded-3xl flex items-center justify-center mb-8 border border-blue-500/20">
+                <Microscope size={40} className="text-blue-400" />
               </div>
-            </motion.div>
-          ))}
+              <h3 className="text-2xl font-bold mb-4 uppercase tracking-tight">ISAECT 2025</h3>
+              <p className="text-slate-500 text-sm leading-relaxed font-light mb-8 max-w-[250px]">
+                Multimodal scene understanding using BLIP vision-language models for assistive technologies.
+              </p>
+              <div className="flex gap-4">
+                {['PyTorch', 'BLIP', 'LoRA'].map(t => (
+                  <span key={t} className="text-[10px] font-mono text-blue-400 uppercase tracking-widest">{t}</span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

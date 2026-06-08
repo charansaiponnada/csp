@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Briefcase, GraduationCap, Calendar } from '@phosphor-icons/react'
 
 const experiences = [
   {
@@ -9,90 +10,103 @@ const experiences = [
     period: 'Jan 2026 – Present',
     description: 'Engineering AI-powered SaaS modules for interview simulation and candidate assessment. Building high-stakes evaluation infrastructure for LLM reliability.',
     highlights: [
-      'Engineered SaaS modules for voice evaluation supporting 3+ production workflows.',
-      'Built LLM evaluation pipeline validating performance across 200+ structured test cases.',
-      'Optimized prompt architectures reducing unstable outputs and improving consistency.',
-      'Integrated LLM components into scalable infrastructure for real-time inference.'
+      'Built LLM evaluation pipeline validating model performance across 200+ structured test cases.',
+      'Optimized prompt architectures and inference workflows, reducing unstable outputs.',
+      'Integrated LLM-based components into scalable SaaS infrastructure for real-time inference.'
     ],
     tech: ['FastAPI', 'LangChain', 'PyTorch', 'LLM Eval', 'RAG']
   }
 ]
 
-const research = [
+const education = [
   {
-    title: 'Vision-Language Assistive Navigation System',
-    venue: 'Primary Author — ISAECT 2025',
-    description: 'Multimodal assistive navigation system using BLIP for scene understanding in complex traffic environments.',
-    highlights: [
-      'Fine-tuned BLIP via 3-stage LoRA training on 427-scene Indian traffic dataset.',
-      'Achieved +15.6% improvement across BLEU, METEOR, and semantic similarity.',
-      'Developed full ML pipeline from dataset design to model release.',
-      'Published on HuggingFace and GitHub.'
-    ],
-    tech: ['BLIP', 'LoRA', 'Computer Vision', 'PyTorch']
+    degree: 'B.Tech in Artificial Intelligence and Data Science',
+    institution: 'Velagapudi Ramakrishna Siddhartha Engineering College',
+    period: '2023 – 2027',
+    details: 'CGPA: 8.76. Focused on deep learning, neural architectures, and data engineering.'
   }
 ]
 
 export default function Experience() {
   return (
-    <section id="experience" className="bg-white relative border-b border-black/5 max-w-7xl mx-auto">
-      <div className="grid lg:grid-cols-12 w-full border-l border-black/5">
-        {/* Section Header */}
-        <div className="lg:col-span-4 p-8 md:p-12 border-r border-b border-black/5 flex flex-col min-h-[400px]">
-          <span className="text-[#0055FF] font-mono text-[9px] tracking-[0.4em] uppercase mb-12 block">02 / Path</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight uppercase text-black leading-[0.9] mt-auto">
-            Professional<br />
-            Timeline.
-          </h2>
-        </div>
+    <section id="experience" className="py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 uppercase">Professional <span className="text-blue-500">Path.</span></h2>
+          <p className="text-slate-400 font-light">Documented journey of systems engineering and research.</p>
+        </motion.div>
 
-        {/* Experience Rows */}
-        <div className="lg:col-span-8 flex flex-col">
-          {[...experiences, ...research].map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="p-8 md:p-12 border-r border-b border-black/5 flex flex-col md:flex-row gap-8 md:gap-12 hover:bg-black/[0.01] transition-colors group"
-            >
-              <div className="w-full md:w-1/3 flex flex-col">
-                <span className="text-black/30 font-mono text-[10px] uppercase tracking-widest mb-4">
-                  {'period' in item ? (item as any).period : '2025 / Research'}
-                </span>
-                <h3 className="text-xl md:text-2xl font-bold text-black mb-2 uppercase leading-tight group-hover:text-[#0055FF] transition-colors">
-                  {'role' in item ? (item as any).role : (item as any).title}
-                </h3>
-                <span className="text-[#0055FF] font-mono text-[9px] uppercase tracking-widest mt-auto pt-4 border-t border-black/5 block w-fit">
-                  {'company' in item ? (item as any).company : (item as any).venue}
-                </span>
-              </div>
-              
-              <div className="w-full md:w-2/3 flex flex-col">
-                <p className="text-black/60 text-sm md:text-base leading-relaxed font-light mb-8">
-                  {item.description}
-                </p>
+        <div className="grid lg:grid-cols-12 gap-12">
+          {/* Experience Timeline */}
+          <div className="lg:col-span-8 space-y-12">
+            {experiences.map((exp, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="spatial-card p-8 md:p-12"
+              >
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-1 uppercase tracking-tight">{exp.role}</h3>
+                    <p className="text-blue-400 font-mono text-sm tracking-widest uppercase">{exp.company}</p>
+                  </div>
+                  <div className="flex items-center gap-2 px-4 py-2 glass rounded-full text-xs font-mono text-slate-400">
+                    <Calendar size={14} /> {exp.period}
+                  </div>
+                </div>
                 
-                <ul className="space-y-4 mb-8 flex-grow">
-                  {item.highlights.map((h, j) => (
-                    <li key={j} className="flex gap-4 items-start text-xs md:text-sm text-black/50 leading-relaxed font-light">
-                      <span className="text-black/20 font-mono text-[9px] mt-1 shrink-0">{(j+1).toString().padStart(2, '0')}</span>
-                      <span>{h}</span>
+                <p className="text-slate-400 mb-8 leading-relaxed font-light">{exp.description}</p>
+                
+                <ul className="grid md:grid-cols-2 gap-4 mb-10">
+                  {exp.highlights.map((h, j) => (
+                    <li key={j} className="flex gap-3 text-xs text-slate-500 leading-relaxed font-light">
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1 shrink-0" />
+                      {h}
                     </li>
                   ))}
                 </ul>
 
-                <div className="flex flex-wrap gap-2 pt-6 border-t border-black/5">
-                  {item.tech.map((t) => (
-                    <span key={t} className="text-[9px] font-mono tracking-widest uppercase text-black/40 bg-black/5 px-3 py-1 rounded-full">
-                      {t}
-                    </span>
+                <div className="flex flex-wrap gap-2">
+                  {exp.tech.map((t) => (
+                    <span key={t} className="px-3 py-1 glass rounded-full text-[10px] font-mono text-slate-400 uppercase tracking-widest">{t}</span>
                   ))}
                 </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Education Sidebar */}
+          <div className="lg:col-span-4 space-y-8">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="glass p-8 rounded-3xl"
+            >
+              <div className="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 border border-blue-500/20">
+                <GraduationCap size={24} className="text-blue-400" />
               </div>
+              <h3 className="text-lg font-bold mb-4 uppercase tracking-tight">Academic Foundation</h3>
+              {education.map((edu, i) => (
+                <div key={i} className="space-y-4">
+                  <p className="text-sm font-medium leading-tight">{edu.degree}</p>
+                  <p className="text-xs text-slate-400 leading-relaxed font-light">{edu.institution}</p>
+                  <div className="flex items-center justify-between pt-4 border-t border-white/5">
+                    <span className="text-[10px] font-mono text-blue-400 uppercase tracking-widest">{edu.period}</span>
+                    <span className="text-[10px] font-mono text-slate-500 uppercase">CGPA: 8.76</span>
+                  </div>
+                </div>
+              ))}
             </motion.div>
-          ))}
+          </div>
         </div>
       </div>
     </section>

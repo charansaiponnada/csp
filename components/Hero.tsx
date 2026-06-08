@@ -1,98 +1,105 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight } from '@phosphor-icons/react'
+import { GithubLogo, LinkedinLogo, TwitterLogo, Envelope, MapPin, ArrowUpRight } from '@phosphor-icons/react'
+import Image from 'next/image'
 
 export default function Hero() {
   return (
-    <section
-      id="hero"
-      className="min-h-screen flex flex-col justify-center relative bg-white pt-24 pb-12 px-6 border-b border-black/5"
-    >
-      <div className="max-w-7xl mx-auto w-full flex flex-col justify-center flex-grow">
-        {/* Top Label */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-8"
-        >
-          <span className="flex items-center gap-3 text-[#0055FF] text-[10px] font-mono tracking-[0.3em] uppercase">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full bg-[#0055FF] opacity-50"></span>
-              <span className="relative inline-flex h-2 w-2 bg-[#0055FF]"></span>
-            </span>
-            Systems Engineering / Visual Design / Research
-          </span>
-        </motion.div>
-
-        {/* Main Display */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-[clamp(4rem,12vw,10rem)] font-bold tracking-[-0.04em] leading-[0.85] uppercase mb-12 text-black"
-        >
-          Charan Sai <br />
-          <span className="text-black/20">Ponnada.</span>
-        </motion.h1>
-
-        {/* Narrative & Action */}
-        <div className="grid md:grid-cols-2 gap-12 items-end">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="text-base md:text-lg text-black/60 leading-relaxed font-light max-w-lg"
-          >
-            A polymath explorer building at the intersection of <strong className="text-black font-medium">Artificial Intelligence</strong>, <strong className="text-black font-medium">Visual Design</strong>, and <strong className="text-black font-medium">Human Psychology</strong>. Focused on high-stakes RAG systems and cinematic storytelling.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-start md:justify-end"
-          >
-            <a
-              href="mailto:charansaiponnada06@gmail.com"
-              className="flex items-center gap-3 px-8 py-4 bg-black text-white font-bold text-[10px] tracking-[0.2em] uppercase rounded-full transition-colors hover:bg-[#0055FF] w-full sm:w-auto justify-center"
-            >
-              Start Collaboration
-              <ArrowRight size={14} />
-            </a>
-            <a
-              href="#highlights"
-              className="flex items-center gap-3 px-8 py-4 border border-black/10 text-black font-bold text-[10px] tracking-[0.2em] uppercase rounded-full transition-colors hover:bg-black/5 w-full sm:w-auto justify-center"
-            >
-              View Capabilities
-            </a>
-          </motion.div>
-        </div>
+    <section id="hero" className="min-h-screen relative flex items-center justify-center pt-20 overflow-hidden">
+      {/* Immersive Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full -z-10">
+        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/10 blur-[120px] rounded-full animate-pulse" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-purple-600/10 blur-[150px] rounded-full" />
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
       </div>
 
-      {/* Grid Stats */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full mt-24 max-w-7xl mx-auto"
-      >
-        <div className="grid grid-cols-2 md:grid-cols-4 border-l border-t border-black/5">
-          {[
-            { label: 'Annual Reports', value: '500+', unit: 'Analyzed' },
-            { label: 'Hackathon Rank', value: '2nd', unit: 'YUVAAN 26' },
-            { label: 'Network', value: '1.3k+', unit: 'Followers' },
-            { label: 'Research', value: 'Author', unit: 'ISAECT 25' }
-          ].map((stat, i) => (
-            <div key={i} className="p-6 border-r border-b border-black/5 flex flex-col items-start bg-black/[0.01]">
-              <span className="text-[#0055FF] text-[9px] font-mono uppercase tracking-[0.2em] mb-4">{stat.label}</span>
-              <span className="text-black text-3xl font-bold tracking-tight uppercase leading-none mb-1">{stat.value}</span>
-              <span className="text-black/30 text-[9px] font-mono uppercase tracking-widest">{stat.unit}</span>
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/20 bg-blue-500/5 text-blue-400 text-xs font-mono mb-6">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            </span>
+            Currently Engineering at Aynstyn Technologies
+          </div>
+          
+          <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.9] mb-8">
+            Charan Sai <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+              Ponnada.
+            </span>
+          </h1>
+          
+          <p className="text-xl text-slate-400 leading-relaxed mb-10 max-w-lg font-light">
+            AI Engineer specializing in <span className="text-slate-100">RAG Systems</span>, 
+            <span className="text-slate-100"> LLM Evaluation</span>, and 
+            <span className="text-slate-100"> Computer Vision</span>. Primary Author for ISAECT 2025.
+          </p>
+
+          <div className="flex flex-wrap gap-4 items-center">
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="mailto:charansaiponnada06@gmail.com"
+              className="px-8 py-4 bg-white text-black font-bold rounded-xl flex items-center gap-2"
+            >
+              Collaborate <ArrowUpRight weight="bold" />
+            </motion.a>
+            
+            <div className="flex items-center gap-4 ml-4">
+              {[
+                { icon: GithubLogo, href: "https://github.com/charansaiponnada" },
+                { icon: LinkedinLogo, href: "https://linkedin.com/in/charansaiponnada" },
+                { icon: Envelope, href: "mailto:charansaiponnada06@gmail.com" }
+              ].map((social, i) => (
+                <motion.a
+                  key={i}
+                  whileHover={{ y: -5, color: '#60a5fa' }}
+                  href={social.href}
+                  className="text-slate-500 transition-colors"
+                >
+                  <social.icon size={28} />
+                </motion.a>
+              ))}
             </div>
-          ))}
-        </div>
-      </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Spatial Visual Representation */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="relative group"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 blur-[80px] opacity-20 group-hover:opacity-40 transition-opacity" />
+          <div className="relative glass rounded-3xl overflow-hidden aspect-square flex items-center justify-center p-4">
+            <Image
+              src="https://avatars.githubusercontent.com/u/120614838?v=4"
+              alt="Charan Sai Ponnada"
+              width={400}
+              height={400}
+              className="rounded-2xl grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105"
+            />
+          </div>
+          
+          {/* Metadata Badges */}
+          <div className="absolute -bottom-6 -left-6 glass p-6 rounded-2xl">
+            <p className="text-[10px] font-mono text-blue-400 uppercase tracking-widest mb-1">Based In</p>
+            <p className="text-sm font-medium">Kakinada, India</p>
+          </div>
+          
+          <div className="absolute -top-6 -right-6 glass p-6 rounded-2xl">
+            <p className="text-[10px] font-mono text-purple-400 uppercase tracking-widest mb-1">Research Status</p>
+            <p className="text-sm font-medium">ISAECT 2025 Author</p>
+          </div>
+        </motion.div>
+      </div>
     </section>
   )
 }

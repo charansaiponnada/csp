@@ -1,54 +1,55 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { House, IdentificationCard, Briefcase, Code, Microscope, ChatCircleText } from '@phosphor-icons/react'
 
 const navItems = [
-  { name: 'Capabilities', href: '#highlights' },
-  { name: 'Path', href: '#experience' },
-  { name: 'Initiatives', href: '#projects' },
+  { name: 'Home', href: '#hero', icon: House },
+  { name: 'Capabilities', href: '#experience', icon: IdentificationCard },
+  { name: 'Projects', href: '#projects', icon: Code },
+  { name: 'Research', href: '#research', icon: Microscope },
+  { name: 'Connect', href: '#contact', icon: ChatCircleText },
 ]
 
 export default function Navigation() {
-  const [time, setTime] = useState('')
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    setTime(new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: false }))
-    const interval = setInterval(() => {
-      setTime(new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: false }))
-    }, 1000)
-    return () => clearInterval(interval)
+    const handleScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-black/5 flex items-center justify-between px-6 py-4">
-      <div className="flex items-center gap-8">
-        <a href="#hero" className="text-black font-display font-bold text-lg tracking-tight hover:text-[#0055FF] transition-colors">
-          CSP
-        </a>
-        <div className="hidden md:flex gap-8">
-          {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-[10px] font-mono tracking-[0.2em] uppercase text-black/50 hover:text-[#0055FF] transition-colors"
-            >
+    <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 px-6 w-full max-w-fit">
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        className="glass p-2 rounded-3xl flex items-center gap-1 shadow-2xl shadow-blue-500/10"
+      >
+        {navItems.map((item, i) => (
+          <a
+            key={i}
+            href={item.href}
+            className="flex items-center gap-2 px-4 py-3 rounded-2xl hover:bg-white/5 text-slate-400 hover:text-white transition-all group"
+          >
+            <item.icon size={20} className="group-hover:scale-110 transition-transform" />
+            <span className="hidden md:block text-[10px] font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
               {item.name}
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <div className="flex items-center gap-8">
-        <div className="hidden sm:block text-[10px] font-mono tracking-widest text-black/40 uppercase">
-          Kakinada, IN — <span suppressHydrationWarning>{time || '--:--'}</span> IST
-        </div>
-        <a
+            </span>
+          </a>
+        ))}
+        
+        <div className="w-[1px] h-6 bg-white/10 mx-2" />
+        
+        <a 
           href="mailto:charansaiponnada06@gmail.com"
-          className="px-6 py-2.5 bg-black text-white text-[10px] font-bold tracking-widest uppercase rounded-full hover:bg-[#0055FF] transition-colors"
+          className="px-6 py-3 bg-blue-500 text-white rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-blue-600 transition-colors"
         >
-          Initiate Contact
+          Message
         </a>
-      </div>
+      </motion.div>
     </nav>
   )
 }

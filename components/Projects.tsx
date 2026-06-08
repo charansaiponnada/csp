@@ -9,13 +9,13 @@ const projects = [
     role: 'Credit Risk Intelligence System',
     description: 'Reduced financial analysis time from days to minutes by processing 500+ page annual reports in under 5 minutes.',
     achievements: [
-      'Built end-to-end AI credit intelligence system; 2nd place at IIT Hyderabad AI/ML Hackathon.',
-      'Developed VectorLess RAG pipeline achieving 98% lower API overhead.',
-      'Extracted 50+ financial risk indicators via multi-agent decision pipeline.'
+      '2nd place at IIT Hyderabad AI/ML Hackathon (YUVAAN 2026).',
+      'VectorLess RAG pipeline achieving 98% lower API overhead.',
+      'Extracted 50+ financial risk indicators via multi-agent pipeline.'
     ],
     stack: ['Python', 'Gemini', 'RAG', 'Multi-Agent'],
     github: 'https://github.com/charansaiponnada/VIVIRITY',
-    badge: 'YUVAAN 2026'
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800'
   },
   {
     title: 'AyurMind',
@@ -28,78 +28,80 @@ const projects = [
     ],
     stack: ['Python', 'LangChain', 'ChromaDB', 'Gradio'],
     github: 'https://github.com/charansaiponnada/AyurMind',
-    badge: 'Conference Ready'
+    image: 'https://images.unsplash.com/photo-1505751172107-573957a243b0?auto=format&fit=crop&q=80&w=800'
   }
 ]
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-white relative max-w-7xl mx-auto">
-      <div className="grid lg:grid-cols-12 w-full border-l border-black/5">
-        {/* Section Header */}
-        <div className="lg:col-span-4 p-8 md:p-12 border-r border-b border-black/5 flex flex-col min-h-[400px] bg-black/[0.01]">
-          <span className="text-[#0055FF] font-mono text-[9px] tracking-[0.4em] uppercase mb-12 block">03 / Initiatives</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight uppercase text-black leading-[0.9] mt-auto">
-            Technical<br />
-            Projects.
-          </h2>
-          <p className="text-black/40 text-xs font-light mt-8 leading-relaxed max-w-[250px]">
-            High-stakes systems engineering from fintech RAG to domain-specific intelligence.
-          </p>
-        </div>
+    <section id="projects" className="py-24 relative">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8"
+        >
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 uppercase">Technical <span className="text-purple-500">Initiatives.</span></h2>
+            <p className="text-slate-400 font-light">High-stakes systems engineering and neural architectures.</p>
+          </div>
+          <a href="https://github.com/charansaiponnada" className="group flex items-center gap-3 text-sm font-mono text-slate-400 hover:text-white transition-colors">
+            EXPLORE ALL REPOS <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </a>
+        </motion.div>
 
-        {/* Project Cards */}
-        <div className="lg:col-span-8 flex flex-col sm:flex-row border-b border-black/5">
+        <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className={`p-8 md:p-12 border-r border-black/5 flex flex-col w-full sm:w-1/2 group hover:bg-[#0055FF]/[0.02] transition-colors relative overflow-hidden`}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="spatial-card flex flex-col group"
             >
-              <div className="absolute top-8 right-8 text-black/10 group-hover:text-[#0055FF] transition-colors">
-                <ArrowUpRight size={24} />
+              {/* Project Image/Visual */}
+              <div className="relative h-64 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] to-transparent z-10" />
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0"
+                />
+                <div className="absolute top-6 right-6 z-20">
+                  <a 
+                    href={project.github}
+                    target="_blank"
+                    className="w-12 h-12 glass rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+                  >
+                    <GithubLogo size={24} />
+                  </a>
+                </div>
               </div>
 
-              <div className="mb-12">
-                <span className="px-3 py-1 bg-black border border-black text-[9px] font-mono tracking-widest uppercase rounded-full text-white mb-6 inline-block">
-                  {project.badge}
-                </span>
-                <h3 className="text-2xl md:text-3xl font-bold text-black mb-3 uppercase leading-[1.1] group-hover:text-[#0055FF] transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-black/40 text-[10px] font-mono uppercase tracking-[0.2em]">{project.role}</p>
-              </div>
+              <div className="p-8 flex flex-grow flex-col">
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-2 uppercase tracking-tight group-hover:text-purple-400 transition-colors">{project.title}</h3>
+                  <p className="text-slate-500 text-xs font-mono uppercase tracking-widest">{project.role}</p>
+                </div>
 
-              <p className="text-black/60 text-sm mb-10 leading-relaxed font-light">
-                {project.description}
-              </p>
+                <p className="text-slate-400 text-sm mb-8 leading-relaxed font-light">{project.description}</p>
 
-              <div className="space-y-4 flex-grow mb-12">
-                {project.achievements.map((a, j) => (
-                  <div key={j} className="flex gap-4 items-start">
-                    <div className="w-1 h-1 rounded-full bg-black/20 mt-2 flex-shrink-0 group-hover:bg-[#0055FF] transition-colors" />
-                    <p className="text-xs text-black/50 leading-relaxed font-light">{a}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex items-center justify-between pt-6 border-t border-black/10 mt-auto">
-                <div className="flex gap-2 flex-wrap max-w-[80%]">
-                  {project.stack.map((s) => (
-                    <span key={s} className="text-[9px] font-mono tracking-widest uppercase text-black/40">{s}</span>
+                <div className="space-y-3 mb-10 flex-grow">
+                  {project.achievements.map((a, j) => (
+                    <div key={j} className="flex gap-4 items-start">
+                      <div className="w-1 h-1 rounded-full bg-purple-500 mt-2 shrink-0 shadow-[0_0_8px_rgba(168,85,247,0.5)]" />
+                      <p className="text-xs text-slate-500 leading-relaxed font-light">{a}</p>
+                    </div>
                   ))}
                 </div>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center text-black hover:bg-[#0055FF] hover:border-[#0055FF] hover:text-white transition-all shadow-sm shrink-0"
-                >
-                  <GithubLogo size={18} />
-                </a>
+
+                <div className="flex flex-wrap gap-2 pt-6 border-t border-white/5">
+                  {project.stack.map((s) => (
+                    <span key={s} className="px-3 py-1 bg-white/[0.03] border border-white/5 rounded-full text-[9px] font-mono text-slate-400 uppercase tracking-widest">{s}</span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}

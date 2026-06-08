@@ -3,15 +3,13 @@
 import { useState, useEffect } from 'react'
 import Navigation from '@/components/Navigation'
 import Hero from '@/components/Hero'
-import Highlights from '@/components/Highlights'
-import Recognition from '@/components/Recognition'
+import Experience from '@/components/Experience'
+import Projects from '@/components/Projects'
 import Skills from '@/components/Skills'
+import Recognition from '@/components/Recognition'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import HireMe from '@/components/HireMe'
-
-import Experience from '@/components/Experience'
-import Projects from '@/components/Projects'
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -21,10 +19,10 @@ export default function Home() {
   }, [])
 
   return (
-    <main className={`min-h-screen bg-white transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+    <main className={`min-h-screen transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+      <div className="fixed inset-0 bg-[#0a0a0c] -z-20" />
       <Navigation />
       <Hero />
-      <Highlights />
       <Experience />
       <Projects />
       <Skills />
