@@ -1,61 +1,36 @@
 'use client'
 
-import { List } from '@phosphor-icons/react'
-
-const navItems = [
-  { name: 'Experience', href: '#experience' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Research', href: '#research' },
-  { name: 'Stack', href: '#skills' },
-]
+import { motion } from 'framer-motion'
 
 export default function Navigation() {
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-claude-canvas border-b border-claude-hairline h-[64px] flex items-center px-6">
-      <div className="w-full max-w-[1200px] mx-auto flex items-center justify-between">
+    <motion.nav 
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed top-8 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[800px]"
+    >
+      <div className="bg-dribbble-surface-1/80 backdrop-blur-xl border border-dribbble-border rounded-full px-6 py-4 flex items-center justify-between">
+        <a href="#hero" className="font-display font-bold text-xl tracking-tighter text-white hover:text-dribbble-accent transition-colors">
+          CHARAN<span className="text-dribbble-accent">.</span>
+        </a>
         
-        <div className="flex items-center gap-8">
-          {/* Brand Mark */}
-          <a href="#hero" className="flex items-center gap-2 group">
-            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-claude-ink group-hover:fill-claude-primary transition-colors">
-              <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" />
-            </svg>
-            <span className="font-display text-xl font-medium tracking-tight text-claude-ink">Charan</span>
-          </a>
-
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-6">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="font-sans text-[14px] font-medium text-claude-body hover:text-claude-primary transition-colors"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
+        <div className="hidden md:flex items-center gap-8">
+          {['Experience', 'Projects', 'Research', 'Stack'].map((item) => (
+            <a 
+              key={item} 
+              href={`#${item.toLowerCase()}`}
+              className="font-sans text-sm font-medium text-dribbble-muted hover:text-white transition-colors"
+            >
+              {item}
+            </a>
+          ))}
         </div>
 
-        {/* Right Actions */}
-        <div className="flex items-center gap-4">
-          <a 
-            href="https://github.com/charansaiponnada" 
-            target="_blank"
-            className="hidden sm:block font-sans text-[14px] font-medium text-claude-ink hover:text-claude-primary transition-colors"
-          >
-            GitHub
-          </a>
-          <a href="#contact" className="btn-coral text-[14px] h-[40px] px-[20px]">
-            Collaborate
-          </a>
-          
-          <button className="md:hidden text-claude-ink ml-2">
-            <List size={24} />
-          </button>
-        </div>
-
+        <a href="mailto:charansaiponnada06@gmail.com" className="font-sans text-sm font-bold text-black bg-dribbble-accent px-5 py-2 rounded-full hover:bg-white transition-colors">
+          HIRE ME
+        </a>
       </div>
-    </nav>
+    </motion.nav>
   )
 }

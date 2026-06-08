@@ -1,88 +1,62 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { ArrowRight } from '@phosphor-icons/react'
 
 export default function Hero() {
   return (
-    <section id="hero" className="pt-[160px] pb-[96px] px-6">
-      <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-12 items-center">
-        
-        {/* Left: Copy & Actions */}
+    <section id="hero" className="min-h-screen flex flex-col justify-center px-6 relative overflow-hidden">
+      {/* Background Graphic Element */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-dribbble-accent/5 blur-[120px] rounded-full -z-10" />
+
+      <div className="max-w-[1400px] mx-auto w-full pt-32 pb-24">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col items-start"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-center text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-claude-surface-card rounded-full text-claude-ink text-xs font-medium mb-6">
-            <span className="w-2 h-2 rounded-full bg-claude-primary" />
-            AI Engineer Intern @ Aynstyn Technologies
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-dribbble-border bg-dribbble-surface-1 mb-8">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-dribbble-accent opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-dribbble-accent"></span>
+            </span>
+            <span className="font-sans text-xs font-semibold tracking-widest text-dribbble-muted uppercase">Available for new roles</span>
           </div>
-          
-          <h1 className="font-display text-[52px] md:text-[64px] leading-[1.05] tracking-claude-tightest text-claude-ink mb-6">
-            Meet your next <br />
-            systems architect.
+
+          <h1 className="font-display text-[12vw] md:text-[8rem] font-bold leading-[0.85] tracking-tighter uppercase mb-6 text-white mix-blend-difference">
+            Creative <br />
+            <span className="text-outline text-transparent">Technologist.</span>
           </h1>
-          
-          <p className="font-sans text-[18px] md:text-[20px] leading-[1.5] text-claude-body mb-8 max-w-lg">
-            I build robust RAG systems, evaluate LLM reliability, and author vision-language research. Designing high-stakes intelligence infrastructure.
+
+          <p className="font-sans text-lg md:text-2xl text-dribbble-muted max-w-2xl mx-auto leading-relaxed mb-12">
+            I'm Charan Sai Ponnada. I architect high-stakes RAG systems and vision-language models, blending deep engineering with aggressive design.
           </p>
 
-          <div className="flex flex-wrap items-center gap-4">
-            <a href="#projects" className="btn-coral">
-              View Initiatives
+          <div className="flex flex-col sm:flex-row items-center gap-6">
+            <a href="#projects" className="btn-acid group">
+              Explore Work 
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" weight="bold" />
             </a>
-            <a href="https://linkedin.com/in/charansaiponnada" target="_blank" className="btn-outline">
-              Connect on LinkedIn
+            <a href="https://github.com/charansaiponnada" target="_blank" className="btn-ghost">
+              GitHub Repo
             </a>
           </div>
         </motion.div>
+      </div>
 
-        {/* Right: Code Window Mockup */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="claude-dark-card shadow-xl"
+      {/* Massive scrolling marquee or decorative text at the bottom of hero */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden whitespace-nowrap opacity-10 pointer-events-none select-none flex">
+        <motion.div 
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+          className="font-display text-[120px] font-bold uppercase tracking-tighter flex"
         >
-          <div className="flex items-center justify-between mb-6 border-b border-white/10 pb-4">
-            <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-              <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-              <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
-            </div>
-            <div className="font-mono text-[12px] text-claude-on-dark-soft">eval_pipeline.py</div>
-          </div>
-          
-          <div className="font-mono text-[13px] md:text-[14px] leading-[1.6] overflow-x-auto text-claude-on-dark">
-            <pre><code>
-<span className="text-[#c678dd]">def</span> <span className="text-[#61afef]">evaluate_rag_system</span>(query: <span className="text-[#e5c07b]">str</span>, context: <span className="text-[#e5c07b]">List[str]</span>):
-    <span className="text-[#5c6370]">"""</span>
-    <span className="text-[#5c6370]">Validates LLM performance across 200+ edge cases.</span>
-    <span className="text-[#5c6370]">Ensures zero hallucination in critical outputs.</span>
-    <span className="text-[#5c6370]">"""</span>
-    
-    retriever = VectorLessRetriever()
-    relevant_docs = retriever.search(query, context)
-    
-    <span className="text-[#c678dd]">if not</span> relevant_docs:
-        <span className="text-[#c678dd]">return</span> <span className="text-[#98c379]">"Insufficient context."</span>
-        
-    response = llm.generate(
-        prompt=build_strict_prompt(query, relevant_docs),
-        temperature=<span className="text-[#d19a66]">0.0</span>
-    )
-    
-    <span className="text-[#c678dd]">return</span> validation_layer.score(response)
-            </code></pre>
-          </div>
-          
-          <div className="mt-6 pt-4 border-t border-white/10 flex justify-between items-center text-[12px] font-mono text-claude-on-dark-soft">
-            <span>Status: <span className="text-[#5db872]">Passing 98.4%</span></span>
-            <span>Latency: 124ms</span>
-          </div>
+          <span className="px-8 text-dribbble-accent">AI ENGINEERING</span>
+          <span className="px-8 text-outline">SYSTEMS ARCHITECTURE</span>
+          <span className="px-8 text-dribbble-accent">AI ENGINEERING</span>
+          <span className="px-8 text-outline">SYSTEMS ARCHITECTURE</span>
         </motion.div>
-
       </div>
     </section>
   )

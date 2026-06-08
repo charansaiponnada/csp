@@ -1,5 +1,4 @@
 'use client'
-
 import { useState, useEffect } from 'react'
 import Navigation from '@/components/Navigation'
 import Hero from '@/components/Hero'
@@ -18,7 +17,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main className={`min-h-screen bg-white transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+    <main className={`min-h-screen bg-[#050505] transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       <Navigation />
       <Hero />
       <Experience />

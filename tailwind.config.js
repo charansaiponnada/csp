@@ -8,24 +8,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        claude: {
-          primary: '#cc785c',
-          'primary-active': '#a9583e',
-          ink: '#141413',
-          body: '#3d3d3a',
-          muted: '#6c6a64',
-          canvas: '#faf9f5',
-          'surface-card': '#efe9de',
-          'surface-dark': '#181715',
-          'surface-dark-soft': '#1f1e1b',
-          'surface-dark-elevated': '#252320',
-          'on-dark': '#faf9f5',
-          hairline: '#e6dfd8',
+        dribbble: {
+          accent: '#D4FF00',
+          'accent-hover': '#B8E600',
+          canvas: '#050505',
+          'surface-1': '#111111',
+          'surface-2': '#1A1A1A',
+          border: '#222222',
+          text: '#FFFFFF',
+          muted: '#888888',
         }
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        display: ['"Cormorant Garamond"', 'EB Garamond', 'serif'],
+        display: ['"Space Grotesk"', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
     },

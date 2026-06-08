@@ -2,49 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  --claude-primary: #cc785c;
-  --claude-ink: #141413;
-  --claude-canvas: #faf9f5;
-  --claude-surface-card: #efe9de;
-  --claude-surface-dark: #181715;
-  --claude-hairline: #e6dfd8;
+  --canvas: #050505;
+  --text: #FFFFFF;
 }
 
 @layer base {
   body {
-    @apply bg-claude-canvas text-claude-body antialiased;
+    @apply bg-dribbble-canvas text-dribbble-text antialiased selection:bg-dribbble-accent selection:text-black;
   }
 }
 
 @layer utilities {
-  .tracking-claude-tight {
-    letter-spacing: -0.04em;
-  }
-  .tracking-claude-tightest {
-    letter-spacing: -0.06em;
+  .text-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+    color: transparent;
   }
   
-  .claude-card {
-    @apply bg-claude-surface-card rounded-[12px] p-[32px];
-  }
-  
-  .claude-dark-card {
-    @apply bg-claude-surface-dark text-claude-on-dark rounded-[12px] p-[32px];
+  .text-outline:hover {
+    -webkit-text-stroke: 1px var(--accent);
+    color: #D4FF00;
   }
 
-  .btn-coral {
-    @apply bg-claude-primary text-white font-medium rounded-[8px] px-5 py-3 hover:bg-claude-primary-active transition-colors active:scale-[0.98] flex items-center justify-center;
+  .btn-acid {
+    @apply inline-flex items-center justify-center bg-dribbble-accent text-black font-display font-bold text-lg px-8 py-4 rounded-full hover:scale-105 hover:bg-white transition-all active:scale-95;
   }
   
-  .btn-outline {
-    @apply bg-transparent text-claude-ink border border-claude-hairline font-medium rounded-[8px] px-5 py-3 hover:bg-claude-surface-card transition-colors active:scale-[0.98] flex items-center justify-center;
-  }
-  
-  .btn-dark {
-    @apply bg-claude-surface-dark-elevated text-claude-on-dark font-medium rounded-[8px] px-5 py-3 hover:bg-claude-surface-dark-soft transition-colors active:scale-[0.98] flex items-center justify-center;
+  .btn-ghost {
+    @apply inline-flex items-center justify-center bg-transparent border border-dribbble-border text-white font-display font-bold text-lg px-8 py-4 rounded-full hover:border-dribbble-accent hover:text-dribbble-accent transition-all active:scale-95;
   }
 }
 
@@ -53,18 +40,18 @@
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--claude-canvas);
+  background: #050505;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--claude-hairline);
+  background: #222222;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d4ccbf;
+  background: #D4FF00;
 }

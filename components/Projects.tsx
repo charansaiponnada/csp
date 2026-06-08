@@ -1,96 +1,64 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { ArrowUpRight } from '@phosphor-icons/react'
 
 const projects = [
   {
-    title: 'Intelli-Credit System',
-    role: 'VIVIRITY',
-    description: 'Reduced financial analysis time from days to minutes by processing 500+ page annual reports in under 5 minutes. Secured 2nd place at IIT Hyderabad AI/ML Hackathon.',
-    metrics: [
-      { label: 'API Overhead', value: '-98%' },
-      { label: 'Indicators', value: '50+' },
-    ],
-    tech: ['VectorLess RAG', 'Multi-Agent', 'Gemini'],
-    github: 'https://github.com/charansaiponnada/VIVIRITY'
+    title: 'VIVIRITY Intelli-Credit',
+    metric: '2nd Place',
+    metricLabel: 'IIT Hackathon',
+    desc: 'End-to-end AI credit intelligence system. Reduced financial analysis time from days to minutes by processing 500+ page annual reports in under 5 minutes.',
+    link: 'https://github.com/charansaiponnada/VIVIRITY'
   },
   {
-    title: 'AyurMind',
-    role: 'Domain-Specific RAG',
-    description: 'RAG system over 1200+ structured Ayurvedic knowledge entries. Implemented validation layers and filtering mechanisms to drastically reduce hallucination rates.',
-    metrics: [
-      { label: 'Top-3 Accuracy', value: '84%' },
-      { label: 'Hallucination', value: '-45%' },
-    ],
-    tech: ['LangChain', 'ChromaDB', 'Gradio'],
-    github: 'https://github.com/charansaiponnada/AyurMind'
+    title: 'AyurMind RAG',
+    metric: '84%',
+    metricLabel: 'Top-3 Accuracy',
+    desc: 'Domain-specific RAG system over 1200+ structured Ayurvedic knowledge entries. Reduced hallucinated responses by 45% using validation layers.',
+    link: 'https://github.com/charansaiponnada/AyurMind'
   }
 ]
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-[120px] px-6 bg-[#181715]">
-      <div className="max-w-[1200px] mx-auto">
+    <section id="projects" className="py-32 px-6 bg-dribbble-canvas border-t border-dribbble-border">
+      <div className="max-w-[1400px] mx-auto">
         
-        <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-8">
-          <div>
-            <span className="font-mono text-[12px] text-[#cc785c] uppercase tracking-widest mb-4 block">02 / Technical Architecture</span>
-            <h2 className="font-display text-[48px] md:text-[64px] tracking-claude-tight text-[#faf9f5] leading-[1]">
-              Initiatives
-            </h2>
-          </div>
-          <p className="font-sans text-[16px] text-[#a09d96] max-w-sm leading-[1.6] mt-6 md:mt-0">
-            High-stakes systems engineering spanning fintech RAG pipelines to domain-specific intelligence models.
-          </p>
+        <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+          <h2 className="font-display text-[60px] md:text-[100px] font-bold tracking-tighter uppercase leading-[0.8]">
+            <span className="text-outline text-transparent">Selected</span> <br /> Works
+          </h2>
+          <a href="https://github.com/charansaiponnada" target="_blank" className="font-sans text-lg font-bold text-dribbble-accent hover:text-white transition-colors flex items-center gap-2">
+            VIEW ALL ON GITHUB <ArrowUpRight weight="bold" />
+          </a>
         </div>
 
-        <div className="flex flex-col gap-24">
-          {projects.map((project, i) => (
+        <div className="grid lg:grid-cols-2 gap-8">
+          {projects.map((p, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
-              className={`flex flex-col lg:flex-row gap-12 lg:gap-24 items-start ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
+              transition={{ duration: 0.8, delay: i * 0.1 }}
+              className="bg-dribbble-surface-1 border border-dribbble-border rounded-[32px] p-8 md:p-12 flex flex-col justify-between group hover:border-dribbble-accent transition-colors min-h-[400px]"
             >
-              {/* Project Title & Context */}
-              <div className="lg:w-5/12 flex flex-col">
-                <span className="px-3 py-1 bg-[#252320] text-[#a09d96] text-[12px] font-medium tracking-[1.5px] uppercase rounded-full self-start mb-6">
-                  {project.role}
-                </span>
-                <h3 className="font-display text-[36px] md:text-[48px] tracking-claude-tight text-[#faf9f5] leading-[1.1] mb-6">
-                  {project.title}
-                </h3>
-                <div className="flex flex-wrap gap-3 mb-8">
-                  {project.tech.map((t, k) => (
-                    <span key={k} className="font-sans text-[13px] font-medium text-[#cc785c]">
-                      {t} {k < project.tech.length - 1 && <span className="text-white/20 ml-3">/</span>}
-                    </span>
-                  ))}
+              <div className="flex justify-between items-start mb-12">
+                <div className="bg-dribbble-surface-2 px-6 py-4 rounded-2xl">
+                  <div className="font-display text-4xl font-bold text-dribbble-accent leading-none mb-1">{p.metric}</div>
+                  <div className="font-mono text-xs font-bold uppercase tracking-widest text-dribbble-muted">{p.metricLabel}</div>
                 </div>
-                <a 
-                  href={project.github}
-                  target="_blank"
-                  className="inline-flex items-center gap-2 font-sans text-[14px] font-medium text-[#faf9f5] hover:text-[#cc785c] transition-colors border-b border-white/20 pb-1 self-start"
-                >
-                  View Source &rarr;
+                <a href={p.link} target="_blank" className="w-16 h-16 rounded-full border border-dribbble-border flex items-center justify-center text-white group-hover:bg-dribbble-accent group-hover:text-black group-hover:border-dribbble-accent transition-all">
+                  <ArrowUpRight size={24} weight="bold" />
                 </a>
               </div>
 
-              {/* Project Data & Details */}
-              <div className="lg:w-7/12 flex flex-col">
-                <p className="font-sans text-[20px] leading-[1.6] text-[#a09d96] mb-12">
-                  {project.description}
+              <div>
+                <h3 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-6">{p.title}</h3>
+                <p className="font-sans text-lg text-dribbble-muted leading-relaxed max-w-lg">
+                  {p.desc}
                 </p>
-                <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
-                  {project.metrics.map((metric, j) => (
-                    <div key={j} className="flex flex-col">
-                      <div className="font-display text-[40px] text-[#faf9f5] leading-none tracking-tight mb-2">{metric.value}</div>
-                      <div className="font-sans text-[14px] text-[#a09d96] uppercase tracking-[1px]">{metric.label}</div>
-                    </div>
-                  ))}
-                </div>
               </div>
             </motion.div>
           ))}
