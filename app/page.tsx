@@ -6,7 +6,6 @@ import Hero from '@/components/Hero'
 import Highlights from '@/components/Highlights'
 import Recognition from '@/components/Recognition'
 import Skills from '@/components/Skills'
-import AIConsole from '@/components/AIConsole'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import HireMe from '@/components/HireMe'
@@ -27,7 +26,6 @@ export default function Home() {
       <Hero />
       <Highlights />
       <Experience />
-      <AIConsole />
       <Projects />
       <Skills />
       <Recognition />
