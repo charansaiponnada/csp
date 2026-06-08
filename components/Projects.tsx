@@ -29,66 +29,68 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-[96px] px-6 bg-[#181715]">
+    <section id="projects" className="py-[120px] px-6 bg-[#181715]">
       <div className="max-w-[1200px] mx-auto">
         
-        <div className="mb-16">
-          <h2 className="font-display text-[36px] md:text-[48px] tracking-claude-tight text-[#faf9f5] mb-4">
-            Technical Initiatives
-          </h2>
-          <p className="font-sans text-[18px] text-[#a09d96] max-w-2xl">
-            High-stakes systems engineering from fintech RAG to domain-specific intelligence.
+        <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-8">
+          <div>
+            <span className="font-mono text-[12px] text-[#cc785c] uppercase tracking-widest mb-4 block">02 / Technical Architecture</span>
+            <h2 className="font-display text-[48px] md:text-[64px] tracking-claude-tight text-[#faf9f5] leading-[1]">
+              Initiatives
+            </h2>
+          </div>
+          <p className="font-sans text-[16px] text-[#a09d96] max-w-sm leading-[1.6] mt-6 md:mt-0">
+            High-stakes systems engineering spanning fintech RAG pipelines to domain-specific intelligence models.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="flex flex-col gap-24">
           {projects.map((project, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="bg-[#1f1e1b] rounded-[12px] p-[32px] border border-white/5 flex flex-col"
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className={`flex flex-col lg:flex-row gap-12 lg:gap-24 items-start ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
             >
-              <div className="mb-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="px-3 py-1 bg-[#252320] text-[#a09d96] text-[12px] font-medium tracking-[1.5px] uppercase rounded-full">
-                    {project.role}
-                  </span>
-                </div>
-                <h3 className="font-display text-[28px] tracking-claude-tight text-[#faf9f5] mb-4">
+              {/* Project Title & Context */}
+              <div className="lg:w-5/12 flex flex-col">
+                <span className="px-3 py-1 bg-[#252320] text-[#a09d96] text-[12px] font-medium tracking-[1.5px] uppercase rounded-full self-start mb-6">
+                  {project.role}
+                </span>
+                <h3 className="font-display text-[36px] md:text-[48px] tracking-claude-tight text-[#faf9f5] leading-[1.1] mb-6">
                   {project.title}
                 </h3>
-                <p className="font-sans text-[16px] leading-[1.55] text-[#a09d96]">
-                  {project.description}
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                {project.metrics.map((metric, j) => (
-                  <div key={j} className="bg-[#252320] rounded-[8px] p-4">
-                    <div className="font-sans text-[22px] font-medium text-[#faf9f5] mb-1">{metric.value}</div>
-                    <div className="font-sans text-[13px] text-[#a09d96]">{metric.label}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
-                <div className="flex gap-4">
+                <div className="flex flex-wrap gap-3 mb-8">
                   {project.tech.map((t, k) => (
-                    <span key={k} className="font-mono text-[12px] text-[#cc785c]">
-                      {t}
+                    <span key={k} className="font-sans text-[13px] font-medium text-[#cc785c]">
+                      {t} {k < project.tech.length - 1 && <span className="text-white/20 ml-3">/</span>}
                     </span>
                   ))}
                 </div>
                 <a 
                   href={project.github}
                   target="_blank"
-                  className="font-sans text-[14px] font-medium text-[#faf9f5] hover:text-[#cc785c] transition-colors"
+                  className="inline-flex items-center gap-2 font-sans text-[14px] font-medium text-[#faf9f5] hover:text-[#cc785c] transition-colors border-b border-white/20 pb-1 self-start"
                 >
                   View Source &rarr;
                 </a>
+              </div>
+
+              {/* Project Data & Details */}
+              <div className="lg:w-7/12 flex flex-col">
+                <p className="font-sans text-[20px] leading-[1.6] text-[#a09d96] mb-12">
+                  {project.description}
+                </p>
+                <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
+                  {project.metrics.map((metric, j) => (
+                    <div key={j} className="flex flex-col">
+                      <div className="font-display text-[40px] text-[#faf9f5] leading-none tracking-tight mb-2">{metric.value}</div>
+                      <div className="font-sans text-[14px] text-[#a09d96] uppercase tracking-[1px]">{metric.label}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}

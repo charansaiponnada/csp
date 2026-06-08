@@ -4,40 +4,49 @@ import { motion } from 'framer-motion'
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-[96px] px-6 bg-[#181715]">
-      <div className="max-w-[1200px] mx-auto text-center flex flex-col items-center">
+    <section id="contact" className="py-[120px] px-6 bg-claude-canvas border-t border-claude-hairline">
+      <div className="max-w-[1200px] mx-auto">
         
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-2xl"
+          className="grid lg:grid-cols-2 gap-16 items-center bg-claude-surface-card rounded-[16px] p-[48px] md:p-[80px]"
         >
-          <div className="inline-flex items-center gap-2 mb-8">
-            <span className="w-2 h-2 rounded-full bg-[#5db872]" />
-            <span className="font-mono text-[14px] text-[#a09d96]">Available for opportunities</span>
+          <div className="flex flex-col">
+            <span className="font-mono text-[12px] text-claude-primary uppercase tracking-[2px] mb-6 block">
+              05 / Initialize Link
+            </span>
+            <h2 className="font-display text-[48px] md:text-[64px] tracking-claude-tightest text-claude-ink leading-[1] mb-8">
+              Open to <br /> Collaboration
+            </h2>
+            <p className="font-sans text-[18px] text-claude-body leading-[1.6] max-w-md">
+              Accepting queries for AI engineering roles, high-stakes infrastructure, and applied research initiatives. Let's build reliable intelligence systems.
+            </p>
           </div>
 
-          <h2 className="font-display text-[48px] tracking-claude-tight text-[#faf9f5] mb-6 leading-[1.1]">
-            Ready to build reliable intelligence systems?
-          </h2>
-          <p className="font-sans text-[18px] text-[#a09d96] mb-12">
-            Currently accepting queries for AI engineering roles, high-stakes infrastructure, and applied research initiatives.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col gap-6">
             <a 
               href="mailto:charansaiponnada06@gmail.com" 
-              className="bg-claude-primary text-white font-sans text-[16px] font-medium rounded-[8px] px-8 py-4 hover:bg-claude-primary-active transition-colors active:scale-[0.98] w-full sm:w-auto"
+              className="flex items-center justify-between p-6 md:p-8 bg-claude-primary text-white rounded-[12px] group hover:bg-claude-primary-active transition-colors"
             >
-              charansaiponnada06@gmail.com
+              <div className="flex flex-col">
+                <span className="font-sans text-[12px] font-medium uppercase tracking-[1.5px] text-white/60 mb-2">Direct Communication</span>
+                <span className="font-sans text-[20px] md:text-[24px] font-medium">charansaiponnada06@gmail.com</span>
+              </div>
+              <span className="text-[24px] group-hover:translate-x-2 transition-transform">&rarr;</span>
             </a>
+            
             <a 
               href="https://linkedin.com/in/charansaiponnada" 
               target="_blank"
-              className="bg-[#252320] text-[#faf9f5] font-sans text-[16px] font-medium rounded-[8px] px-8 py-4 hover:bg-[#1f1e1b] transition-colors active:scale-[0.98] w-full sm:w-auto"
+              className="flex items-center justify-between p-6 md:p-8 bg-claude-canvas border border-claude-hairline text-claude-ink rounded-[12px] group hover:bg-white transition-colors"
             >
-              Connect on LinkedIn
+              <div className="flex flex-col">
+                <span className="font-sans text-[12px] font-medium uppercase tracking-[1.5px] text-claude-muted mb-2">Network</span>
+                <span className="font-sans text-[20px] md:text-[24px] font-medium">Connect on LinkedIn</span>
+              </div>
+              <span className="text-[24px] text-claude-primary group-hover:translate-x-2 transition-transform">&rarr;</span>
             </a>
           </div>
         </motion.div>
