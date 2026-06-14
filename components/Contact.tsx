@@ -36,13 +36,14 @@ export default function Contact() {
               {[
                 { name: 'GitHub', handle: 'charansaiponnada ↗', href: 'https://github.com/charansaiponnada' },
                 { name: 'LinkedIn', handle: 'charansaiponnada ↗', href: 'https://linkedin.com/in/charansaiponnada' },
-                { name: 'Portfolio', handle: 'charansaiponnada.vercel.app ↗', href: 'https://charansaiponnada.vercel.app' },
+                { name: 'Resume', handle: 'resume.pdf ↗', href: '/resume.pdf' },
                 { name: 'Phone', handle: '+91 86392 69120', href: 'tel:+918639269120' }
               ].map((link) => (
                 <a 
                   key={link.name}
                   href={link.href}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="flex justify-between items-center py-3.5 border-b border-portfolio-rule no-underline transition-colors hover:border-portfolio-ink-3"
                 >
                   <span className="font-mono text-[12px] text-portfolio-ink tracking-[0.04em]">{link.name}</span>

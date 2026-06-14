@@ -63,12 +63,13 @@ export default function Hero() {
                 { label: 'github', href: 'https://github.com/charansaiponnada' },
                 { label: 'linkedin', href: 'https://linkedin.com/in/charansaiponnada' },
                 { label: 'email', href: 'mailto:charansaiponnada06@gmail.com' },
-                { label: 'portfolio ↗', href: 'https://charansaiponnada.vercel.app' }
+                { label: 'resume ↗', href: '/resume.pdf' }
               ].map((link) => (
                 <a 
                   key={link.label}
                   href={link.href}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="font-mono text-[12px] text-portfolio-ink-3 no-underline border-b border-portfolio-rule pb-[2px] hover:text-portfolio-sienna hover:border-portfolio-sienna transition-all"
                 >
                   {link.label}

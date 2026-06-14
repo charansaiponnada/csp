@@ -78,6 +78,7 @@ export default function Projects() {
                   <a 
                     href={p.link} 
                     target="_blank" 
+                    rel="noopener noreferrer"
                     className="font-mono text-[11px] text-portfolio-ink-3 no-underline pt-1 tracking-[0.04em] whitespace-nowrap hover:text-portfolio-sienna transition-colors hidden md:block"
                   >
                     {p.linkText}

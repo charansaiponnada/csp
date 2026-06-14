@@ -13,22 +13,16 @@ export default function Footer() {
             <a 
               href="https://instagram.com/lone_melodies" 
               target="_blank"
+              rel="noopener noreferrer"
               className="font-mono text-[11px] text-portfolio-ink-3 no-underline tracking-[0.04em] hover:text-portfolio-ink transition-colors"
             >
               @lone_melodies
             </a>
             <span className="text-portfolio-rule text-[11px]">·</span>
             <a 
-              href="#" 
-              target="_blank"
-              className="font-mono text-[11px] text-portfolio-ink-3 no-underline tracking-[0.04em] hover:text-portfolio-ink transition-colors"
-            >
-              Unspoken Love
-            </a>
-            <span className="text-portfolio-rule text-[11px]">·</span>
-            <a 
               href="https://youtube.com/@charansimplifies" 
               target="_blank"
+              rel="noopener noreferrer"
               className="font-mono text-[11px] text-portfolio-ink-3 no-underline tracking-[0.04em] hover:text-portfolio-ink transition-colors"
             >
               charansimplifies
