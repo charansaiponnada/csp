@@ -79,13 +79,13 @@ export default function Hero() {
 
           <div className="relative w-[240px] hidden md:block">
             <img 
-              src="/image.png" 
+              src="/csp_pixel.png" 
               alt="Pixel portrait of Charan Sai Ponnada" 
               className="w-full block rounded-[4px]"
               style={{ imageRendering: 'pixelated' }}
             />
             <span className="absolute -bottom-7 left-0 font-mono text-[10px] text-portfolio-ink-3 tracking-[0.08em]">
-              // pixel_portrait.png
+              // csp_pixel.png
             </span>
           </div>
 
