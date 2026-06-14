@@ -1,125 +1,103 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowUpRight, GithubLogo, LinkedinLogo, Envelope } from '@phosphor-icons/react'
+import { useState, useEffect } from 'react'
+
+const lines = [
+  'I build things that work.',
+  'Then I make them matter.',
+  'AI Engineer. Researcher.',
+  'Builder. Always learning.'
+]
 
 export default function Hero() {
-  return (
-    <section id="hero" className="min-h-screen flex flex-col justify-center px-6 pt-32 pb-24 relative overflow-hidden bg-dribbble-canvas">
+  const [displayText, setDisplayText] = useState('')
+  const [lineIdx, setLineIdx] = useState(0)
+  const [charIdx, setCharIdx] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const currentLine = lines[lineIdx]
       
-      {/* Background Architectural Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-full bg-gradient-to-b from-dribbble-accent/20 via-transparent to-transparent" />
-        <div className="absolute top-[20%] left-0 w-full h-[1px] bg-white/[0.03]" />
-        <div className="absolute top-[40%] left-0 w-full h-[1px] bg-white/[0.03]" />
-      </div>
-
-      <div className="max-w-[1400px] mx-auto w-full relative z-10">
+      if (!isDeleting) {
+        setDisplayText(currentLine.slice(0, charIdx + 1))
+        setCharIdx(prev => prev + 1)
         
-        {/* Kinetic Location Kicker */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-4 mb-12"
-        >
-          <div className="w-12 h-[1px] bg-dribbble-accent" />
-          <span className="font-mono text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-dribbble-accent">
-            Vijayawada <span className="text-white/20">→</span> Hyderabad <span className="text-white/20">→</span> wherever next
-          </span>
-        </motion.div>
+        if (charIdx + 1 === currentLine.length) {
+          if (lineIdx === lines.length - 1) return // stop on last line
+          setTimeout(() => setIsDeleting(true), 1800)
+        }
+      } else {
+        setDisplayText(currentLine.slice(0, charIdx - 1))
+        setCharIdx(prev => prev - 1)
+        
+        if (charIdx - 1 === 0) {
+          setIsDeleting(false)
+          setLineIdx(prev => (prev + 1) % lines.length)
+        }
+      }
+    }, isDeleting ? 28 : 52)
 
-        <div className="grid lg:grid-cols-12 gap-16 items-start">
+    return () => clearTimeout(timeout)
+  }, [charIdx, isDeleting, lineIdx])
+
+  return (
+    <section id="hero" className="min-h-screen flex items-center pt-20 bg-portfolio-beige">
+      <div className="max-w-[900px] mx-auto px-12 w-full">
+        <div className="grid md:grid-cols-[1fr_auto] gap-16 items-center">
           
-          <div className="lg:col-span-8">
-            <motion.h1 
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-[clamp(4rem,14vw,13rem)] font-black leading-[0.8] tracking-[-0.06em] uppercase mb-12"
-            >
-              Charan <br />
-              <span className="text-outline-accent">Sai</span> <br />
-              Ponnada
-            </motion.h1>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="mb-16"
-            >
-              <h2 className="font-display text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 text-white">
-                Builder. Always learning.
-              </h2>
-              <p className="font-sans text-xl md:text-2xl text-dribbble-muted max-w-2xl leading-relaxed font-medium">
-                Final-year AI & Data Science student at VRSEC. Currently building AI systems at <span className="text-white">Aynstyn Technologies</span>. I take systems apart to understand why they break, then rebuild them better.
-              </p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap items-center gap-10"
-            >
+          <div className="hero-text">
+            <p className="font-mono text-[11px] text-portfolio-ink-3 tracking-[0.12em] uppercase mb-6">
+              // Vijayawada → Hyderabad → wherever next
+            </p>
+            <h1 className="font-mono text-[clamp(32px,5vw,52px)] font-medium leading-[1.1] tracking-[-0.02em] text-portfolio-ink mb-4">
+              Charan Sai<br />Ponnada
+            </h1>
+            <p className="font-mono text-[clamp(13px,1.8vw,15px)] text-portfolio-ink-2 mb-8 min-h-[2.4em] flex items-center">
+              {displayText}
+              <span className="inline-block w-[2px] h-[1em] bg-portfolio-sienna ml-[2px] animate-[blink_1s_step-end_infinite]" />
+            </p>
+            <div className="flex flex-wrap gap-6">
               {[
-                { label: 'GitHub', icon: GithubLogo, href: 'https://github.com/charansaiponnada' },
-                { label: 'LinkedIn', icon: LinkedinLogo, href: 'https://linkedin.com/in/charansaiponnada' },
-                { label: 'Email', icon: Envelope, href: 'mailto:charansaiponnada06@gmail.com' },
-                { label: 'Portfolio', icon: ArrowUpRight, href: '#', external: true }
+                { label: 'github', href: 'https://github.com/charansaiponnada' },
+                { label: 'linkedin', href: 'https://linkedin.com/in/charansaiponnada' },
+                { label: 'email', href: 'mailto:charansaiponnada06@gmail.com' },
+                { label: 'portfolio ↗', href: 'https://charansaiponnada.vercel.app' }
               ].map((link) => (
                 <a 
                   key={link.label}
                   href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  className="group flex items-center gap-3 font-mono text-xs font-bold uppercase tracking-[0.2em] text-white/40 hover:text-dribbble-accent transition-all"
+                  target="_blank"
+                  className="font-mono text-[12px] text-portfolio-ink-3 no-underline border-b border-portfolio-rule pb-[2px] hover:text-portfolio-sienna hover:border-portfolio-sienna transition-all"
                 >
-                  <link.icon size={18} className="text-white/20 group-hover:text-dribbble-accent transition-colors" />
                   {link.label}
-                  {link.external && <span className="text-[10px] opacity-40">↗</span>}
                 </a>
               ))}
-            </motion.div>
+            </div>
           </div>
 
-          <div className="lg:col-span-4 relative">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="relative aspect-[4/5] w-full max-w-[400px] mx-auto lg:ml-auto group"
-            >
-              {/* Technical Frame */}
-              <div className="absolute -inset-4 border border-white/[0.05] -z-10 group-hover:border-dribbble-accent/20 transition-colors" />
-              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-dribbble-accent" />
-              <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-dribbble-accent" />
-              
-              {/* Image with 'Pixel/Dither' Effect via CSS */}
-              <div className="w-full h-full overflow-hidden bg-dribbble-surface-1 grayscale brightness-110 contrast-125">
-                <img 
-                  src="/image.png" 
-                  alt="Charan Sai Ponnada" 
-                  className="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:opacity-100 transition-opacity"
-                  style={{ 
-                    imageRendering: 'pixelated',
-                    filter: 'contrast(1.5) brightness(0.9) grayscale(1)' 
-                  }}
-                />
-                {/* Scanline/Grid Overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(212,255,0,0.05),rgba(0,255,0,0.02),rgba(0,0,255,0.05))] bg-[length:100%_4px,3px_100%] pointer-events-none" />
-              </div>
-
-              {/* Data Label */}
-              <div className="absolute -bottom-8 right-0 font-mono text-[9px] text-white/20 uppercase tracking-[0.3em] flex flex-col items-end gap-1">
-                <span>Subject: CSP_06</span>
-                <span>Status: Verified_Builder</span>
-              </div>
-            </motion.div>
+          <div className="relative w-[240px] hidden md:block">
+            <img 
+              src="/image.png" 
+              alt="Pixel portrait of Charan Sai Ponnada" 
+              className="w-full block rounded-[4px]"
+              style={{ imageRendering: 'pixelated' }}
+            />
+            <span className="absolute -bottom-7 left-0 font-mono text-[10px] text-portfolio-ink-3 tracking-[0.08em]">
+              // pixel_portrait.png
+            </span>
           </div>
 
         </div>
       </div>
+      
+      <style jsx>{`
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+      `}</style>
     </section>
   )
 }

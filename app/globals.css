@@ -2,42 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
-
 :root {
-  --canvas: #050505;
-  --text: #FFFFFF;
-  --accent: #D4FF00;
+  --beige: #F2EDE4;
+  --beige-2: #E8E2D9;
+  --ink: #1A1612;
+  --ink-2: #4A443E;
+  --ink-3: #8A8480;
+  --sienna: #C4622D;
+  --slate: #4A7FA5;
+  --rule: #D4CFC8;
 }
 
 @layer base {
   body {
-    @apply bg-dribbble-canvas text-dribbble-text antialiased selection:bg-dribbble-accent selection:text-black font-sans;
+    @apply bg-portfolio-beige text-portfolio-ink antialiased font-sans text-[16px] leading-[1.7];
   }
 }
 
 @layer utilities {
-  .text-outline {
-    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.15);
-    color: transparent;
-  }
-  
-  .text-outline:hover {
-    -webkit-text-stroke: 1.5px var(--accent);
-    color: var(--accent);
+  .section-rule {
+    @apply w-full h-[1px] bg-portfolio-rule m-0;
   }
 
-  .text-outline-accent {
-    -webkit-text-stroke: 1.5px var(--accent);
-    color: transparent;
+  .section-eyebrow {
+    @apply font-mono text-[11px] text-portfolio-ink-3 tracking-[0.12em] uppercase mb-[48px];
   }
 
-  .btn-acid {
-    @apply inline-flex items-center justify-center bg-dribbble-accent text-black font-display font-extrabold text-lg px-8 py-4 rounded-full hover:scale-105 hover:bg-white transition-all active:scale-95 uppercase tracking-wide cursor-pointer;
-  }
-  
-  .btn-ghost {
-    @apply inline-flex items-center justify-center bg-transparent border border-dribbble-border text-white font-display font-extrabold text-lg px-8 py-4 rounded-full hover:border-dribbble-accent hover:text-dribbble-accent transition-all active:scale-95 uppercase tracking-wide cursor-pointer;
+  .stack-item {
+    @apply font-mono text-[12px] text-portfolio-ink-2 px-[14px] py-[10px] bg-portfolio-beige-2 border-l-2 border-portfolio-rule tracking-[0.02em] transition-colors hover:border-portfolio-sienna;
   }
 }
 
@@ -50,13 +42,13 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: var(--beige);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #222222;
+  background: var(--rule);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #D4FF00;
+  background: var(--ink-3);
 }

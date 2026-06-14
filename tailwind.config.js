@@ -8,20 +8,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        dribbble: {
-          accent: '#D4FF00',
-          'accent-hover': '#B8E600',
-          canvas: '#050505',
-          'surface-1': '#111111',
-          'surface-2': '#1A1A1A',
-          border: '#222222',
-          text: '#FFFFFF',
-          muted: '#888888',
+        portfolio: {
+          beige: '#F2EDE4',
+          'beige-2': '#E8E2D9',
+          ink: '#1A1612',
+          'ink-2': '#4A443E',
+          'ink-3': '#8A8480',
+          sienna: '#C4622D',
+          slate: '#4A7FA5',
+          rule: '#D4CFC8',
         }
       },
       fontFamily: {
-        sans: ['"Inter"', 'sans-serif'],
-        display: ['"Space Grotesk"', 'sans-serif'],
+        sans: ['"IBM Plex Sans"', 'sans-serif'],
         mono: ['"IBM Plex Mono"', 'monospace'],
       },
     },
