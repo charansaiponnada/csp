@@ -2,16 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 :root {
-  --canvas: #030303;
-  --text: #F3F3F3;
+  --canvas: #050505;
+  --text: #FFFFFF;
+  --accent: #D4FF00;
 }
 
 @layer base {
   body {
-    @apply bg-dribbble-canvas text-dribbble-text antialiased selection:bg-dribbble-accent selection:text-black;
+    @apply bg-dribbble-canvas text-dribbble-text antialiased selection:bg-dribbble-accent selection:text-black font-sans;
   }
 }
 
@@ -23,20 +24,20 @@
   
   .text-outline:hover {
     -webkit-text-stroke: 1.5px var(--accent);
-    color: #D4FF00;
+    color: var(--accent);
   }
 
   .text-outline-accent {
-    -webkit-text-stroke: 1.5px #D4FF00;
+    -webkit-text-stroke: 1.5px var(--accent);
     color: transparent;
   }
 
   .btn-acid {
-    @apply inline-flex items-center justify-center bg-dribbble-accent text-black font-display font-extrabold text-lg px-8 py-4 rounded-full hover:scale-105 hover:bg-white transition-all active:scale-95 uppercase tracking-wide;
+    @apply inline-flex items-center justify-center bg-dribbble-accent text-black font-display font-extrabold text-lg px-8 py-4 rounded-full hover:scale-105 hover:bg-white transition-all active:scale-95 uppercase tracking-wide cursor-pointer;
   }
   
   .btn-ghost {
-    @apply inline-flex items-center justify-center bg-transparent border border-dribbble-border text-white font-display font-extrabold text-lg px-8 py-4 rounded-full hover:border-dribbble-accent hover:text-dribbble-accent transition-all active:scale-95 uppercase tracking-wide;
+    @apply inline-flex items-center justify-center bg-transparent border border-dribbble-border text-white font-display font-extrabold text-lg px-8 py-4 rounded-full hover:border-dribbble-accent hover:text-dribbble-accent transition-all active:scale-95 uppercase tracking-wide cursor-pointer;
   }
 }
 
@@ -49,11 +50,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #030303;
+  background: #050505;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333333;
+  background: #222222;
 }
 
 ::-webkit-scrollbar-thumb:hover {

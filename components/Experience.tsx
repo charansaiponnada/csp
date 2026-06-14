@@ -15,33 +15,37 @@ export default function Experience() {
 
         <div className="lg:col-span-7 flex flex-col gap-24">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="relative pl-8 md:pl-16 border-l-2 border-dribbble-border group"
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative pl-8 md:pl-16 border-l border-dribbble-border group"
           >
-            {/* Timeline Dot */}
-            <div className="absolute top-0 -left-[11px] w-5 h-5 rounded-full bg-dribbble-canvas border-2 border-dribbble-border group-hover:bg-dribbble-accent group-hover:border-dribbble-accent transition-colors" />
+            {/* Timeline Dot with Pulse */}
+            <div className="absolute top-0 -left-[5px] w-2.5 h-2.5 rounded-full bg-dribbble-accent shadow-[0_0_15px_rgba(212,255,0,0.5)] z-10" />
+            <div className="absolute top-0 -left-[5px] w-2.5 h-2.5 rounded-full bg-dribbble-accent animate-ping opacity-75" />
 
-            <div className="font-display text-[80px] md:text-[120px] font-extrabold text-dribbble-surface-2 leading-none tracking-tighter absolute -top-12 -z-10 group-hover:text-dribbble-accent/10 transition-colors select-none">
+            <div className="font-display text-[90px] md:text-[140px] font-extrabold text-white/[0.03] leading-none tracking-tighter absolute -top-12 -left-4 md:-left-8 -z-10 group-hover:text-dribbble-accent/[0.07] transition-colors select-none">
               2026
             </div>
             
             <h3 className="font-display text-4xl md:text-5xl font-extrabold tracking-tighter uppercase leading-none mb-4 mt-8">
               Aynstyn Technologies
             </h3>
-            <p className="font-sans text-xl font-bold text-dribbble-accent uppercase tracking-widest mb-8">AI Engineer Intern</p>
+            <p className="font-mono text-sm font-bold text-dribbble-accent uppercase tracking-[0.3em] mb-8">AI Engineer Intern</p>
             
             <p className="font-sans text-lg text-dribbble-muted leading-relaxed mb-8 max-w-xl font-medium">
-              Engineered AI-powered SaaS modules for interview simulation. Designed and implemented an LLM evaluation pipeline validating model performance across 200+ structured test cases, improving coverage by 2x.
+              Engineered AI-powered SaaS modules for interview simulation. Designed and implemented an <span className="text-white">LLM evaluation pipeline</span> validating model performance across 200+ structured test cases, improving coverage by 2x.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-6">
               {['FastAPI', 'LangChain', 'PyTorch', 'RAG'].map(tech => (
-                <span key={tech} className="font-sans text-sm font-bold uppercase tracking-widest text-white/50 border-b border-dribbble-border pb-1 group-hover:text-white group-hover:border-dribbble-accent transition-all">
-                  {tech}
-                </span>
+                <div key={tech} className="flex items-center gap-2">
+                  <div className="w-1 h-1 bg-dribbble-accent rounded-full" />
+                  <span className="font-mono text-xs font-bold uppercase tracking-widest text-dribbble-muted group-hover:text-white transition-all">
+                    {tech}
+                  </span>
+                </div>
               ))}
             </div>
           </motion.div>

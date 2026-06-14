@@ -5,22 +5,27 @@
 brand
 
 ## Users
-Recruiters, Research Lab Leads, and Tech Startup Founders. They are looking for high-caliber AI Engineers who possess both theoretical depth and the ability to ship complex systems.
+Hiring managers at elite AI labs (DeepMind, OpenAI), R&D leads at product-first startups, and the research community. They value "Builder" sincerity: the ability to take systems apart, understand the breaks, and rebuild with precision.
 
 ## Product Purpose
-A premier personal showcase that establishes Charan Sai Ponnada as a leading-edge AI Engineer. The site should move visitors from curiosity to professional engagement ("Hire Me").
+A high-stakes technical journal and portfolio for Charan Sai Ponnada. It proves deep engineering competency in RAG, Vision-Language models, and Genomic Foundation models, presented through the lens of a "Neural Architect."
 
 ## Brand Personality
-Professional, Precise, Cutting-edge, Human-centric. It should feel like a high-performance personal workspace—clean, efficient, and interactive, but fundamentally about a talented individual.
+"The Sincere Builder"—Persistent, precise, and technically aggressive. It blends the "Neural Architect" visual edge with the raw honesty of a researcher who spends their time in the weeds of ML pipelines and genomic clusters.
 
 ## Anti-references
-Laboratory instrument metaphors, generic SaaS templates, static resumes, over-the-top "hacker" aesthetics, and cluttered layouts.
+- "Design-first" portfolios with zero technical depth.
+- Generic "AI Enthusiast" branding.
+- Corporate SaaS templates.
+- Overly polished, non-functional aesthetics.
 
 ## Design Principles
-- **Identity First**: The focus is always on Charan's work and POV. Technology serves the narrative of the individual.
-- **Surgical Precision**: Reflecting an engineer's attention to detail through perfect alignment, intentional whitespace, and refined typography.
-- **High-Signal Interaction**: Interactivity is used to prove competence (e.g., the AI Console, Code Window), not just for decoration.
-- **The Modern Workbench**: Use a "Premium Dark" aesthetic (inspired by tools like Linear or Vercel) to create a focused, high-performance feel.
+- **Technical Sincerity**: Every visual element must feel grounded in real engineering (e.g., using real metrics, architecture names like Mamba SSM, and cluster refs).
+- **Asymmetric Precision**: Clean but non-standard layouts that reflect a non-linear "take it apart and rebuild" mindset.
+- **Void & Voltage**: Maintain the deep black (#050505) and acid green (#D4FF00) high-contrast energy.
+- **Data as Art**: Metrics (BLEU gains, context windows, parameter counts) are the primary decorative elements.
 
-## Accessibility & Inclusion
-WCAG AA compliance. Respect for reduced motion and high-contrast readability for technical specifications.
+## Now (Current Focus)
+- **Genomic Foundation Model**: ~100M param Mamba SSM across 5 species on L40S cluster.
+- **AI Engineer @ Aynstyn**: Production AI modules for SaaS assessment (PPO in hand).
+- **Hallucination Research**: IEEE InCODE-2026 paper on semantic consistency.

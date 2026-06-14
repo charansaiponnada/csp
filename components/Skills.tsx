@@ -22,25 +22,27 @@ export default function Skills() {
           </p>
         </div>
 
-        {/* Dense Typography Wall instead of cards */}
-        <div className="relative w-[150%] md:w-[120%] -ml-[25%] md:-ml-[10%] rotate-[-2deg]">
+        {/* Dense Typography Wall - Aggressive & Alive */}
+        <div className="relative w-[150%] md:w-[130%] -ml-[25%] md:-ml-[15%]">
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1 }}
-            className="flex flex-wrap justify-center gap-4 md:gap-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5 }}
+            className="flex flex-wrap justify-center gap-x-8 gap-y-4 md:gap-x-12 md:gap-y-8"
           >
             {allSkills.map((skill, i) => (
-              <span 
+              <motion.span 
                 key={i} 
-                className={`font-display font-extrabold uppercase tracking-tighter leading-none transition-colors duration-500 cursor-crosshair
-                  ${i % 3 === 0 ? 'text-[40px] md:text-[80px] text-dribbble-accent hover:text-white' : 
-                    i % 2 === 0 ? 'text-[60px] md:text-[120px] text-outline hover:text-dribbble-accent' : 
-                    'text-[30px] md:text-[60px] text-dribbble-surface-1 hover:text-white'}`}
+                initial={{ rotate: Math.random() * 4 - 2 }}
+                whileHover={{ scale: 1.1, rotate: 0, color: '#D4FF00', zIndex: 20 }}
+                className={`font-display font-black uppercase tracking-tighter leading-none transition-all duration-300 cursor-none select-none
+                  ${i % 3 === 0 ? 'text-[50px] md:text-[100px] text-white' : 
+                    i % 2 === 0 ? 'text-[70px] md:text-[140px] text-outline opacity-40 hover:opacity-100' : 
+                    'text-[40px] md:text-[80px] text-dribbble-muted/30 hover:text-white'}`}
               >
                 {skill}
-              </span>
+              </motion.span>
             ))}
           </motion.div>
         </div>
