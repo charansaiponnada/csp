@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charan Sai Ponnada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --beige:   #F2EDE4;
+  --beige2:  #EAE4DA;
+  --beige3:  #E0D9CE;
+  --ink:     #1A1612;
+  --ink2:    #4A443E;
+  --ink3:    #8A8480;
+  --sienna:  #C4622D;
+  --slate:   #4A7FA5;
+  --rule:    #D4CFC8;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--beige);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── PROGRESS BAR ── */
+#progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--sienna);
+  z-index: 200;
+  transition: width 0.1s linear;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 52px;
+  mix-blend-mode: normal;
+  transition: background 0.4s, padding 0.4s;
+}
+nav.scrolled {
+  background: rgba(242,237,228,0.92);
+  backdrop-filter: blur(8px);
+  padding: 16px 52px;
+  border-bottom: 1px solid var(--rule);
+}
+.nav-sig {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+nav.scrolled .nav-sig { opacity: 1; }
+.nav-right {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink3);
+  letter-spacing: 0.06em;
+}
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 52px 80px;
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink3);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+}
+
+.hero-statement {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(28px, 4.5vw, 56px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 48px;
+  max-width: 820px;
+}
+
+.hero-statement em {
+  font-style: italic;
+  color: var(--sienna);
+}
+
+.hero-portrait-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 40px;
+  margin-top: 16px;
+}
+
+.hero-portrait {
+  width: 180px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.hero-portrait img {
+  width: 100%;
+  display: block;
+  image-rendering: pixelated;
+  border-radius: 3px;
+}
+
+.hero-portrait-caption {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--ink3);
+  letter-spacing: 0.06em;
+  margin-top: 8px;
+}
+
+.hero-sub {
+  font-size: 15px;
+  color: var(--ink2);
+  line-height: 1.8;
+  max-width: 480px;
+  font-weight: 300;
+}
+
+.hero-sub strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ── SCROLL HINT ── */
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 52px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--ink3);
+  letter-spacing: 0.1em;
+  animation: hint-fade 2s ease-in-out infinite;
+}
+
+.scroll-hint-line {
+  width: 32px;
+  height: 1px;
+  background: var(--ink3);
+}
+
+@keyframes hint-fade {
+  0%, 100% { opacity: 0.4; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(3px); }
+}
+
+/* ── STORY SECTIONS ── */
+.story {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 52px;
+}
+
+/* Divider */
+.story-divider {
+  width: 48px;
+  height: 1px;
+  background: var(--rule);
+  margin: 0 52px;
+  max-width: 1100px;
+}
+
+/* Text blocks */
+.beat {
+  padding: 96px 0;
+}
+
+.beat-text {
+  max-width: 640px;
+}
+
+.beat-pull {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(18px, 2.8vw, 26px);
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 28px;
+  letter-spacing: -0.01em;
+}
+
+.beat-pull em {
+  font-style: italic;
+  color: var(--sienna);
+}
+
+.beat-body {
+  font-size: 16px;
+  color: var(--ink2);
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+.beat-body p { margin-bottom: 18px; }
+.beat-body p:last-child { margin-bottom: 0; }
+.beat-body strong { font-weight: 500; color: var(--ink); }
+
+/* Wide beat — text left, element right */
+.beat-wide {
+  padding: 96px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.beat-wide .beat-text { max-width: 100%; }
+
+/* Evidence blocks — proof of the story */
+.evidence {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.evidence-item {
+  padding: 20px 24px;
+  background: var(--beige2);
+  border-left: 2px solid var(--rule);
+  transition: border-color 0.25s;
+  cursor: default;
+}
+
+.evidence-item:hover { border-color: var(--sienna); }
+
+.evidence-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--ink3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.evidence-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.evidence-detail {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--ink3);
+  line-height: 1.5;
+}
+
+/* Stat callouts */
+.stat-row {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+  padding-top: 36px;
+  border-top: 1px solid var(--rule);
+}
+
+.stat-block { }
+
+.stat-val {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-val span { color: var(--sienna); }
+
+.stat-desc {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  max-width: 140px;
+  line-height: 1.4;
+}
+
+/* Research callout */
+.research-pull {
+  padding: 36px 40px;
+  background: var(--beige2);
+  border: 1px solid var(--rule);
+  position: relative;
+  margin-top: 16px;
+}
+
+.research-pull::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--sienna);
+}
+
+.research-pull-venue {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--sienna);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.research-pull-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+
+.research-pull-body {
+  font-size: 14px;
+  color: var(--ink2);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.research-pull-stats {
+  display: flex;
+  gap: 28px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.rstat {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.rstat-val {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+  display: block;
+}
+
+.rstat-label {
+  font-size: 10px;
+  color: var(--ink3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Now living */
+.now-block {
+  padding: 36px 40px;
+  background: var(--beige2);
+  border: 1px solid var(--rule);
+  margin-bottom: 12px;
+}
+
+.now-block-live {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--slate);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--slate);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+.now-block-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.now-block-desc {
+  font-size: 14px;
+  color: var(--ink2);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* Closing / contact */
+.closing {
+  padding: 120px 0 80px;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.closing-left { }
+
+.closing-statement {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(20px, 3vw, 32px);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.closing-sub {
+  font-size: 15px;
+  color: var(--ink2);
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 36px;
+}
+
+.closing-email {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--sienna);
+  padding-bottom: 3px;
+  transition: color 0.2s;
+}
+.closing-email:hover { color: var(--sienna); }
+
+.closing-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.closing-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  transition: border-color 0.2s;
+  cursor: pointer;
+}
+.closing-link:first-child { border-top: 1px solid var(--rule); }
+.closing-link:hover { border-color: var(--ink3); }
+
+.closing-link-name {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+}
+
+.closing-link-handle {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--ink3);
+}
+
+/* Footer */
+footer {
+  padding: 32px 0 48px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-inner {
+  padding: 0 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-left {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink3);
+  letter-spacing: 0.04em;
+}
+
+.footer-creative {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.footer-creative a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink3);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.footer-creative a:hover { color: var(--ink); }
+.footer-sep { color: var(--rule); }
+
+/* ── FADE IN ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.22s; }
+.reveal-delay-3 { transition-delay: 0.34s; }
+.reveal-delay-4 { transition-delay: 0.46s; }
+
+/* ── MOBILE ── */
+@media (max-width: 720px) {
+  nav { padding: 18px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  #hero { padding: 100px 24px 64px; }
+  .story { padding: 0 24px; }
+  .story-divider { margin: 0 24px; }
+  .beat-wide { grid-template-columns: 1fr; gap: 48px; }
+  .closing { grid-template-columns: 1fr; gap: 48px; padding: 80px 0 48px; }
+  .footer-inner { padding: 0 24px; flex-direction: column; align-items: flex-start; }
+  .hero-portrait-row { flex-direction: column; align-items: flex-start; gap: 28px; }
+  .scroll-hint { left: 24px; }
+  .stat-row { gap: 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .live-dot { animation: none; }
+  .scroll-hint { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav id="nav">
+  <a href="#hero" class="nav-sig">Charan Sai Ponnada</a>
+  <span class="nav-right">AI Engineer · Researcher · Builder</span>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <p class="hero-eyebrow reveal">Vijayawada, India · 2026</p>
+
+  <h1 class="hero-statement reveal reveal-delay-1">
+    Most people learn to use tools.<br>
+    I learn how tools <em>break</em>—<br>
+    then build better ones.
+  </h1>
+
+  <div class="hero-portrait-row reveal reveal-delay-2">
+    <div class="hero-portrait">
+      <img src="data:image/png;base64,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gEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEIEQhCCEIQgEIQgEIQgRCEINAhCEkIQhAiEIQIhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAIKEIEQhCBEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEIEQhCCEIQgRCEIIQhCgQhCCEIQgEIQglCEINAhCEkIQhAiEIQIhCEAhCECIQhAIQhAiEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEIBCEIBCEIBCEIEQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAEEIQCEDqgieVHkQhCgCEIQCEIQInJqcoTshCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEFCEIQahCEkIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAiEIQCEIQahCEJIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAicmhOCAQhCAQhCAQhCDUKHJMBC3ZS2SmglJCEIEQhCBUkIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQoEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEINAhCEEIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhQBCEIEQhCCEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEIIQhCAQhCDQIQhJCEIEQhCBEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQoEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEINAhCEEIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAoQhCBUIQgRCEIEQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhR+iEEIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhQIRCECoQhAiEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQJz6o59UIQHPreUGf5BIhA7c5KEIFQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCBUIQgRCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIECCOiEGoQhJCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQahCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAf8AIEIAf+f/ADQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhAilChAI4QhScj0hCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEH/2Q==" alt="Charan Sai Ponnada — pixel portrait" />
+      <p class="hero-portrait-caption">// charan_sai_ponnada.pixel</p>
+    </div>
+    <div class="hero-sub">
+      Final-year AI &amp; Data Science student. <strong>AI Engineer at Aynstyn Technologies</strong> — PPO secured. Published researcher. Currently training a genomic foundation model from scratch.<br><br>
+      I go all the way when something matters.
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span class="scroll-hint-line"></span>
+    scroll
+  </div>
+</section>
+
+<!-- ── BEAT 1: The obsession ── -->
+<div class="story-divider"></div>
+<div class="story">
+  <div class="beat">
+    <div class="beat-text reveal">
+      <p class="beat-pull">
+        I didn't start with AI.<br>I started with <em>why things fail.</em>
+      </p>
+      <div class="beat-body">
+        <p>There's a particular kind of person who, when something breaks, doesn't reach for the manual — they reach for the pieces. I was always that person. Pull it apart. Understand the failure. Put it back together differently.</p>
+        <p>That instinct became a method. The method became engineering. And eventually, engineering met machine learning — and suddenly the things I was breaking and rebuilding were systems that could <strong>think</strong>.</p>
+        <p>That's when it got interesting.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BEAT 2: First proof ── -->
+<div class="story-divider"></div>
+<div class="story">
+  <div class="beat-wide">
+    <div class="beat-text reveal">
+      <p class="beat-pull">
+        The paper wasn't the goal.<br>Understanding was.
+      </p>
+      <div class="beat-body">
+        <p>My first serious research question was about accessibility — could a vision-language model navigate the chaos of Indian traffic and describe it to someone who couldn't see? It sounds simple until you realize no dataset existed for it. So I built one.</p>
+        <p>427 scenes. 3-stage LoRA fine-tuning. A full ML pipeline designed from scratch. The published result was a +15.6% improvement across every metric that mattered.</p>
+        <p>But what I actually learned was how to design a research question that's worth asking.</p>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div class="research-pull">
+        <div class="research-pull-venue">ISAECT 2025 · Published · Primary Author</div>
+        <div class="research-pull-title">Vision-Language Assistive Navigation System</div>
+        <div class="research-pull-body">Fine-tuned BLIP via 3-stage LoRA on a 427-scene Indian traffic dataset. Built the complete pipeline: dataset design, training, evaluation, and public model release.</div>
+        <div class="research-pull-stats">
+          <div class="rstat">
+            <span class="rstat-val">+15.6%</span>
+            <span class="rstat-label">BLEU / METEOR / ROUGE</span>
+          </div>
+          <div class="rstat">
+            <span class="rstat-val">427</span>
+            <span class="rstat-label">Scenes built</span>
+          </div>
+          <div class="rstat">
+            <span class="rstat-val">3×</span>
+            <span class="rstat-label">LoRA stages</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BEAT 3: Proving it under pressure ── -->
+<div class="story-divider"></div>
+<div class="story">
+  <div class="beat-wide">
+    <div class="beat-text reveal">
+      <p class="beat-pull">
+        IIT Hyderabad. A hackathon.<br>
+        500-page annual reports.<br>
+        <em>Five minutes.</em>
+      </p>
+      <div class="beat-body">
+        <p>YUVAAN 2026. The problem: credit risk analysis takes days. Financial analysts drown in reports. We had a weekend.</p>
+        <p>I built a VectorLess RAG pipeline that processed 500+ page annual reports in under 5 minutes — with 98% lower API overhead than standard embedding-based systems. 50+ financial risk indicators. A multi-agent decision pipeline for loan risk assessment.</p>
+        <p><strong>We placed 2nd at IIT Hyderabad.</strong> What stays with me isn't the placement — it's that the system actually worked. Under pressure. On the first real test.</p>
+      </div>
+      <div class="stat-row">
+        <div class="stat-block">
+          <div class="stat-val">98<span>%</span></div>
+          <div class="stat-desc">lower API overhead vs embedding RAG</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-val">&lt;5<span>min</span></div>
+          <div class="stat-desc">for 500+ page report analysis</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-val">2<span>nd</span></div>
+          <div class="stat-desc">at IIT Hyderabad YUVAAN 2026</div>
+        </div>
+      </div>
+    </div>
+    <div class="evidence reveal reveal-delay-1">
+      <div class="evidence-item">
+        <div class="evidence-label">Project</div>
+        <div class="evidence-title">VIVIRITY Intelli-Credit</div>
+        <div class="evidence-detail">VectorLess RAG · Multi-agent pipeline · 50+ risk indicators</div>
+      </div>
+      <div class="evidence-item">
+        <div class="evidence-label">Project</div>
+        <div class="evidence-title">AyurMind — Domain-Specific RAG</div>
+        <div class="evidence-detail">1200+ Ayurvedic entries · 84% Top-3 retrieval · Hallucination ↓45%</div>
+      </div>
+      <div class="evidence-item">
+        <div class="evidence-label">Research · In Review</div>
+        <div class="evidence-title">Hallucination Detection Without Labels</div>
+        <div class="evidence-detail">Semantic consistency as unsupervised signal · IEEE InCODE-2026 · Mistral-7B + Gemma-2B</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BEAT 4: Production ── -->
+<div class="story-divider"></div>
+<div class="story">
+  <div class="beat">
+    <div class="beat-text reveal">
+      <p class="beat-pull">
+        Then I had to make it work<br>
+        for <em>real users,</em> in production,<br>
+        every single day.
+      </p>
+      <div class="beat-body">
+        <p>Aynstyn Technologies hired me as an AI Engineer intern. Within months they offered a pre-placement offer. The gap between research prototypes and production AI systems is enormous — and crossing it requires a different kind of discipline.</p>
+        <p>I engineered SaaS modules for interview simulation, candidate assessment, and voice evaluation. Built an LLM evaluation pipeline across 200+ structured test cases. Optimized prompt architectures for edge-case consistency. Real infrastructure. Concurrent users. No room for fragility.</p>
+        <p>The PPO means they trust me to keep building. I do too.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BEAT 5: The frontier ── -->
+<div class="story-divider"></div>
+<div class="story">
+  <div class="beat-wide">
+    <div class="beat-text reveal">
+      <p class="beat-pull">
+        Now I'm building something<br>
+        nobody has built<br>
+        at this scale, from scratch.
+      </p>
+      <div class="beat-body">
+        <p>A genomic foundation model. Multi-species. ~100 million parameters. Mamba SSM architecture. 4,096 base pair context. Five species. Built from raw NCBI downloads with DDP and SLURM on a university L40S cluster.</p>
+        <p>Phase 1 validated on Human Chr22 — MAE Transformer, loss well below random baseline. Phase 2 is active.</p>
+        <p>I'm not doing this because it's required. I'm doing it because I want to know if it's possible, and I'm the one who'll find out.</p>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div class="now-block">
+          <div class="now-block-live"><span class="live-dot"></span> Active · Phase 2</div>
+          <div class="now-block-title">Genomic Foundation Model</div>
+          <div class="now-block-desc">Mamba SSM · ~100M params · 5 species · 4,096 bp context · University L40S cluster</div>
+        </div>
+        <div class="now-block">
+          <div class="now-block-live"><span class="live-dot"></span> In Review</div>
+          <div class="now-block-title">IEEE InCODE-2026 Paper</div>
+          <div class="now-block-desc">Semantic consistency as an unsupervised hallucination signal. No labels required.</div>
+        </div>
+        <div class="now-block">
+          <div class="now-block-live" style="color: var(--ink3);"><span class="live-dot" style="background: var(--ink3);"></span> Ongoing</div>
+          <div class="now-block-title">AI Engineer · Aynstyn Technologies</div>
+          <div class="now-block-desc">Production SaaS. LLM pipelines. Real users. PPO secured.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CLOSING / CONTACT ── -->
+<div class="story-divider"></div>
+<div class="story">
+  <div class="closing">
+    <div class="closing-left reveal">
+      <h2 class="closing-statement">If you're building<br>something hard,<br>I want to know.</h2>
+      <p class="closing-sub">I'm positioning for AI Engineer, SDE, and R&D roles at product companies and funded startups. I use the PPO as a signal, not a safety net. If the work is serious, reach out.</p>
+      <a href="mailto:charansaiponnada06@gmail.com" class="closing-email">charansaiponnada06@gmail.com</a>
+    </div>
+    <div class="closing-links reveal reveal-delay-1">
+      <a href="https://github.com/charansaiponnada" target="_blank" class="closing-link">
+        <span class="closing-link-name">GitHub</span>
+        <span class="closing-link-handle">charansaiponnada ↗</span>
+      </a>
+      <a href="https://linkedin.com/in/charansaiponnada" target="_blank" class="closing-link">
+        <span class="closing-link-name">LinkedIn</span>
+        <span class="closing-link-handle">charansaiponnada ↗</span>
+      </a>
+      <a href="tel:+918639269120" class="closing-link">
+        <span class="closing-link-name">Phone</span>
+        <span class="closing-link-handle">+91 86392 69120</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-left">© 2026 Charan Sai Ponnada · Built with intent, not a template.</span>
+    <div class="footer-creative">
+      <a href="https://instagram.com/lone_melodies" target="_blank">@lone_melodies</a>
+      <span class="footer-sep">·</span>
+      <a href="#">Unspoken Love</a>
+      <span class="footer-sep">·</span>
+      <a href="https://youtube.com/@charansimplifies" target="_blank">charansimplifies ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Progress bar
+const progress = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (window.scrollY / (h.scrollHeight - h.clientHeight)) * 100;
+  progress.style.width = pct + '%';
+});
+
+// Nav scroll state
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(r => io.observe(r));
+</script>
+</body>
+</html>
