@@ -1,43 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Charan Sai Ponnada</title>
-<meta property="og:title" content="Charan Sai Ponnada">
-<meta property="og:description" content="AI Engineer at Aynstyn Technologies · Genomic foundation model research · Published at ISAECT 2025">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://charansaiponnada.dev">
-<meta name="description" content="AI Engineer at Aynstyn Technologies · Genomic foundation model research · Published at ISAECT 2025">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-:root {
-  --paper:   #F2EDE4;
-  --paper2:  #EAE4DA;
+/* ── THEME TOKENS ── */
+[data-theme="light"] {
+  --bg:      #F2EDE4;
+  --bg2:     #EAE4DA;
+  --bg3:     #E0D9CE;
   --ink:     #1A1612;
-  --ink2:    #35312D;
-  --ink3:    #6B6560;
+  --ink2:    #4A443E;
+  --ink3:    #8A8480;
   --sienna:  #C4622D;
-  --accent:  #C4622D;
+  --slate:   #4A7FA5;
   --rule:    #D4CFC8;
+  --nav-bg:  rgba(242,237,228,0.93);
+  --toggle-bg: #D4CFC8;
+  --toggle-knob: #F2EDE4;
+  --toggle-icon-l: 1;
+  --toggle-icon-d: 0;
+}
+
+[data-theme="dark"] {
+  --bg:      #1C1917;
+  --bg2:     #252220;
+  --bg3:     #2E2B28;
+  --ink:     #EDE8E0;
+  --ink2:    #B8B0A6;
+  --ink3:    #7A7470;
+  --sienna:  #D4724A;
+  --slate:   #6A9FC5;
+  --rule:    #38342F;
+  --nav-bg:  rgba(28,25,23,0.93);
+  --toggle-bg: #D4724A;
+  --toggle-knob: #1C1917;
+  --toggle-icon-l: 0;
+  --toggle-icon-d: 1;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--paper);
+  background: var(--bg);
   color: var(--ink);
-  font-family: Sora, sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-size: 17px;
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  transition: background 0.35s ease, color 0.35s ease;
 }
 
-/* ── PROGRESS BAR ── */
+/* ── PROGRESS ── */
 #progress {
   position: fixed;
   top: 0; left: 0;
@@ -57,30 +77,92 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 22px 52px;
-  mix-blend-mode: normal;
-  transition: background 0.4s, padding 0.4s;
+  transition: background 0.4s, padding 0.4s, border-color 0.4s;
 }
 nav.scrolled {
-  background: rgba(242,237,228,0.92);
-  backdrop-filter: blur(8px);
-  padding: 16px 52px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 15px 52px;
   border-bottom: 1px solid var(--rule);
 }
 .nav-sig {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 12px;
   color: var(--ink);
   text-decoration: none;
   letter-spacing: 0.05em;
   opacity: 0;
-  transition: opacity 0.4s;
+  transition: opacity 0.4s, color 0.35s;
 }
 nav.scrolled .nav-sig { opacity: 1; }
+
 .nav-right {
-  font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-label {
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   color: var(--ink3);
   letter-spacing: 0.06em;
+  transition: color 0.35s;
+}
+
+/* ── TOGGLE ── */
+.theme-toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.theme-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-track {
+  position: absolute;
+  inset: 0;
+  background: var(--toggle-bg);
+  border-radius: 12px;
+  transition: background 0.35s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+.toggle-track .icon {
+  font-size: 10px;
+  line-height: 1;
+  user-select: none;
+  transition: opacity 0.3s;
+}
+
+.toggle-track .icon-sun { opacity: var(--toggle-icon-l); }
+.toggle-track .icon-moon { opacity: var(--toggle-icon-d); }
+
+.toggle-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--toggle-knob);
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), background 0.35s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .toggle-knob {
+  transform: translateX(20px);
 }
 
 /* ── HERO ── */
@@ -96,21 +178,23 @@ nav.scrolled .nav-sig { opacity: 1; }
 }
 
 .hero-eyebrow {
-  font-family: Sora, sans-serif;
-  font-size: 13px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
   color: var(--ink3);
-  margin-bottom: 36px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
 }
 
 .hero-statement {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: clamp(28px, 4.5vw, 56px);
-  font-weight: 500;
-  line-height: 1.15;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 300;
+  line-height: 1.12;
   letter-spacing: -0.02em;
   color: var(--ink);
   margin-bottom: 48px;
-  max-width: 820px;
+  max-width: 900px;
 }
 
 .hero-statement em {
@@ -118,32 +202,15 @@ nav.scrolled .nav-sig { opacity: 1; }
   color: var(--sienna);
 }
 
-.hero-portrait-row {
-  display: flex;
-  align-items: flex-end;
-  gap: 40px;
+.hero-visual {
   margin-top: 16px;
+  max-width: 400px;
 }
 
-.hero-portrait {
-  width: 180px;
-  flex-shrink: 0;
-  position: relative;
-}
-
-.hero-portrait img {
+.hero-visual img {
   width: 100%;
   display: block;
-  image-rendering: pixelated;
-  border-radius: 3px;
-}
-
-.hero-portrait-caption {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--ink3);
-  letter-spacing: 0.06em;
-  margin-top: 8px;
+  border-radius: 4px;
 }
 
 .hero-sub {
@@ -177,6 +244,15 @@ nav.scrolled .nav-sig { opacity: 1; }
   max-width: 1100px;
 }
 
+.side-stripe {
+  width: 3px;
+  height: 100%;
+  background: var(--sienna);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 /* Text blocks */
 .beat {
   padding: 96px 0;
@@ -187,9 +263,9 @@ nav.scrolled .nav-sig { opacity: 1; }
 }
 
 .beat-pull {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-size: clamp(18px, 2.8vw, 26px);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.3;
   color: var(--ink);
   margin-bottom: 28px;
@@ -232,12 +308,13 @@ nav.scrolled .nav-sig { opacity: 1; }
 
 .evidence-item {
   padding: 20px 24px;
-  background: var(--paper2);
+  background: var(--bg2);
+  border-left: 3px solid var(--ink3);
   cursor: default;
 }
 
 .evidence-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 10px;
   color: var(--ink3);
   letter-spacing: 0.1em;
@@ -253,7 +330,7 @@ nav.scrolled .nav-sig { opacity: 1; }
 }
 
 .evidence-detail {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 12px;
   color: var(--ink3);
   line-height: 1.5;
@@ -272,7 +349,7 @@ nav.scrolled .nav-sig { opacity: 1; }
 .stat-block { }
 
 .stat-val {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 28px;
   font-weight: 500;
   color: var(--ink);
@@ -283,7 +360,7 @@ nav.scrolled .nav-sig { opacity: 1; }
 .stat-val span { color: var(--sienna); }
 
 .stat-desc {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   color: var(--ink3);
   letter-spacing: 0.06em;
@@ -295,16 +372,24 @@ nav.scrolled .nav-sig { opacity: 1; }
 /* Research callout */
 .research-pull {
   padding: 36px 40px;
-  background: var(--paper2);
+  background: var(--bg2);
   border: 1px solid var(--rule);
   position: relative;
   margin-top: 16px;
 }
 
-
+.research-pull::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--sienna);
+}
 
 .research-pull-venue {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 10px;
   color: var(--sienna);
   letter-spacing: 0.12em;
@@ -334,7 +419,7 @@ nav.scrolled .nav-sig { opacity: 1; }
 }
 
 .rstat {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 .rstat-val {
@@ -353,8 +438,9 @@ nav.scrolled .nav-sig { opacity: 1; }
 /* Now living */
 .now-block {
   padding: 36px 40px;
-  background: var(--paper2);
+  background: var(--bg2);
   border: 1px solid var(--rule);
+  border-left: 3px solid var(--sienna);
   margin-bottom: 12px;
 }
 
@@ -362,7 +448,7 @@ nav.scrolled .nav-sig { opacity: 1; }
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 10px;
   color: var(--ink3);
   letter-spacing: 0.1em;
@@ -374,7 +460,7 @@ nav.scrolled .nav-sig { opacity: 1; }
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--ink3);
+  background: var(--sienna);
   animation: pulse 2s ease-in-out infinite;
 }
 
@@ -411,9 +497,9 @@ nav.scrolled .nav-sig { opacity: 1; }
 .closing-left { }
 
 .closing-statement {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-size: clamp(20px, 3vw, 32px);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.2;
   color: var(--ink);
   margin-bottom: 24px;
@@ -429,7 +515,7 @@ nav.scrolled .nav-sig { opacity: 1; }
 }
 
 .closing-email {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 14px;
   color: var(--ink);
   text-decoration: none;
@@ -458,21 +544,21 @@ nav.scrolled .nav-sig { opacity: 1; }
 .closing-link:hover { border-color: var(--ink3); }
 
 .closing-link-name {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 12px;
   color: var(--ink);
   letter-spacing: 0.04em;
 }
 
 .closing-link-handle {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 12px;
   color: var(--ink3);
 }
 
 /* Footer */
 footer {
-  padding: 32px 0 48px;
+  padding: 48px 0;
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -487,37 +573,54 @@ footer {
 }
 
 .footer-left {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   color: var(--ink3);
   letter-spacing: 0.04em;
 }
 
+.footer-right {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink3);
+  letter-spacing: 0.04em;
+}
 
-
-/* ── SECTION NAV ── */
-.section-nav {
-  position: fixed;
-  right: 24px;
-  top: 50%;
-  transform: translateY(-50%);
+/* ── SCROLL HINT ── */
+.scroll-hint {
+  position: absolute;
+  bottom: 48px;
+  left: 52px;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 150;
+  align-items: center;
+  gap: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--ink3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  animation: fadeFloat 3s ease-in-out infinite;
 }
-.section-nav a {
-  display: block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 1.5px solid var(--ink3);
-  transition: background 0.3s, border-color 0.3s;
+
+.scroll-hint-line {
+  width: 24px;
+  height: 1px;
+  background: var(--ink3);
 }
-.section-nav a:hover,
-.section-nav a.active {
-  background: var(--ink);
-  border-color: var(--ink);
+
+@keyframes fadeFloat {
+  0%, 100% { opacity: 0.4; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-4px); }
+}
+
+/* ── EXTERNAL LINK ARROW ── */
+.link-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+a:hover .link-arrow {
+  transform: translate(2px, -2px);
 }
 
 /* ── FADE IN ── */
@@ -547,13 +650,14 @@ footer {
   .closing { grid-template-columns: 1fr; gap: 48px; padding: 80px 0 48px; }
   .footer-inner { padding: 0 24px; flex-direction: column; align-items: flex-start; }
   .hero-portrait-row { flex-direction: column; align-items: flex-start; gap: 28px; }
-  .section-nav { display: none; }
   .stat-row { gap: 28px; }
+  .scroll-hint { left: 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .live-dot { animation: none; }
+  .scroll-hint { animation: none; }
 }
 </style>
 </head>
@@ -563,36 +667,41 @@ footer {
 
 <nav id="nav">
   <a href="#hero" class="nav-sig">Charan Sai Ponnada</a>
-  <span class="nav-right">AI Engineer · Researcher · Builder</span>
-</nav>
-
-<nav class="section-nav" aria-label="Section navigation">
-  <a href="#beat-1" aria-label="The obsession"></a>
-  <a href="#beat-2" aria-label="First proof"></a>
-  <a href="#beat-3" aria-label="Proving it under pressure"></a>
-  <a href="#beat-4" aria-label="Production"></a>
-  <a href="#beat-5" aria-label="The frontier"></a>
+  <div class="nav-right">
+    <span class="nav-label">Light</span>
+    <label class="theme-toggle" aria-label="Toggle dark mode">
+      <input type="checkbox" id="themeSwitch">
+      <span class="toggle-track">
+        <span class="icon icon-sun">☀</span>
+        <span class="icon icon-moon">☽</span>
+      </span>
+      <span class="toggle-knob"></span>
+    </label>
+  </div>
 </nav>
 
 <!-- ── HERO ── -->
 <section id="hero">
-  <p class="hero-eyebrow reveal">2026</p>
+  <p class="hero-eyebrow reveal">Charan Sai Ponnada · 2026</p>
 
   <h1 class="hero-statement reveal reveal-delay-1">
     Most people learn to use tools.<br>
-    I learn how tools <em>break</em> · <br>
+    I learn how tools <em>break</em> —<br>
     then build better ones.
   </h1>
 
-  <div class="hero-portrait-row reveal reveal-delay-2">
-    <div class="hero-portrait">
-      <img src="data:image/png;base64,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gEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEIEQhCCEIQgEIQgEIQgRCEINAhCEkIQhAiEIQIhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAIKEIEQhCBEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEIEQhCCEIQgRCEIIQhCgQhCCEIQgEIQglCEINAhCEkIQhAiEIQIhCEAhCECIQhAIQhAiEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEIBCEIBCEIBCEIEQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAEEIQCEDqgieVHkQhCgCEIQCEIQInJqcoTshCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEFCEIQahCEkIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAiEIQCEIQahCEJIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAicmhOCAQhCAQhCAQhCDUKHJMBC3ZS2SmglJCEIEQhCBUkIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQoEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEINAhCEEIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhQBCEIEQhCCEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEIIQhCAQhCDQIQhJCEIEQhCBEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQoEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEINAhCEEIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAoQhCBUIQgRCEIEQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhR+iEEIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhQIRCECoQhAiEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQJz6o59UIQHPreUGf5BIhA7c5KEIFQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCBUIQgRCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIECCOiEGoQhJCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQahCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAf8AIEIAf+f/ADQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhAilChAI4QhScj0hCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEH/2Q==" alt="Charan Sai Ponnada · pixel portrait" />
-      <p class="hero-portrait-caption">// charan_sai_ponnada.pixel</p>
-    </div>
-    <div class="hero-sub">
-      Final-year AI &amp; Data Science student. <strong>AI Engineer at Aynstyn Technologies</strong> · PPO secured. Published researcher. Currently training a genomic foundation model from scratch.<br><br>
-      I go all the way when something matters.
-    </div>
+  <div class="hero-visual reveal reveal-delay-2">
+    <img src="data:image/webp;base64,UklGRrBJAABXRUJQVlA4IKRJAACQ7gCdASqABIAEPjEYikQioaEVCJ14MAMEs7QA1LsEcJfY+T6j6HzLP3Ve3p3Jwf8fqAP29kt3P//zf4f/+P0P/z26P/z+of/Zf6L6jf7L+wX++f9L9gP+T/yf///7fuO9AP8h/lf///3/cB///t+9f/x/2v+T///rD9FP8h/1/7h/0f//85f7f////z3A/8R/kf+//nP/////Qx/Uf8P++/93///+T5m/+h+wH+o/3b/rf5z/Uf//6f/YD/y/57/Vf///m//3///rD/7H7h+6L/bv+b+w3+x////6Aen///9z0r/7z/3/9h7pP+h/fz///9//Wf+H/gf+x/5v+X9YP5b+c/yv95/yH+N/sn5T/tH5nf3L8pfGX6j+wf3D/L/3H93/t//mf3D3b/4P5z/LP9/+e/03+1/mP6T/3H+L/yH+l/wP7h/3////+v4D/o/8R/mv7J+5/+V/c/6L/gP87/nf7x/mP7x/fv//9+v13+N/yH9d/cL+3f///9/q7/Rf53/Af37+2f+L////1/A/43/Lf7F/bf65/mP7f////j9n/jn9V/xH9o/xn+1/vP/////5X/I/5P+x/t//Yv///+/1b/N/7z/kv7p/mf9f/f////9fqX+kf0r/I/3T/H/7r+7/////fRX8l/pf7n/lf+J/eP///9/ob+M/0b/I/3D/Lf8H+7////2/pn+b/2z/Gf3b/Lf8T+8f///9foP+Wf0X/Ff3D/J/73+7////9/NP5l/Wv8v/hf81/x/7l/////9Vf4n/M/5H+9/5f/j/53/////6n/j/8F+zf9x/1P9//+P+f+mfz//Nf5v/b/4//Kf8T+7/////UT+B/z3+7/3H/O/8H+6//////VH+H/zP+E/z/+k/xH95/////+V/z3/G/vP+X/6n+e/////+h/5j/mf8Z/lv+h/vf7t/////9fv4N/g/73/cv+P/kv8R////z+L/0/+a/vH+S/4f+Q/////+I/z/+H/sP+I/xX92/xf////39N/iv8f/d/8d+2/9/////8p/nX95/xf93/yv/B/xX///7/o7/nf9f/yX91/yP+4/vH/////3B/vP77/jf3T+Rf3t/Y/8N/fv8//dP8X/////+B/yf+zf3H+//5H+2f4b/////6J/jf9d/tX93/vn+f/wH///+31V/Ov7//jf7v/jv+h/h/////gf+bf1r+9f3v/M/4L+8f/////XH+Y/zf+E/y3+i/vH+E//////G/5n/e/71/eP8p/f/8F/////+H/xv+p/xn+R/y395/xP7/////sn/Cf5r/Df4r/Pf33/D/////fif+d/yX+F/xX+a/vX+A/////+J/zv+S/wX+K/y/+A/wX/////4H+j/z3+N/wH+X/wX+D/////+G/zX+n/xf+M/yf9+/wP/////6T/Nf5z/Ef5T/Nf37+///z8D/y/KzwH/D/zH+X/y/+P/wX+B//////H/4/////9h/jv9l/uH93/yH9x/wH/////5M/lP77/jv79/eP79/fP///+P0H+G/y392/x/9n/vH96/fb///h/5/
+Z/6H+2/4X+2/vH+9/vP///+/wf+Qfyj+Zf3H+3f3T+5f37///+f5H/Pf7/++f5L/e/3b+8///+C/pH9I/mP71/hv8B/fP8D///4H/Ff5n+//3z/M/5b+7f4j////9G/5j/M/5H+7f5L+8f3T////+Gf1v+X/xv+Q/v/93/wH///+f5H/K/6z/fv3z/J/3r+8f4D////b/N/5z/Lf57/L/5b+7/4D////r+gf5J/N/4r/cP8v/ev7p////4H+f/0/+n/uX+G/vH92//n+4/if+O/u37q/iH9r/rH/q///+O/qv8G/j/8b/cf8P/e/8N/////+Gfy3+qf4z+8f5H/Ef3P/A/////+Q/1z+X/x3++/5P/A/3X/////4Z/Uf4////rB/Jf3j/H////8V/lP8x/e/8v/m/73/iP///+f4T/M/6P/hv7z/j/7p/iP///+Hyz+o/xX+Z/xX+X/vX96/////8H/n373/cv8l/Yf71/fv/////1X/if8v/q/8Z/lv7h+9f5L4/JH4T/I/zX3n/vX5v/vL+SP8V/mP8F/jv7x/cv8B////z/IP7l/df7v+7/4T/T/5j/////4B/LP6V/lv77/i/8R/gv/////iP86/pv9z/uf+J/vH+A/////+F/mP9B/u/79/k/7//fP///+/jP89/pX9w/u/+I/xn9w/////8X/m39C/vv7//kf7x/dv////+H/yH+pf3D++/4/+8/3j///+jvn+cf0f+8f5j/If3b+9f4D///8R/zf+J/vf+T/zX94/v3////+N/zf+d/yX+S/uX9z/wH////+Jf03+h/37+8/4/+9f3n////Wf5V/OP6R/cP8d/ff73/gP///+H/130H+L/0f+L/v/+K/u39q/////5R/mP7x/hv7z/k/8D/eP/////4H+y/rv92/vf+Q/vP94/////9h/nv9K/vH9+/yv95/vX/////gf9P/rX8f/vf+R/vX9y/////lP8x/eP8F/d/8r/d/7x/////4v/Nf6H++/5r+9/3j+///z/Df6T/RP8D/ev8d/cv7n/////4f/J/5n+//5j+7f3n+7/////8L/nv9J/vn95/yH96/uv///+fwH+jf0T+/f3r/Hf3b+7/////8i/nf71/jv7x/kP7z/ef8B///8H+Wfzf+qf4P++/5H+9/3r/////h/9H/rn8h/u/8j/e/7z////2fYJ5r+c+Y1/sf8l/wf9H+yXwH+q/yP+U/xn+O/vH95/////8P/nP71/h/73/jv71/gP8D///4L/Lv6j/c/7f/i/8h/dP8B////+I/zP+gf3j+/f5D+9f3j/P/////gf9F/rH8V/vv+T/vX9y/////5T/M/3j/B/3j/K/3j+7f4D////+N/zX+h/3j+9/wP+G/vP/////g/8x/t/96/vv+R/vH98/wH////4H/T/6z/Hf7//jv71/cf8B///4n/AD5l/Z/8F/ff8j/ef7r/////4X/Nf5n/D/4j/Nf3j+8/4H///+H/zf+Z/wH+J/zf94/vP////+J/zX+Z/wH+J/zf94/vP////+J/zX+Z/wH+J/zf94/vP////+J/zX+Z/wH+J/zf94/vP////+J/zX+Z/wH+J/zf94/vP////+J/zX+Z/wH+J/zf94/vP////+J/zX+Z/wH+J/zf94/vP////+J/zX+Z/wH+J/zf94/vP////+J/zX+Z/wH+J/zf94/vP////+J/zX+Z/wH+J/zf94/vP////+J/zX+Z/wH+J/zf94/vP////+J/zX+Z/wH+J/zf94/vfydPxv+L/cf8v/iv8P/dP7x/iP3//lP8H/eP7v+8H+u/0H9r////3bPk/4z/K/4f/Ef4X+9/4L+8f4j9//aJ8S/B/3H+1f2L/Hfrv+M/v////+V/yvWL9L/dv7Z/Zf7L/cv7h/fP///9/pP+N71nzv+A/2/9+/x37+f4L9n///6U/Gv5//Of5b/Pf57++f4H+9f4X9______l4BfI/5//If5v/H/6D/eP8B////9LfmX8t/k/8t/lf87/ff2//uv4x7a/jP8z/mf87/l/8D/cv8B////+B/yL+Zfv3+R/vH97/v/99/wP////+Bf0H+s/xH+//5H+9f3j+5f4H////+b/jf8D/Yf71/lv7R/cf7j/fv///+P30eZfzf+c/1L+4f5T+8f3f+3/////i/8p/kf8z/lv8p/fv7t/f/8B///+L/0H+b/0T+5f5j+5/3z+8/wH///5f/Pf6L++f5X+8/3L+7f3/////iP8//m/9A/uf+N/vP95/vf9///X+Pf0H+a/vv+W/uP9y/u/99/wP///+O/0b+ff3j++f5L+5/3b+9/3v////+M/zH+c/zv+W/yv98/vf9//wH///+J/zL+a/xP+Z/zP96/vP9//wH////if8y/mv8T/mf8z/ev7z/f/8B////4n/Mv5r/E/5n/M/3r+8/3//Af////if8y/mv8T/mf8z/ev7z/f/8B////4n/Mv5r/E/5n/M/3r+8/3//Af////if8y/mv8T/mf8z/ev7z/f/8B////4n/Mv5r/E/5n/M/3r+8/3//Af////if8y/mv8T/mf8z/ev7z/f/8B////4n/Mv5r/E/5n/M/3r+8/3//Af////if8y/mv8T/mf8z/ev7z/f/8B////4n/Mv5r/E/5n/M/3r+8/3//Af////if8y/mv8T/mf8z/ev7z/f/8B////4n/Mv5r/E/5n/M/3r+8/3//Af////if8y/mv8T/mf8z/ev7z/f/8B////4n/Mv5r/E/5n/M/3r+8/3//Af////if8y/mv8T/mf8z/ev7z/f/8B////4n/Mv5r/E/5n/M/3r+8/3//Af////if8y/mv8T/mf8z/ev7z/f/8H+TfzT+6fwH+Q/yn92/vv+J/f/xP+L/y/98/xP+T/u396/v/9//Y/xP+a/vP+Q/vH+S/u/94/v/+A/wH95/vn9//xH96/vH9//wH////w3+r/5v/dfsP+I/v3+C/wP///5P/Nf6f/jv7r/iP7h/fP7z/fv8D/fv8H/kf9L/u3+B/vP+Q/u/94/wH9+/wH95/vH+//4j+9f3j+//wH////Df6v/m/99+w/4j+/f4L/A////5T/Nf6f/jv7r/iP7h/fP7z/Af4D+8f4P/I/6X/dv8D/AAr6A7Rqtv7B2jVbf2DtGq2/sHaNVt/YO0arb+wdo1W39g7Rqtv7B2jVbf2DtGq2/sHaNVt/YO0arb+wdo1W39g7Rqtv7B2KNgAP7vvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" alt="Charan Sai Ponnada">
+  </div>
+
+  <div class="hero-sub">
+    Final-year AI &amp; Data Science student. <strong>AI Engineer at Aynstyn Technologies</strong> — PPO secured. Published researcher. Currently training a genomic foundation model from scratch.
+  </div>
+
+  <div class="scroll-hint">
+    <span class="scroll-hint-line"></span>
+    <span>Scroll</span>
   </div>
 </section>
 
@@ -605,8 +714,8 @@ footer {
         I didn't start with AI.<br>I started with <em>why things fail.</em>
       </p>
       <div class="beat-body">
-        <p>There's a particular kind of person who, when something breaks, doesn't reach for the manual · they reach for the pieces. I was always that person. Pull it apart. Understand the failure. Put it back together differently.</p>
-        <p>That instinct became a method. The method became engineering. And eventually, engineering met machine learning · and suddenly the things I was breaking and rebuilding were systems that could <strong>think</strong>.</p>
+        <p>There's a particular kind of person who, when something breaks, doesn't reach for the manual — they reach for the pieces. I was always that person. Pull it apart. Understand the failure. Put it back together differently.</p>
+        <p>That instinct became a method. The method became engineering. And eventually, engineering met machine learning — and suddenly the things I was breaking and rebuilding were systems that could <strong>think</strong>.</p>
         <p>That's when it got interesting.</p>
       </div>
     </div>
@@ -622,14 +731,14 @@ footer {
         The paper wasn't the goal.<br>Understanding was.
       </p>
       <div class="beat-body">
-        <p>My first serious research question was about accessibility · could a vision-language model navigate the chaos of Indian traffic and describe it to someone who couldn't see? It sounds simple until you realize no dataset existed for it. So I built one.</p>
+        <p>My first serious research question was about accessibility — could a vision-language model navigate the chaos of Indian traffic and describe it to someone who couldn't see? It sounds simple until you realize no dataset existed for it. So I built one.</p>
         <p>427 scenes. 3-stage LoRA fine-tuning. A full ML pipeline designed from scratch. The published result was a +15.6% improvement across every metric that mattered.</p>
         <p>But what I actually learned was how to design a research question that's worth asking.</p>
       </div>
     </div>
     <div class="reveal reveal-delay-1">
       <div class="research-pull">
-        <div class="research-pull-venue">ISAECT 2025 · Published · Primary Author</div>
+        <div class="research-pull-venue">ISAECT 2025 · Published — Primary Author</div>
         <div class="research-pull-title">Vision-Language Assistive Navigation System</div>
         <div class="research-pull-body">Fine-tuned BLIP via 3-stage LoRA on a 427-scene Indian traffic dataset. Built the complete pipeline: dataset design, training, evaluation, and public model release.</div>
         <div class="research-pull-stats">
@@ -663,8 +772,8 @@ footer {
       </p>
       <div class="beat-body">
         <p>YUVAAN 2026. The problem: credit risk analysis takes days. Financial analysts drown in reports. We had a weekend.</p>
-        <p>I built a VectorLess RAG pipeline that processed 500+ page annual reports in under 5 minutes · with 98% lower API overhead than standard embedding-based systems. 50+ financial risk indicators. A multi-agent decision pipeline for loan risk assessment.</p>
-        <p><strong>We placed 2nd at IIT Hyderabad.</strong> What stays with me isn't the placement · it's that the system actually worked. Under pressure. On the first real test.</p>
+        <p>I built a VectorLess RAG pipeline that processed 500+ page annual reports in under 5 minutes — with 98% lower API overhead than standard embedding-based systems. 50+ financial risk indicators. A multi-agent decision pipeline for loan risk assessment.</p>
+        <p><strong>We placed 2nd at IIT Hyderabad.</strong> What stays with me isn't the placement — it's that the system actually worked. Under pressure. On the first real test.</p>
       </div>
       <div class="stat-row">
         <div class="stat-block">
@@ -712,7 +821,7 @@ footer {
         every single day.
       </p>
       <div class="beat-body">
-        <p>Aynstyn Technologies hired me as an AI Engineer intern. Within months they offered a pre-placement offer. The gap between research prototypes and production AI systems is enormous · and crossing it requires a different kind of discipline.</p>
+        <p>Aynstyn Technologies hired me as an AI Engineer intern. Within months they offered a pre-placement offer. The gap between research prototypes and production AI systems is enormous — and crossing it requires a different kind of discipline.</p>
         <p>I engineered SaaS modules for interview simulation, candidate assessment, and voice evaluation. Built an LLM evaluation pipeline across 200+ structured test cases. Optimized prompt architectures for edge-case consistency. Real infrastructure. Concurrent users. No room for fragility.</p>
         <p>The PPO means they trust me to keep building. I do too.</p>
       </div>
@@ -732,7 +841,7 @@ footer {
       </p>
       <div class="beat-body">
         <p>A genomic foundation model. Multi-species. ~100 million parameters. Mamba SSM architecture. 4,096 base pair context. Five species. Built from raw NCBI downloads with DDP and SLURM on a university L40S cluster.</p>
-        <p>Phase 1 validated on Human Chr22 · MAE Transformer, loss well below random baseline. Phase 2 is active.</p>
+        <p>Phase 1 validated on Human Chr22 — MAE Transformer, loss well below random baseline. Phase 2 is active.</p>
         <p>I'm not doing this because it's required. I'm doing it because I want to know if it's possible, and I'm the one who'll find out.</p>
       </div>
     </div>
@@ -770,11 +879,11 @@ footer {
     <div class="closing-links reveal reveal-delay-1">
       <a href="https://github.com/charansaiponnada" target="_blank" class="closing-link">
         <span class="closing-link-name">GitHub</span>
-        <span class="closing-link-handle">charansaiponnada ↗</span>
+        <span class="closing-link-handle">charansaiponnada <span class="link-arrow">↗</span></span>
       </a>
       <a href="https://linkedin.com/in/charansaiponnada" target="_blank" class="closing-link">
         <span class="closing-link-name">LinkedIn</span>
-        <span class="closing-link-handle">charansaiponnada ↗</span>
+        <span class="closing-link-handle">charansaiponnada <span class="link-arrow">↗</span></span>
       </a>
       <a href="tel:+918639269120" class="closing-link">
         <span class="closing-link-name">Phone</span>
@@ -788,10 +897,24 @@ footer {
 <footer>
   <div class="footer-inner">
     <span class="footer-left">© 2026 Charan Sai Ponnada · Built with intent</span>
+    <span class="footer-right">Crafted with curiosity</span>
   </div>
 </footer>
 
 <script>
+// Theme toggle
+const themeSwitch = document.getElementById('themeSwitch');
+const stored = localStorage.getItem('theme');
+if (stored === 'dark') {
+  document.documentElement.setAttribute('data-theme', 'dark');
+  themeSwitch.checked = true;
+}
+themeSwitch.addEventListener('change', () => {
+  const theme = themeSwitch.checked ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+});
+
 // Progress bar
 const progress = document.getElementById('progress');
 window.addEventListener('scroll', () => {
@@ -817,20 +940,6 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 reveals.forEach(r => io.observe(r));
-
-// Section nav active state
-const sections = document.querySelectorAll('.story[id]');
-const navDots = document.querySelectorAll('.section-nav a');
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      navDots.forEach(d => d.classList.remove('active'));
-      const active = document.querySelector(`.section-nav a[href="#${e.target.id}"]`);
-      if (active) active.classList.add('active');
-    }
-  });
-}, { threshold: 0.3 });
-sections.forEach(s => sectionObserver.observe(s));
 </script>
 </body>
 </html>
