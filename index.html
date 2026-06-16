@@ -4,19 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Charan Sai Ponnada</title>
+<meta property="og:title" content="Charan Sai Ponnada">
+<meta property="og:description" content="AI Engineer at Aynstyn Technologies · Genomic foundation model research · Published at ISAECT 2025">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://charansaiponnada.dev">
+<meta name="description" content="AI Engineer at Aynstyn Technologies · Genomic foundation model research · Published at ISAECT 2025">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --beige:   #F2EDE4;
-  --beige2:  #EAE4DA;
-  --beige3:  #E0D9CE;
+  --paper:   #F2EDE4;
+  --paper2:  #EAE4DA;
   --ink:     #1A1612;
-  --ink2:    #4A443E;
-  --ink3:    #8A8480;
+  --ink2:    #35312D;
+  --ink3:    #6B6560;
   --sienna:  #C4622D;
-  --slate:   #4A7FA5;
+  --accent:  #C4622D;
   --rule:    #D4CFC8;
 }
 
@@ -24,9 +28,9 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--beige);
+  background: var(--paper);
   color: var(--ink);
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: Sora, sans-serif;
   font-size: 17px;
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
@@ -63,7 +67,7 @@ nav.scrolled {
   border-bottom: 1px solid var(--rule);
 }
 .nav-sig {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   color: var(--ink);
   text-decoration: none;
@@ -73,7 +77,7 @@ nav.scrolled {
 }
 nav.scrolled .nav-sig { opacity: 1; }
 .nav-right {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   color: var(--ink3);
   letter-spacing: 0.06em;
@@ -92,16 +96,14 @@ nav.scrolled .nav-sig { opacity: 1; }
 }
 
 .hero-eyebrow {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
+  font-family: Sora, sans-serif;
+  font-size: 13px;
   color: var(--ink3);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
   margin-bottom: 36px;
 }
 
 .hero-statement {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: clamp(28px, 4.5vw, 56px);
   font-weight: 500;
   line-height: 1.15;
@@ -137,7 +139,7 @@ nav.scrolled .nav-sig { opacity: 1; }
 }
 
 .hero-portrait-caption {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   color: var(--ink3);
   letter-spacing: 0.06em;
@@ -157,31 +159,7 @@ nav.scrolled .nav-sig { opacity: 1; }
   color: var(--ink);
 }
 
-/* ── SCROLL HINT ── */
-.scroll-hint {
-  position: absolute;
-  bottom: 40px;
-  left: 52px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  color: var(--ink3);
-  letter-spacing: 0.1em;
-  animation: hint-fade 2s ease-in-out infinite;
-}
 
-.scroll-hint-line {
-  width: 32px;
-  height: 1px;
-  background: var(--ink3);
-}
-
-@keyframes hint-fade {
-  0%, 100% { opacity: 0.4; transform: translateY(0); }
-  50% { opacity: 1; transform: translateY(3px); }
-}
 
 /* ── STORY SECTIONS ── */
 .story {
@@ -209,7 +187,7 @@ nav.scrolled .nav-sig { opacity: 1; }
 }
 
 .beat-pull {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: clamp(18px, 2.8vw, 26px);
   font-weight: 500;
   line-height: 1.3;
@@ -234,7 +212,7 @@ nav.scrolled .nav-sig { opacity: 1; }
 .beat-body p:last-child { margin-bottom: 0; }
 .beat-body strong { font-weight: 500; color: var(--ink); }
 
-/* Wide beat — text left, element right */
+/* Wide beat · text left, element right */
 .beat-wide {
   padding: 96px 0;
   display: grid;
@@ -245,7 +223,7 @@ nav.scrolled .nav-sig { opacity: 1; }
 
 .beat-wide .beat-text { max-width: 100%; }
 
-/* Evidence blocks — proof of the story */
+/* Evidence blocks · proof of the story */
 .evidence {
   display: flex;
   flex-direction: column;
@@ -254,20 +232,15 @@ nav.scrolled .nav-sig { opacity: 1; }
 
 .evidence-item {
   padding: 20px 24px;
-  background: var(--beige2);
-  border-left: 2px solid var(--rule);
-  transition: border-color 0.25s;
+  background: var(--paper2);
   cursor: default;
 }
 
-.evidence-item:hover { border-color: var(--sienna); }
-
 .evidence-label {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   color: var(--ink3);
   letter-spacing: 0.1em;
-  text-transform: uppercase;
   margin-bottom: 5px;
 }
 
@@ -280,7 +253,7 @@ nav.scrolled .nav-sig { opacity: 1; }
 }
 
 .evidence-detail {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   color: var(--ink3);
   line-height: 1.5;
@@ -299,7 +272,7 @@ nav.scrolled .nav-sig { opacity: 1; }
 .stat-block { }
 
 .stat-val {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 28px;
   font-weight: 500;
   color: var(--ink);
@@ -310,7 +283,7 @@ nav.scrolled .nav-sig { opacity: 1; }
 .stat-val span { color: var(--sienna); }
 
 .stat-desc {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   color: var(--ink3);
   letter-spacing: 0.06em;
@@ -322,26 +295,19 @@ nav.scrolled .nav-sig { opacity: 1; }
 /* Research callout */
 .research-pull {
   padding: 36px 40px;
-  background: var(--beige2);
+  background: var(--paper2);
   border: 1px solid var(--rule);
   position: relative;
   margin-top: 16px;
 }
 
-.research-pull::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--sienna);
-}
+
 
 .research-pull-venue {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   color: var(--sienna);
   letter-spacing: 0.12em;
-  text-transform: uppercase;
   margin-bottom: 10px;
 }
 
@@ -368,7 +334,7 @@ nav.scrolled .nav-sig { opacity: 1; }
 }
 
 .rstat {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .rstat-val {
@@ -382,13 +348,12 @@ nav.scrolled .nav-sig { opacity: 1; }
   font-size: 10px;
   color: var(--ink3);
   letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 /* Now living */
 .now-block {
   padding: 36px 40px;
-  background: var(--beige2);
+  background: var(--paper2);
   border: 1px solid var(--rule);
   margin-bottom: 12px;
 }
@@ -397,9 +362,9 @@ nav.scrolled .nav-sig { opacity: 1; }
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
-  color: var(--slate);
+  color: var(--ink3);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -409,7 +374,7 @@ nav.scrolled .nav-sig { opacity: 1; }
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--slate);
+  background: var(--ink3);
   animation: pulse 2s ease-in-out infinite;
 }
 
@@ -446,7 +411,7 @@ nav.scrolled .nav-sig { opacity: 1; }
 .closing-left { }
 
 .closing-statement {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: clamp(20px, 3vw, 32px);
   font-weight: 500;
   line-height: 1.2;
@@ -464,7 +429,7 @@ nav.scrolled .nav-sig { opacity: 1; }
 }
 
 .closing-email {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
   color: var(--ink);
   text-decoration: none;
@@ -493,14 +458,14 @@ nav.scrolled .nav-sig { opacity: 1; }
 .closing-link:hover { border-color: var(--ink3); }
 
 .closing-link-name {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   color: var(--ink);
   letter-spacing: 0.04em;
 }
 
 .closing-link-handle {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   color: var(--ink3);
 }
@@ -522,28 +487,38 @@ footer {
 }
 
 .footer-left {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   color: var(--ink3);
   letter-spacing: 0.04em;
 }
 
-.footer-creative {
+
+
+/* ── SECTION NAV ── */
+.section-nav {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
-  gap: 20px;
-  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 150;
 }
-
-.footer-creative a {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  color: var(--ink3);
-  text-decoration: none;
-  letter-spacing: 0.04em;
-  transition: color 0.2s;
+.section-nav a {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink3);
+  transition: background 0.3s, border-color 0.3s;
 }
-.footer-creative a:hover { color: var(--ink); }
-.footer-sep { color: var(--rule); }
+.section-nav a:hover,
+.section-nav a.active {
+  background: var(--ink);
+  border-color: var(--ink);
+}
 
 /* ── FADE IN ── */
 .reveal {
@@ -572,14 +547,13 @@ footer {
   .closing { grid-template-columns: 1fr; gap: 48px; padding: 80px 0 48px; }
   .footer-inner { padding: 0 24px; flex-direction: column; align-items: flex-start; }
   .hero-portrait-row { flex-direction: column; align-items: flex-start; gap: 28px; }
-  .scroll-hint { left: 24px; }
+  .section-nav { display: none; }
   .stat-row { gap: 28px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .live-dot { animation: none; }
-  .scroll-hint { animation: none; }
 }
 </style>
 </head>
@@ -592,44 +566,47 @@ footer {
   <span class="nav-right">AI Engineer · Researcher · Builder</span>
 </nav>
 
+<nav class="section-nav" aria-label="Section navigation">
+  <a href="#beat-1" aria-label="The obsession"></a>
+  <a href="#beat-2" aria-label="First proof"></a>
+  <a href="#beat-3" aria-label="Proving it under pressure"></a>
+  <a href="#beat-4" aria-label="Production"></a>
+  <a href="#beat-5" aria-label="The frontier"></a>
+</nav>
+
 <!-- ── HERO ── -->
 <section id="hero">
-  <p class="hero-eyebrow reveal">Vijayawada, India · 2026</p>
+  <p class="hero-eyebrow reveal">2026</p>
 
   <h1 class="hero-statement reveal reveal-delay-1">
     Most people learn to use tools.<br>
-    I learn how tools <em>break</em>—<br>
+    I learn how tools <em>break</em> · <br>
     then build better ones.
   </h1>
 
   <div class="hero-portrait-row reveal reveal-delay-2">
     <div class="hero-portrait">
-      <img src="data:image/png;base64,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gEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEIEQhCCEIQgEIQgEIQgRCEINAhCEkIQhAiEIQIhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAIKEIEQhCBEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEIEQhCCEIQgRCEIIQhCgQhCCEIQgEIQglCEINAhCEkIQhAiEIQIhCEAhCECIQhAIQhAiEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEIBCEIBCEIBCEIEQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAEEIQCEDqgieVHkQhCgCEIQCEIQInJqcoTshCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEFCEIQahCEkIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAiEIQCEIQahCEJIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAicmhOCAQhCAQhCAQhCDUKHJMBC3ZS2SmglJCEIEQhCBUkIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQoEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEINAhCEEIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhQBCEIEQhCCEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEIIQhCAQhCDQIQhJCEIEQhCBEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQoEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEINAhCEEIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAoQhCBUIQgRCEIEQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhR+iEEIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhQIRCECoQhAiEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQJz6o59UIQHPreUGf5BIhA7c5KEIFQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCBUIQgRCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIECCOiEGoQhJCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQahCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAf8AIEIAf+f/ADQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhAilChAI4QhScj0hCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEH/2Q==" alt="Charan Sai Ponnada — pixel portrait" />
+      <img src="data:image/png;base64,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gEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEIEQhCCEIQgEIQgEIQgRCEINAhCEkIQhAiEIQIhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAIKEIEQhCBEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEIEQhCCEIQgRCEIIQhCgQhCCEIQgEIQglCEINAhCEkIQhAiEIQIhCEAhCECIQhAIQhAiEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEIBCEIBCEIBCEIEQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAEEIQCEDqgieVHkQhCgCEIQCEIQInJqcoTshCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEFCEIQahCEkIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAiEIQCEIQahCEJIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAicmhOCAQhCAQhCAQhCDUKHJMBC3ZS2SmglJCEIEQhCBUkIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQoEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEINAhCEEIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhQBCEIEQhCCEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEIIQhCAQhCDQIQhJCEIEQhCBEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQoEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQgRCEINAhCEEIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAoQhCBUIQgRCEIEQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhR+iEEIQhAiEIQIhCEAhCECIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhAIQhQIRCECoQhAiEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQJz6o59UIQHPreUGf5BIhA7c5KEIFQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCBUIQgRCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIBCEIECCOiEGoQhJCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQCEIQahCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAf8AIEIAf+f/ADQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhCAQhAilChAI4QhScj0hCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEAhCEH/2Q==" alt="Charan Sai Ponnada · pixel portrait" />
       <p class="hero-portrait-caption">// charan_sai_ponnada.pixel</p>
     </div>
     <div class="hero-sub">
-      Final-year AI &amp; Data Science student. <strong>AI Engineer at Aynstyn Technologies</strong> — PPO secured. Published researcher. Currently training a genomic foundation model from scratch.<br><br>
+      Final-year AI &amp; Data Science student. <strong>AI Engineer at Aynstyn Technologies</strong> · PPO secured. Published researcher. Currently training a genomic foundation model from scratch.<br><br>
       I go all the way when something matters.
     </div>
-  </div>
-
-  <div class="scroll-hint">
-    <span class="scroll-hint-line"></span>
-    scroll
   </div>
 </section>
 
 <!-- ── BEAT 1: The obsession ── -->
 <div class="story-divider"></div>
-<div class="story">
+<div class="story" id="beat-1">
   <div class="beat">
     <div class="beat-text reveal">
       <p class="beat-pull">
         I didn't start with AI.<br>I started with <em>why things fail.</em>
       </p>
       <div class="beat-body">
-        <p>There's a particular kind of person who, when something breaks, doesn't reach for the manual — they reach for the pieces. I was always that person. Pull it apart. Understand the failure. Put it back together differently.</p>
-        <p>That instinct became a method. The method became engineering. And eventually, engineering met machine learning — and suddenly the things I was breaking and rebuilding were systems that could <strong>think</strong>.</p>
+        <p>There's a particular kind of person who, when something breaks, doesn't reach for the manual · they reach for the pieces. I was always that person. Pull it apart. Understand the failure. Put it back together differently.</p>
+        <p>That instinct became a method. The method became engineering. And eventually, engineering met machine learning · and suddenly the things I was breaking and rebuilding were systems that could <strong>think</strong>.</p>
         <p>That's when it got interesting.</p>
       </div>
     </div>
@@ -638,14 +615,14 @@ footer {
 
 <!-- ── BEAT 2: First proof ── -->
 <div class="story-divider"></div>
-<div class="story">
+<div class="story" id="beat-2">
   <div class="beat-wide">
     <div class="beat-text reveal">
       <p class="beat-pull">
         The paper wasn't the goal.<br>Understanding was.
       </p>
       <div class="beat-body">
-        <p>My first serious research question was about accessibility — could a vision-language model navigate the chaos of Indian traffic and describe it to someone who couldn't see? It sounds simple until you realize no dataset existed for it. So I built one.</p>
+        <p>My first serious research question was about accessibility · could a vision-language model navigate the chaos of Indian traffic and describe it to someone who couldn't see? It sounds simple until you realize no dataset existed for it. So I built one.</p>
         <p>427 scenes. 3-stage LoRA fine-tuning. A full ML pipeline designed from scratch. The published result was a +15.6% improvement across every metric that mattered.</p>
         <p>But what I actually learned was how to design a research question that's worth asking.</p>
       </div>
@@ -676,7 +653,7 @@ footer {
 
 <!-- ── BEAT 3: Proving it under pressure ── -->
 <div class="story-divider"></div>
-<div class="story">
+<div class="story" id="beat-3">
   <div class="beat-wide">
     <div class="beat-text reveal">
       <p class="beat-pull">
@@ -686,8 +663,8 @@ footer {
       </p>
       <div class="beat-body">
         <p>YUVAAN 2026. The problem: credit risk analysis takes days. Financial analysts drown in reports. We had a weekend.</p>
-        <p>I built a VectorLess RAG pipeline that processed 500+ page annual reports in under 5 minutes — with 98% lower API overhead than standard embedding-based systems. 50+ financial risk indicators. A multi-agent decision pipeline for loan risk assessment.</p>
-        <p><strong>We placed 2nd at IIT Hyderabad.</strong> What stays with me isn't the placement — it's that the system actually worked. Under pressure. On the first real test.</p>
+        <p>I built a VectorLess RAG pipeline that processed 500+ page annual reports in under 5 minutes · with 98% lower API overhead than standard embedding-based systems. 50+ financial risk indicators. A multi-agent decision pipeline for loan risk assessment.</p>
+        <p><strong>We placed 2nd at IIT Hyderabad.</strong> What stays with me isn't the placement · it's that the system actually worked. Under pressure. On the first real test.</p>
       </div>
       <div class="stat-row">
         <div class="stat-block">
@@ -712,7 +689,7 @@ footer {
       </div>
       <div class="evidence-item">
         <div class="evidence-label">Project</div>
-        <div class="evidence-title">AyurMind — Domain-Specific RAG</div>
+        <div class="evidence-title">AyurMind · Domain-Specific RAG</div>
         <div class="evidence-detail">1200+ Ayurvedic entries · 84% Top-3 retrieval · Hallucination ↓45%</div>
       </div>
       <div class="evidence-item">
@@ -726,7 +703,7 @@ footer {
 
 <!-- ── BEAT 4: Production ── -->
 <div class="story-divider"></div>
-<div class="story">
+<div class="story" id="beat-4">
   <div class="beat">
     <div class="beat-text reveal">
       <p class="beat-pull">
@@ -735,7 +712,7 @@ footer {
         every single day.
       </p>
       <div class="beat-body">
-        <p>Aynstyn Technologies hired me as an AI Engineer intern. Within months they offered a pre-placement offer. The gap between research prototypes and production AI systems is enormous — and crossing it requires a different kind of discipline.</p>
+        <p>Aynstyn Technologies hired me as an AI Engineer intern. Within months they offered a pre-placement offer. The gap between research prototypes and production AI systems is enormous · and crossing it requires a different kind of discipline.</p>
         <p>I engineered SaaS modules for interview simulation, candidate assessment, and voice evaluation. Built an LLM evaluation pipeline across 200+ structured test cases. Optimized prompt architectures for edge-case consistency. Real infrastructure. Concurrent users. No room for fragility.</p>
         <p>The PPO means they trust me to keep building. I do too.</p>
       </div>
@@ -745,7 +722,7 @@ footer {
 
 <!-- ── BEAT 5: The frontier ── -->
 <div class="story-divider"></div>
-<div class="story">
+<div class="story" id="beat-5">
   <div class="beat-wide">
     <div class="beat-text reveal">
       <p class="beat-pull">
@@ -755,7 +732,7 @@ footer {
       </p>
       <div class="beat-body">
         <p>A genomic foundation model. Multi-species. ~100 million parameters. Mamba SSM architecture. 4,096 base pair context. Five species. Built from raw NCBI downloads with DDP and SLURM on a university L40S cluster.</p>
-        <p>Phase 1 validated on Human Chr22 — MAE Transformer, loss well below random baseline. Phase 2 is active.</p>
+        <p>Phase 1 validated on Human Chr22 · MAE Transformer, loss well below random baseline. Phase 2 is active.</p>
         <p>I'm not doing this because it's required. I'm doing it because I want to know if it's possible, and I'm the one who'll find out.</p>
       </div>
     </div>
@@ -810,14 +787,7 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <span class="footer-left">© 2026 Charan Sai Ponnada · Built with intent, not a template.</span>
-    <div class="footer-creative">
-      <a href="https://instagram.com/lone_melodies" target="_blank">@lone_melodies</a>
-      <span class="footer-sep">·</span>
-      <a href="#">Unspoken Love</a>
-      <span class="footer-sep">·</span>
-      <a href="https://youtube.com/@charansimplifies" target="_blank">charansimplifies ↗</a>
-    </div>
+    <span class="footer-left">© 2026 Charan Sai Ponnada · Built with intent</span>
   </div>
 </footer>
 
@@ -847,6 +817,20 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 reveals.forEach(r => io.observe(r));
+
+// Section nav active state
+const sections = document.querySelectorAll('.story[id]');
+const navDots = document.querySelectorAll('.section-nav a');
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navDots.forEach(d => d.classList.remove('active'));
+      const active = document.querySelector(`.section-nav a[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => sectionObserver.observe(s));
 </script>
 </body>
 </html>
