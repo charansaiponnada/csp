@@ -67,21 +67,22 @@ export const experiences: Experience[] = [
     tags: ['research', 'computer vision', 'BLIP', 'LoRA', 'publication'],
   },
   {
-    id: 'btech-computer-science',
-    role: 'B.Tech in Computer Science & Engineering',
-    organization: 'SR University',
-    location: 'Warangal, India',
+    id: 'btech-artificial-intelligence',
+    role: 'B.Tech in Artificial Intelligence & Data Science',
+    organization: 'Velagapudi Ramakrishna Siddhartha Engineering College (VRSEC)',
+    location: 'Vijayawada, India',
     type: 'education',
-    startDate: '2022',
-    endDate: '2026',
+    startDate: '2023',
+    endDate: '2027',
     description:
-      'Pursuing Bachelor of Technology in Computer Science and Engineering with focus on Artificial Intelligence and Machine Learning.',
+      'Pursuing Bachelor of Technology in Artificial Intelligence and Data Science with focus on Deep Learning, Computer Vision, and NLP.',
     highlights: [
-      'Specialization in AI and Machine Learning',
-      'Published IEEE research papers',
-      'Active in open-source contributions',
+      'Specialization in AI and Data Science',
+      'Published IEEE research papers at ISAECT 2025',
+      'Active in open-source contributions and technical writing',
+      'Built production AI systems at Aynstyn Technologies',
     ],
-    tags: ['computer science', 'AI', 'engineering', 'bachelor'],
+    tags: ['artificial intelligence', 'data science', 'deep learning', 'bachelor'],
   },
 ]
 

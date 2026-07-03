@@ -1,6 +1,7 @@
 'use client'
 
 import { BlogPost } from '@/lib/content/blog'
+import { mediumArticles } from '@/lib/content/medium'
 import { formatDate } from '@/lib/utils'
 import Link from 'next/link'
 import Card from '@/components/ui/Card'
@@ -105,6 +106,74 @@ export default function BlogListPage({
                 )}
               </div>
             )}
+
+            <div className="section-rule my-12" />
+
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <h2 className="heading-md">Latest on Medium</h2>
+                <span className="inline-flex items-center px-2 py-0.5 text-xs font-mono rounded-full bg-green-100 text-green-700">
+                  Medium
+                </span>
+              </div>
+
+              <div className="space-y-6">
+                {mediumArticles.map((article, i) => (
+                  <a
+                    key={article.slug}
+                    href={article.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Card delay={i * 50}>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="text-xs text-cream-500 font-mono">
+                            {formatDate(article.date)}
+                          </span>
+                        </div>
+                        <h3 className="heading-sm mb-2">{article.title}</h3>
+                        <p className="text-sm leading-relaxed text-cream-700 line-clamp-2">
+                          {article.description}
+                        </p>
+                        <div className="flex flex-wrap gap-1.5 mt-3">
+                          {article.tags.slice(0, 4).map((tag) => (
+                            <span key={tag} className="pill">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </Card>
+                  </a>
+                ))}
+              </div>
+
+              <div className="mt-6 text-center">
+                <a
+                  href="https://medium.com/@charansaiponnada06"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-cream-600 hover:text-sienna transition-colors"
+                >
+                  View All on Medium
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                  >
+                    <path
+                      d="M2 6h8M7 3l3 3-3 3"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
 
           <aside className="lg:col-span-1">
@@ -132,10 +201,37 @@ export default function BlogListPage({
                 </h3>
                 <div className="flex flex-wrap gap-1.5">
                   {tags.map((tag) => (
-                    <span key={tag} className="pill hover:bg-cream-400 cursor-default">
+                    <span
+                      key={tag}
+                      className="pill hover:bg-cream-400 cursor-default"
+                    >
                       {tag}
                     </span>
                   ))}
+                </div>
+              </div>
+
+              <div>
+                <h3 className="font-mono text-xs uppercase tracking-widest text-cream-600 mb-3">
+                  Also on
+                </h3>
+                <div className="space-y-2">
+                  <a
+                    href="https://medium.com/@charansaiponnada06"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-sm text-cream-700 hover:text-sienna transition-colors"
+                  >
+                    Medium ↗
+                  </a>
+                  <a
+                    href="https://dev.to/charansaiponnada"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-sm text-cream-700 hover:text-sienna transition-colors"
+                  >
+                    Dev.to ↗
+                  </a>
                 </div>
               </div>
             </div>

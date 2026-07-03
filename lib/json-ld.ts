@@ -21,7 +21,7 @@ export function personJsonLd() {
     },
     alumniOf: {
       '@type': 'CollegeOrUniversity',
-      name: 'SR University',
+      name: 'Velagapudi Ramakrishna Siddhartha Engineering College (VRSEC)',
     },
     knowsAbout: [
       'Artificial Intelligence',

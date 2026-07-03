@@ -15,7 +15,8 @@ export default function About() {
       <div className="grid gap-8 lg:grid-cols-5">
         <div className="lg:col-span-3 space-y-4 leading-relaxed text-cream-700">
           <p>
-            I am a final-year Computer Science student at SR University and an
+            I am a B.Tech student in Artificial Intelligence & Data Science at
+            VRSEC (Velagapudi Ramakrishna Siddhartha Engineering College) and an
             AI Engineer at Aynstyn Technologies, where I build production AI
             systems and SaaS platform features. My research spans computer
             vision, deep learning, and natural language processing — with
@@ -32,8 +33,8 @@ export default function About() {
           </p>
           <p>
             When I'm not training models or writing papers, I write technical
-            articles, contribute to open source, and share my journey on
-            YouTube at{' '}
+            articles on Medium, contribute to open source, and share my journey
+            on YouTube at{' '}
             <a
               href={SITE.social.youtube}
               target="_blank"
@@ -55,7 +56,7 @@ export default function About() {
               {[
                 { dt: 'Location', dd: 'Hyderabad, India' },
                 { dt: 'Current Role', dd: 'AI Engineer @ Aynstyn' },
-                { dt: 'Education', dd: 'B.Tech CSE, SR University' },
+                { dt: 'Education', dd: 'B.Tech AI & DS, VRSEC' },
                 { dt: 'Research', dd: 'IEEE Published' },
                 { dt: 'Focus', dd: 'Deep Learning, CV, Genomic AI' },
                 { dt: 'Writing', dd: 'Technical Articles & Tutorials' },
