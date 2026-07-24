@@ -10,3 +10,4 @@ logs/
 
 # Optional: Ignore coverage reports
 coverage/
+.vercel

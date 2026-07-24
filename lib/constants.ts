@@ -5,8 +5,8 @@ export const SITE = {
   description:
     'AI Engineer and Machine Learning Researcher specializing in Computer Vision, Deep Learning, RAG Systems, and Genomic Foundation Models. IEEE published researcher.',
   tagline: 'AI Engineer · ML Researcher · Builder',
-  url: 'https://charansaiponnada.vercel.app',
-  domain: 'charansaiponnada.vercel.app',
+  url: 'https://charansaiponnada.me',
+  domain: 'charansaiponnada.me',
   locale: 'en_US',
   logo: '/images/og-default.png',
   favicon: '/favicon.ico',
