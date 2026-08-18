@@ -191,30 +191,3 @@ export function creativeWorkJsonLd(work: {
     ...(work.image && { image: work.image }),
   }
 }
-
-export function blogPostingJsonLd(post: {
-  title: string
-  description: string
-  url: string
-  datePublished: string
-  dateModified?: string
-  image?: string
-  category?: string
-  tags?: string[]
-}) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    '@id': `${SITE.url}${post.url}#blogposting`,
-    headline: post.title,
-    description: post.description,
-    image: post.image || `${SITE.url}${SITE.logo}`,
-    datePublished: post.datePublished,
-    dateModified: post.dateModified || post.datePublished,
-    author: { '@id': `${SITE.url}/#person` },
-    publisher: { '@id': `${SITE.url}/#person` },
-    mainEntityOfPage: { '@id': `${SITE.url}${post.url}#webpage` },
-    articleSection: post.category,
-    keywords: post.tags?.join(', '),
-  }
-}

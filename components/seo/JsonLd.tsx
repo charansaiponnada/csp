@@ -5,7 +5,6 @@ import {
   breadcrumbJsonLd,
   articleJsonLd,
   scholarlyArticleJsonLd,
-  blogPostingJsonLd,
   faqJsonLd,
   organizationJsonLd,
   creativeWorkJsonLd,
@@ -20,7 +19,6 @@ type JsonLdProps = {
     | 'BreadcrumbList'
     | 'Article'
     | 'ScholarlyArticle'
-    | 'BlogPosting'
     | 'FAQ'
     | 'Organization'
     | 'CreativeWork'
@@ -53,10 +51,6 @@ function generateJsonLd(type: JsonLdProps['type'], data?: Record<string, unknown
     case 'ScholarlyArticle':
       return scholarlyArticleJsonLd(
         (data?.paper as Parameters<typeof scholarlyArticleJsonLd>[0]) || {} as any
-      )
-    case 'BlogPosting':
-      return blogPostingJsonLd(
-        (data?.post as Parameters<typeof blogPostingJsonLd>[0]) || {} as any
       )
     case 'FAQ':
       return faqJsonLd(

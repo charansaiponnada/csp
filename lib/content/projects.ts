@@ -21,185 +21,230 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: 'genomic-foundation-model',
+    title: '3D-Aware Genomic Foundation Model (HopField-Mamba)',
+    description:
+      'A genomic foundation model trained from scratch that conditions pretraining on 3D chromatin (Hi-C) structure rather than adding it post-hoc.',
+    longDescription:
+      'An independent research project building a genomic foundation model from scratch on a 2x NVIDIA L40S cluster. The core idea is to condition self-supervised pretraining directly on 3D chromatin (Hi-C) structure, rather than bolting structure on after the fact the way the closest prior work does.',
+    category: 'research',
+    techStack: ['Python', 'PyTorch', 'Mamba/SSM', 'Hi-C genomic data', '2x NVIDIA L40S'],
+    featured: true,
+    date: '2026-01-01',
+    status: 'in-progress',
+    problem:
+      'Genomic foundation models read DNA as a linear sequence, but regulation is three-dimensional — enhancers act on promoters through chromatin folding. The closest prior art (Evo2HiC, Noble Lab 2025) adds structure post-hoc via contrastive distillation, and has no variant/ClinVar evaluation in that lineage.',
+    solution:
+      'A structural-bias mechanism inside the SSM recurrence itself — a per-channel timescale bias plus a permeability penalty on the Caduceus-PH backbone — so 3D structure shapes pretraining directly, at only +0.43% parameter overhead and inside a 5% matched-compute constraint.',
+    architecture: [
+      'Backbone: Caduceus-PH (Mamba/SSM), from-scratch self-supervised pretraining',
+      'Structural bias: per-channel timescale bias + permeability penalty in the SSM recurrence',
+      'Data pipeline: Hi-C contact maps, insulation score and compartment PC1 tracks',
+      'Validation: independent 4DN reference tracks and CTCF ChIA-PET assay data',
+      'Training: 2x NVIDIA L40S, 3 seeds, matched-compute constraint against baseline',
+      'Evaluation: GUE benchmark suite',
+    ],
+    results:
+      'The 7.7M-parameter baseline trains to 1.52 bits/nucleotide validation loss across 3 seeds, establishing the floor a structural-vs-baseline comparison must clear. The data pipeline validates against independent reference data (insulation score r=0.997, compartment PC1 r=0.976 vs 4DN tracks), and a predicted regulatory loop was corroborated by independent CTCF ChIA-PET assay data. On the GUE suite it outperforms a pure MambaMAE baseline on 3 of 4 evaluated tasks. A separate finding — a memory-horizon collapse in Mamba default timestep initialization, whose fix raises median effective memory span ~30x with validation loss unchanged within seed noise — is being written up as a standalone transferable result.',
+    faqs: [
+      {
+        question: 'What makes this different from existing genomic foundation models?',
+        answer:
+          'Structure is part of pretraining rather than a post-hoc addition. The closest prior work distills structure contrastively after the fact; here the 3D signal biases the state-space recurrence during self-supervised training.',
+      },
+      {
+        question: 'Is the memory-horizon fix specific to genomics?',
+        answer:
+          'No. The degradation comes from Mamba default timestep initialization, so the fix should transfer to any long-context SSM. That is why it is being written up separately.',
+      },
+    ],
+    tags: ['genomics', 'foundation models', 'Mamba', 'SSM', 'Hi-C', 'PyTorch'],
+  },
+  {
     slug: 'vivirity-intelli-credit',
     title: 'VIVIRITY Intelli-Credit',
     description:
-      'AI-powered credit risk intelligence platform. Built for YUVAAN 2026 at IIT Hyderabad — secured 2nd place.',
+      'Credit risk intelligence system built on a non-embedding RAG pipeline. 2nd place at the IIT Hyderabad AI/ML Hackathon (YUVAAN 2026).',
     longDescription:
-      'A comprehensive credit risk intelligence system leveraging machine learning to assess borrower risk, predict defaults, and provide actionable insights for financial institutions. Features an interactive dashboard, real-time risk scoring, and explainable AI for regulatory compliance.',
+      'An end-to-end AI credit intelligence system that reads annual reports and turns them into structured loan risk assessments. Built for YUVAAN 2026 at IIT Hyderabad, where it placed 2nd among the Top 10 finalists out of 7,600+ registrants.',
     category: 'ai-ml',
-    techStack: ['Python', 'scikit-learn', 'FastAPI', 'React', 'PostgreSQL', 'Docker'],
+    techStack: [
+      'Python',
+      'FastAPI',
+      'Google Generative AI Toolkit',
+      'Google A2A Toolkit',
+      'Gemini API',
+      'RAG',
+      'Pandas',
+      'NumPy',
+    ],
+    github: 'https://github.com/charansaiponnada/VIVIRITY',
     featured: true,
     date: '2026-02-15',
     status: 'completed',
     problem:
-      'Traditional credit scoring models fail to capture complex patterns in borrower behavior, leading to high default rates and missed opportunities for creditworthy individuals.',
+      'Credit analysts read 500+ page annual reports by hand to extract the handful of numbers that actually drive a lending decision. It takes days per document, and vector-based retrieval over that volume is expensive in API calls.',
     solution:
-      'Built an ensemble ML system combining gradient boosting, random forests, and neural networks with SHAP explainability to deliver accurate, transparent credit risk assessments.',
+      'A non-embedding RAG pipeline feeding a multi-agent decision pipeline, so retrieval happens without the cost of maintaining and querying an embedding index.',
     architecture: [
-      'Data pipeline: ETL from multiple credit bureau sources',
-      'Feature engineering: 200+ derived features from transaction history',
-      'Ensemble model: XGBoost + Random Forest + Neural Network',
-      'API layer: FastAPI with async endpoints',
-      'Dashboard: Interactive risk visualization with D3.js',
-      'Explainability: SHAP values for regulatory compliance',
+      'Ingestion: automated parsing of 500+ page annual reports',
+      'Retrieval: non-embedding RAG pipeline, no vector index to maintain',
+      'Extraction: 50+ financial risk indicators',
+      'Decisioning: multi-agent pipeline (Google A2A toolkit) for end-to-end loan risk assessment',
+      'API layer: FastAPI',
     ],
     results:
-      '92% accuracy in default prediction, 40% reduction in false positives, secured 2nd place at IIT Hyderabad YUVAAN 2026.',
+      '98% lower API overhead than traditional vector-based retrieval, and extraction time down from multiple days of manual work to under 5 minutes. Placed 2nd among the Top 10 finalists at YUVAAN 2026, IIT Hyderabad, out of 7,600+ registrants.',
     faqs: [
       {
-        question: 'What dataset was used?',
+        question: 'Why non-embedding retrieval?',
         answer:
-          'The model was trained on a combination of synthetic credit data and publicly available lending club data augmented with custom feature engineering.',
-      },
-      {
-        question: 'Can this be deployed in production?',
-        answer:
-          'Yes, the system is containerized with Docker and includes a FastAPI backend suitable for production deployment with proper infrastructure.',
+          'Embedding every chunk of a 500-page report and querying a vector store was the dominant cost. Skipping the embedding step cut API overhead by 98% without losing the retrieval quality the decision pipeline needed.',
       },
     ],
-    tags: ['credit risk', 'machine learning', 'fintech', 'XGBoost', 'SHAP'],
+    tags: ['credit risk', 'RAG', 'fintech', 'multi-agent', 'Gemini'],
   },
   {
-    slug: 'ayurmind',
-    title: 'AyurMind',
+    slug: 'labsoft',
+    title: 'LabSoft',
     description:
-      'Domain-specific RAG system for Ayurveda. Retrieval-augmented generation over ancient medical texts.',
+      'Diagnostics platform built end-to-end as sole developer at Aynstyn — schema design through deployment.',
     longDescription:
-      'AyurMind is a specialized RAG system designed to retrieve and generate insights from Ayurvedic medical texts. It combines dense retrieval with domain-specific embedding models to provide accurate, context-aware answers about Ayurvedic medicine, treatments, and formulations.',
-    category: 'ai-ml',
-    techStack: [
-      'Python',
-      'LangChain',
-      'ChromaDB',
-      'OpenAI',
-      'FastAPI',
-      'Streamlit',
-      'Docker',
-    ],
-    featured: true,
-    date: '2025-10-01',
-    status: 'completed',
-    problem:
-      'Ayurvedic knowledge is scattered across ancient texts in Sanskrit and regional languages, making it inaccessible to modern practitioners and researchers.',
-    solution:
-      'Built a domain-specific RAG pipeline that chunks, embeds, and retrieves from digitized Ayurvedic texts, then uses GPT-4 to generate contextual responses.',
-    architecture: [
-      'Text extraction: OCR pipeline for digitized manuscripts',
-      'Chunking: Semantic chunking with overlap for context preservation',
-      'Embeddings: Fine-tuned Sentence-BERT on Ayurvedic corpus',
-      'Vector store: ChromaDB for efficient similarity search',
-      'Retrieval: Hybrid search (dense + BM25) with re-ranking',
-      'Generation: GPT-4 with domain-specific prompts',
-    ],
-    results:
-      '90% retrieval accuracy on domain-specific queries, deployed as a web app with Streamlit, used by 50+ Ayurvedic practitioners.',
-    faqs: [
-      {
-        question: 'How accurate are the responses?',
-        answer:
-          'The system achieves 90% retrieval accuracy. All responses include source citations from the original texts for verification.',
-      },
-    ],
-    tags: ['RAG', 'Ayurveda', 'NLP', 'LangChain', 'ChromaDB', 'retrieval'],
-  },
-  {
-    slug: 'aynstyn-platform',
-    title: 'Aynstyn Technologies Platform',
-    description:
-      'Production SaaS platform for AI-powered business solutions. Built during AI Engineer internship.',
-    longDescription:
-      'Contributed to building a production-grade SaaS platform at Aynstyn Technologies, implementing AI-powered features including PPO-secured customer handling, automated workflows, and intelligent data processing pipelines.',
+      'A production Next.js and PostgreSQL platform I designed and built end-to-end as the sole developer, shipping the Patient Management and Reporting modules from schema design through deployment.',
     category: 'full-stack',
-    techStack: [
-      'Python',
-      'FastAPI',
-      'React',
-      'TypeScript',
-      'PostgreSQL',
-      'Redis',
-      'Docker',
-      'AWS',
-    ],
-    featured: true,
-    date: '2025-08-01',
-    status: 'completed',
-    problem:
-      'Businesses needed an integrated AI platform for automating customer operations, data processing, and workflow management.',
-    solution:
-      'Developed core platform features at Aynstyn Technologies, focusing on AI-powered customer handling with PPO security, real-time data processing, and scalable architecture.',
-    architecture: [
-      'Microservices with FastAPI backend',
-      'React + TypeScript frontend with real-time updates',
-      'PostgreSQL with Redis caching layer',
-      'Docker containerization with AWS ECS',
-      'CI/CD pipeline with GitHub Actions',
-    ],
-    results:
-      'Platform deployed to production serving 10+ enterprise clients, PPO-secured customer handling, 99.9% uptime.',
-    faqs: [
-      {
-        question: 'What is PPO security?',
-        answer:
-          'PPO (Proximal Policy Optimization) was used to optimize security policies dynamically, ensuring adaptive threat response.',
-      },
-    ],
-    tags: ['SaaS', 'production', 'FastAPI', 'React', 'AWS', 'PPO'],
-  },
-  {
-    slug: 'genomic-foundation-model',
-    title: 'Genomic Foundation Model',
-    description:
-      'Multi-species genomic foundation model using Mamba SSM architecture. ~100M parameters.',
-    longDescription:
-      'Developing a genomic foundation model that learns evolutionary patterns across multiple species using state-space model (Mamba SSM) architecture. The model captures long-range dependencies in genomic sequences more efficiently than traditional transformer approaches.',
-    category: 'research',
-    techStack: [
-      'Python',
-      'PyTorch',
-      'Mamba SSM',
-      'Hydra',
-      'Weights & Biases',
-      'CUDA',
-    ],
+    techStack: ['Next.js', 'TypeScript', 'PostgreSQL', 'React', 'CI/CD'],
     featured: true,
     date: '2026-03-01',
-    status: 'in-progress',
+    status: 'completed',
     problem:
-      'Existing genomic models are species-specific and fail to capture cross-species evolutionary patterns. Transformers are computationally expensive for long genomic sequences.',
+      'The platform needed patient records and reporting as first-class modules, with no existing schema, API surface or deployment path to build on.',
     solution:
-      'Building a multi-species foundation model using Mamba SSM architecture that scales linearly with sequence length and captures long-range dependencies across multiple genomes.',
+      'Owned the whole vertical: relational schema, API routes, UI, and the deployment pipeline, shipped as two production modules.',
     architecture: [
-      'Mamba SSM backbone with selective state spaces',
-      'Multi-species tokenizer (6-mer encoding)',
-      'Pre-training on 50+ species genomes',
-      'Fine-tuning heads for downstream tasks',
-      'Distributed training with PyTorch DDP',
-      'W&B experiment tracking',
+      'Next.js app router frontend and API routes',
+      'PostgreSQL relational schema designed from scratch',
+      'Patient Management module',
+      'Reporting module',
+      'CI/CD deployment pipeline',
+    ],
+    results: 'Two production modules shipped and running live, built and deployed solo.',
+    faqs: [],
+    tags: ['Next.js', 'PostgreSQL', 'full-stack', 'production'],
+  },
+  {
+    slug: 'aynstyn-intel',
+    title: 'Aynstyn Intel',
+    description:
+      'Internal analytics platform giving admins real-time learner visibility through Bloom’s Taxonomy tracking and knowledge-gap heatmaps.',
+    longDescription:
+      'An internal analytics platform I architected at Aynstyn, giving admins real-time visibility into learner performance via Bloom’s Taxonomy distribution tracking, knowledge-gap heatmaps and cohort funnel analytics.',
+    category: 'full-stack',
+    techStack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Data visualization'],
+    featured: true,
+    date: '2026-04-01',
+    status: 'completed',
+    problem:
+      'Admins had no way to see where learners were actually struggling — only raw completion numbers, which say nothing about which cognitive level or which topic is failing.',
+    solution:
+      'An analytics layer that classifies activity by Bloom’s Taxonomy level and surfaces gaps as heatmaps, alongside cohort funnel analytics.',
+    architecture: [
+      'Bloom’s Taxonomy distribution tracking over learner activity',
+      'Knowledge-gap heatmaps by topic and cognitive level',
+      'Cohort funnel analytics',
+      'Real-time admin dashboard',
+    ],
+    results: 'Admins get real-time learner visibility instead of completion counts.',
+    faqs: [],
+    tags: ['analytics', 'edtech', 'dashboards', 'Next.js'],
+  },
+  {
+    slug: 'dtm-drainage-pipeline',
+    title: 'DTM — Drone LiDAR to Drainage Network Pipeline',
+    description:
+      'End-to-end geospatial pipeline turning raw drone LiDAR into a designed drainage network. Built for the MoPR Geospatial Hackathon at IIT Tirupati.',
+    longDescription:
+      'A full geospatial processing pipeline for the MoPR Geospatial Hackathon at IIT Tirupati: ground classification, DTM interpolation, hydrology modeling and drainage network design, running on real drone LiDAR data.',
+    category: 'ai-ml',
+    techStack: ['Python', 'pysheds', 'XGBoost', 'networkx', 'Geospatial processing'],
+    github: 'https://github.com/charansaiponnada/DTM',
+    featured: false,
+    date: '2026-01-15',
+    status: 'completed',
+    problem:
+      'Raw drone LiDAR point clouds are not directly usable for drainage planning — the ground surface has to be extracted, interpolated and modeled hydrologically before any network can be designed.',
+    solution:
+      'A staged pipeline: ground classification, DTM interpolation, hydrological flow modeling with pysheds, and drainage network design over the resulting graph.',
+    architecture: [
+      'Ground classification from raw drone LiDAR point clouds',
+      'DTM interpolation to a continuous terrain surface',
+      'Hydrological flow modeling with pysheds',
+      'Waterlogging-risk classifier with XGBoost',
+      'Drainage network design with networkx',
     ],
     results:
-      'In progress. Expected to outperform transformer-based models on downstream genomic tasks with 3x faster inference.',
-    faqs: [
-      {
-        question: 'Why Mamba SSM over Transformers?',
-        answer:
-          'Mamba SSM provides linear-time inference vs quadratic for Transformers, critical for long genomic sequences (up to 10M base pairs).',
-      },
+      'A working end-to-end pipeline from raw drone LiDAR to a designed drainage network, with a waterlogging-risk classifier over real terrain data.',
+    faqs: [],
+    tags: ['geospatial', 'LiDAR', 'hydrology', 'XGBoost'],
+  },
+  {
+    slug: 'collaborative-sync-engine',
+    title: 'Collaborative Sync Engine',
+    description:
+      'Real-time collaborative text editing built from scratch on a CRDT (RGA), with cross-instance sync over Redis Pub/Sub.',
+    longDescription:
+      'A real-time collaborative text-editing engine being built from scratch using a CRDT (RGA) approach, chosen over operational transforms for provable convergence correctness in a solo build.',
+    category: 'full-stack',
+    techStack: ['TypeScript', 'Node.js', 'WebSockets', 'Redis Pub/Sub', 'Docker'],
+    featured: false,
+    date: '2026-06-01',
+    status: 'in-progress',
+    problem:
+      'Operational transforms need a large, carefully tested transform matrix to stay correct. Getting that right alone is a poor bet.',
+    solution:
+      'An RGA-based CRDT, where convergence is a property of the data structure rather than of the transform functions, plus reconnect and diverged-state recovery via state-vector diffing.',
+    architecture: [
+      'CRDT (RGA) document model',
+      'Real-time sync over WebSockets',
+      'Redis Pub/Sub for cross-instance broadcast',
+      'Reconnect and diverged-state recovery via state-vector diffing',
+      'Dockerized services',
     ],
-    tags: ['genomics', 'Mamba', 'SSM', 'foundation model', 'PyTorch', 'deep learning'],
+    results: 'In progress.',
+    faqs: [],
+    tags: ['CRDT', 'real-time', 'WebSockets', 'distributed systems'],
+  },
+  {
+    slug: 'payment-processing-engine',
+    title: 'Payment Processing Engine',
+    description:
+      'Idempotent charge API backed by a double-entry ledger, with HMAC-signed async webhook delivery.',
+    longDescription:
+      'A payment processing engine designed around an idempotent charge API backed by a double-entry ledger rather than a mutable balance field, so financial correctness holds under retries and concurrent requests.',
+    category: 'full-stack',
+    techStack: ['TypeScript', 'Node.js', 'PostgreSQL', 'Redis', 'Docker'],
+    featured: false,
+    date: '2026-07-01',
+    status: 'in-progress',
+    problem:
+      'A balance column plus a retryable endpoint is how you end up double-charging customers. Correctness has to be structural, not defensive.',
+    solution:
+      'A double-entry ledger as the source of truth and an idempotency key on every charge, so retries and concurrent requests converge on the same state.',
+    architecture: [
+      'Idempotent charge API keyed on client-supplied idempotency keys',
+      'Double-entry ledger in PostgreSQL as source of truth',
+      'Async webhook delivery via a Redis-backed job queue',
+      'HMAC-signed webhook payloads with exponential-backoff retries',
+    ],
+    results: 'In progress.',
+    faqs: [],
+    tags: ['payments', 'ledger', 'idempotency', 'system design'],
   },
 ]
-
-export function getFeaturedProjects(): Project[] {
-  return projects.filter((p) => p.featured)
-}
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug)
 }
 
-export function getProjectTags(): string[] {
-  const tags = new Set<string>()
-  projects.forEach((p) => p.tags.forEach((t) => tags.add(t)))
-  return Array.from(tags).sort()
+export function getFeaturedProjects(): Project[] {
+  return projects.filter((p) => p.featured)
 }

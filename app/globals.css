@@ -1,176 +1,386 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ============================================================
+   Minimal light theme, in the style of karpathy.ai
+   No CSS framework — plain CSS, two static rules of thumb:
+   white background, sans-serif, 16px / 1.4, #333 text.
+   ============================================================ */
 
-@layer base {
-  :root {
-    --color-cream-50: #FBF8F3;
-    --color-cream-100: #F7F2E8;
-    --color-cream-200: #F2EDE4;
-    --color-cream-300: #E8E2D9;
-    --color-cream-400: #D4CFC8;
-    --color-cream-500: #B8B2A8;
-    --color-cream-600: #8A8480;
-    --color-cream-700: #4A443E;
-    --color-cream-800: #2D2824;
-    --color-cream-900: #1A1612;
-    --color-sienna: #C4622D;
-    --color-sienna-light: #D4784A;
-    --color-slate: #4A7FA5;
-    --color-slate-light: #6B9FC4;
-  }
-
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
-  }
-
-  body {
-    @apply bg-cream-200 text-cream-900 antialiased;
-    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-  }
-
-  ::selection {
-    @apply bg-sienna/20 text-cream-900;
-  }
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #333;
 }
 
-@layer components {
-  .section-rule {
-    @apply h-px w-full bg-cream-400;
-  }
-
-  .section-eyebrow {
-    @apply font-mono text-xs uppercase tracking-widest text-cream-600;
-  }
-
-  .heading-xl {
-    @apply text-4xl font-light tracking-tight sm:text-5xl lg:text-6xl;
-  }
-
-  .heading-lg {
-    @apply text-3xl font-light tracking-tight sm:text-4xl;
-  }
-
-  .heading-md {
-    @apply text-2xl font-light tracking-tight sm:text-3xl;
-  }
-
-  .heading-sm {
-    @apply text-lg font-medium tracking-tight sm:text-xl;
-  }
-
-  .prose-custom {
-    @apply leading-relaxed text-cream-800;
-  }
-
-  .prose-custom p {
-    @apply mb-4;
-  }
-
-  .prose-custom h2 {
-    @apply heading-md mt-12 mb-4 text-cream-900;
-  }
-
-  .prose-custom h3 {
-    @apply heading-sm mt-8 mb-3 text-cream-900;
-  }
-
-  .prose-custom ul,
-  .prose-custom ol {
-    @apply mb-4 pl-6;
-  }
-
-  .prose-custom li {
-    @apply mb-2;
-  }
-
-  .prose-custom code {
-    @apply bg-cream-300 px-1.5 py-0.5 rounded text-sm font-mono text-cream-800;
-  }
-
-  .prose-custom pre {
-    @apply bg-cream-300 p-4 rounded-lg overflow-x-auto mb-4;
-  }
-
-  .prose-custom pre code {
-    @apply bg-transparent p-0;
-  }
-
-  .prose-custom blockquote {
-    @apply border-l-2 border-sienna pl-4 italic text-cream-700 mb-4;
-  }
-
-  .prose-custom a {
-    @apply text-sienna underline decoration-1 underline-offset-2 hover:text-sienna-light;
-  }
-
-  .prose-custom img {
-    @apply rounded-lg my-8;
-  }
-
-  .tag {
-    @apply inline-flex items-center px-3 py-1 text-xs font-mono rounded-full bg-cream-300 text-cream-700 hover:bg-cream-400 transition-colors;
-  }
-
-  .tag-sienna {
-    @apply tag bg-sienna/10 text-sienna hover:bg-sienna/20;
-  }
-
-  .pill {
-    @apply inline-flex items-center px-2 py-0.5 text-xs font-mono rounded bg-cream-300 text-cream-700;
-  }
-
-  .link-underline {
-    @apply relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:bg-current after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform;
-  }
-
-  .fade-in-view {
-    @apply opacity-0 translate-y-4 transition-all duration-700 ease-out;
-  }
-
-  .fade-in-view.visible {
-    @apply opacity-100 translate-y-0;
-  }
+/* browser-default link colors (kept explicit so they never drift) */
+a {
+    color: #0000ee;
+}
+a:visited {
+    color: #551a8b;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+img {
+    border: 0;
+}
 
-  .scrollbar-thin {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-sienna) transparent;
-  }
+/* Layout */
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+.row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
 
-  .scrollbar-thin::-webkit-scrollbar {
-    width: 6px;
-  }
+/* Head */
+#dhead {
+    margin-top: 20px;
+}
+#dpic {
+    grid-column: span 6;
+    text-align: right;
+}
+#ddesc {
+    padding-top: 40px;
+    padding-left: 20px;
+    grid-column: span 6;
+}
+@media (max-width: 991px) {
+    #dpic {
+        grid-column: span 12;
+        text-align: center;
+    }
+    #ddesc {
+        grid-column: span 12;
+        padding-top: 20px;
+        text-align: center;
+    }
+}
+h1 {
+    font-size: 34px;
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+}
+h2 {
+    font-weight: normal;
+    font-style: italic;
+    color: #999;
+    font-size: 18px;
+    padding: 0;
+    margin: 5px 0 10px 0;
+}
+@media (min-width: 992px) {
+    h2 {
+        max-width: 320px;
+    }
+}
+#dpic img {
+    width: 240px;
+    height: 240px;
+    border-radius: 120px;
+    object-fit: cover;
+}
+#dico {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+@media (max-width: 991px) {
+    #dico {
+        justify-content: center;
+    }
+}
+.iico {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+}
+#demail {
+    margin-top: 10px;
+    color: #555;
+    opacity: 0;
+    transition: opacity 0.7s;
+    word-break: break-word;
+}
+#demail.shown {
+    opacity: 1;
+}
+hr {
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    padding: 0;
+    margin: 20px 0px 20px 0px;
+    border: 0;
+}
 
-  .scrollbar-thin::-webkit-scrollbar-track {
-    background: transparent;
-  }
+/* Timeline */
+.ico {
+    grid-column: span 1;
+    vertical-align: top;
+    border-left: 2px solid #cfcfcf;
+    position: relative;
+}
+.ico img {
+    border-radius: 5px;
+    width: 100%;
+    max-width: 80px;
+    margin-left: 10px;
+}
+.entry-dot {
+    position: absolute;
+    top: 0px;
+    left: -8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 7px;
+    background-color: #cfcfcf;
+    border: 2px solid white;
+}
+.desc {
+    grid-column: span 10;
+    vertical-align: top;
+    font-size: 17px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+.timespan {
+    grid-column: span 1;
+    font-size: 14px;
+    text-align: right;
+    padding-right: 5px;
+    color: #bbb;
+}
 
-  .scrollbar-thin::-webkit-scrollbar-thumb {
-    background-color: var(--color-sienna);
+/* Monogram tiles, used where karpathy.ai uses org logos */
+.mono {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 80px;
+    aspect-ratio: 1 / 1;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+    color: #888;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -1px;
+}
+
+/* Section titles */
+.ctitle {
+    font-size: 36px;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+/* Band sections */
+.band {
+    background-color: #eee;
+    padding-top: 1px;
+    padding-bottom: 30px;
+    margin-top: 40px;
+}
+
+/* Cards */
+#featured .row {
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    padding-bottom: 30px;
+}
+.card {
+    grid-column: span 3;
+    vertical-align: top;
+    border: 1px solid #ddd;
     border-radius: 3px;
-  }
+    padding: 5px;
+    background-color: white;
+    padding-bottom: 10px;
+}
+@media (max-width: 991px) {
+    .card {
+        grid-column: span 6;
+    }
+    #featured .row {
+        grid-column-gap: 5px;
+        grid-row-gap: 5px;
+    }
+}
+.card img {
+    border-radius: 5px;
+    width: 100%;
+}
+.cdesc {
+    vertical-align: top;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+.cmeta {
+    color: #999;
+    font-size: 13px;
+}
+@media (max-width: 768px) {
+    .cdesc {
+        font-size: 14px;
+        padding-bottom: 10px;
+    }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+/* Projects */
+.project {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+.pico {
+    float: left;
+    margin-right: 10px;
+}
+.pico img {
+    height: 80px;
+    border-radius: 5px;
+    border: 1px solid #999;
+}
+.pico .pmono {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    border: 1px solid #999;
+    background-color: #fafafa;
+    color: #777;
+    font-size: 30px;
+    line-height: 80px;
+    text-align: center;
+    letter-spacing: -1px;
+}
+.pend {
+    clear: both;
 }
 
-@supports (font-variation-settings: normal) {
-  body {
-    font-variation-settings: 'wdth' 100;
-  }
+/* Publications */
+.pub {
+    font-size: 14px;
+    border-left: 4px solid #aaa;
+    padding: 2px 0px 2px 10px;
+    margin-bottom: 10px;
+}
+.pub-title {
+    display: inline;
+    color: #333;
+}
+.pub-venue {
+    display: inline;
+    color: #090;
+}
+.pub-authors {
+    display: block;
+    color: #333;
+}
+
+/* Inline link lists */
+.tul {
+    text-align: center;
+    padding: 0;
+}
+.til {
+    display: inline-block;
+    padding: 3px 15px 3px 15px;
+    margin-bottom: 5px;
+}
+.tilb {
+    border-right: 1px solid #ccc;
+}
+.nodot {
+    list-style-type: none;
+    padding-left: 0;
+}
+.nodot li {
+    margin-bottom: 4px;
+}
+.dim {
+    color: #999;
+}
+
+/* ---------- sub-pages ---------- */
+
+.back {
+    font-size: 14px;
+    margin-top: 20px;
+    display: block;
+}
+.ptitle {
+    font-size: 34px;
+    font-weight: normal;
+    margin: 20px 0 5px 0;
+}
+.psub {
+    color: #999;
+    font-style: italic;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.meta {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.post {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+.post-title {
+    font-size: 18px;
+}
+.post-desc {
+    font-size: 15px;
+    color: #555;
+}
+.article {
+    font-size: 17px;
+    max-width: 720px;
+    white-space: pre-wrap;
+}
+.article h2 {
+    font-size: 22px;
+    font-style: normal;
+    color: #333;
+    margin: 24px 0 8px 0;
+}
+.kv {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+.kv b {
+    font-weight: normal;
+    color: #999;
+    display: inline-block;
+    min-width: 110px;
+}
+.bib {
+    background-color: #f6f6f6;
+    border: 1px solid #e2e2e2;
+    border-radius: 3px;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 13px;
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+.footspace {
+    height: 120px;
 }

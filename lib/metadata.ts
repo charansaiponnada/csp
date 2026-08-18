@@ -108,30 +108,3 @@ export function generateMetadata({
 
 export const homeMetadata = generateMetadata({})
 
-export function blogListMetadata(page: number) {
-  return generateMetadata({
-    title: `Blog${page > 1 ? ` — Page ${page}` : ''}`,
-    description: `Articles on AI, Machine Learning, Deep Learning, and Computer Vision by Charan Sai Ponnada.${page > 1 ? ` Page ${page}.` : ''}`,
-    path: page > 1 ? `/blog/page/${page}` : '/blog',
-  })
-}
-
-export function blogPostMetadata(post: {
-  title: string
-  description: string
-  slug: string
-  date: string
-  tags?: string[]
-  image?: string
-}) {
-  return generateMetadata({
-    title: post.title,
-    description: post.description,
-    path: `/blog/${post.slug}`,
-    ogImage: post.image,
-    ogType: 'article',
-    publishedTime: post.date,
-    modifiedTime: post.date,
-    tags: post.tags,
-  })
-}

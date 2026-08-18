@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { SITE } from '@/lib/constants'
 import './globals.css'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
 import JsonLd from '@/components/seo/JsonLd'
 
 export const viewport: Viewport = {
@@ -70,9 +68,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: SITE.url,
-    types: {
-      'application/rss+xml': '/rss.xml',
-    },
   },
 }
 
@@ -82,24 +77,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
-      </head>
-      <body className="min-h-screen bg-cream-200 text-cream-900 antialiased scrollbar-thin">
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+    <html lang="en">
+      <body>
+        {children}
 
         <JsonLd type="Person" />
         <JsonLd type="Website" />
