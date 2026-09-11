@@ -85,10 +85,6 @@ export function generateMetadata({
         'max-snippet': -1,
       },
     },
-    verification: {
-      google: 'YOUR_GOOGLE_VERIFICATION',
-      yandex: 'YOUR_YANDEX_VERIFICATION',
-    },
     icons: {
       icon: [
         { url: '/favicon.ico' },
@@ -100,11 +96,6 @@ export function generateMetadata({
       ],
     },
     manifest: '/manifest.webmanifest',
-    other: {
-      'google-site-verification': 'YOUR_GOOGLE_VERIFICATION',
-    },
   }
 }
-
-export const homeMetadata = generateMetadata({})
 

@@ -3,12 +3,10 @@ export type Project = {
   title: string
   description: string
   longDescription: string
-  category: 'research' | 'ai-ml' | 'full-stack' | 'open-source'
   techStack: string[]
   image?: string
   github?: string
   demo?: string
-  featured: boolean
   date: string
   status: 'completed' | 'in-progress' | 'published'
   problem: string
@@ -27,9 +25,7 @@ export const projects: Project[] = [
       'A genomic foundation model trained from scratch that conditions pretraining on 3D chromatin (Hi-C) structure rather than adding it post-hoc.',
     longDescription:
       'An independent research project building a genomic foundation model from scratch on a 2x NVIDIA L40S cluster. The core idea is to condition self-supervised pretraining directly on 3D chromatin (Hi-C) structure, rather than bolting structure on after the fact the way the closest prior work does.',
-    category: 'research',
     techStack: ['Python', 'PyTorch', 'Mamba/SSM', 'Hi-C genomic data', '2x NVIDIA L40S'],
-    featured: true,
     date: '2026-01-01',
     status: 'in-progress',
     problem:
@@ -67,7 +63,6 @@ export const projects: Project[] = [
       'Credit risk intelligence system built on a non-embedding RAG pipeline. 2nd place at the IIT Hyderabad AI/ML Hackathon (YUVAAN 2026).',
     longDescription:
       'An end-to-end AI credit intelligence system that reads annual reports and turns them into structured loan risk assessments. Built for YUVAAN 2026 at IIT Hyderabad, where it placed 2nd among the Top 10 finalists out of 7,600+ registrants.',
-    category: 'ai-ml',
     techStack: [
       'Python',
       'FastAPI',
@@ -79,7 +74,6 @@ export const projects: Project[] = [
       'NumPy',
     ],
     github: 'https://github.com/charansaiponnada/VIVIRITY',
-    featured: true,
     date: '2026-02-15',
     status: 'completed',
     problem:
@@ -111,9 +105,7 @@ export const projects: Project[] = [
       'Diagnostics platform built end-to-end as sole developer at Aynstyn — schema design through deployment.',
     longDescription:
       'A production Next.js and PostgreSQL platform I designed and built end-to-end as the sole developer, shipping the Patient Management and Reporting modules from schema design through deployment.',
-    category: 'full-stack',
     techStack: ['Next.js', 'TypeScript', 'PostgreSQL', 'React', 'CI/CD'],
-    featured: true,
     date: '2026-03-01',
     status: 'completed',
     problem:
@@ -138,9 +130,7 @@ export const projects: Project[] = [
       'Internal analytics platform giving admins real-time learner visibility through Bloom’s Taxonomy tracking and knowledge-gap heatmaps.',
     longDescription:
       'An internal analytics platform I architected at Aynstyn, giving admins real-time visibility into learner performance via Bloom’s Taxonomy distribution tracking, knowledge-gap heatmaps and cohort funnel analytics.',
-    category: 'full-stack',
     techStack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Data visualization'],
-    featured: true,
     date: '2026-04-01',
     status: 'completed',
     problem:
@@ -164,10 +154,8 @@ export const projects: Project[] = [
       'End-to-end geospatial pipeline turning raw drone LiDAR into a designed drainage network. Built for the MoPR Geospatial Hackathon at IIT Tirupati.',
     longDescription:
       'A full geospatial processing pipeline for the MoPR Geospatial Hackathon at IIT Tirupati: ground classification, DTM interpolation, hydrology modeling and drainage network design, running on real drone LiDAR data.',
-    category: 'ai-ml',
     techStack: ['Python', 'pysheds', 'XGBoost', 'networkx', 'Geospatial processing'],
     github: 'https://github.com/charansaiponnada/DTM',
-    featured: false,
     date: '2026-01-15',
     status: 'completed',
     problem:
@@ -193,9 +181,7 @@ export const projects: Project[] = [
       'Real-time collaborative text editing built from scratch on a CRDT (RGA), with cross-instance sync over Redis Pub/Sub.',
     longDescription:
       'A real-time collaborative text-editing engine being built from scratch using a CRDT (RGA) approach, chosen over operational transforms for provable convergence correctness in a solo build.',
-    category: 'full-stack',
     techStack: ['TypeScript', 'Node.js', 'WebSockets', 'Redis Pub/Sub', 'Docker'],
-    featured: false,
     date: '2026-06-01',
     status: 'in-progress',
     problem:
@@ -220,9 +206,7 @@ export const projects: Project[] = [
       'Idempotent charge API backed by a double-entry ledger, with HMAC-signed async webhook delivery.',
     longDescription:
       'A payment processing engine designed around an idempotent charge API backed by a double-entry ledger rather than a mutable balance field, so financial correctness holds under retries and concurrent requests.',
-    category: 'full-stack',
     techStack: ['TypeScript', 'Node.js', 'PostgreSQL', 'Redis', 'Docker'],
-    featured: false,
     date: '2026-07-01',
     status: 'in-progress',
     problem:
@@ -243,8 +227,4 @@ export const projects: Project[] = [
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug)
-}
-
-export function getFeaturedProjects(): Project[] {
-  return projects.filter((p) => p.featured)
 }

@@ -6,14 +6,11 @@ export type Publication = {
   venueShort: string
   date: string
   status: 'published' | 'in-review' | 'in-progress'
-  type: 'conference' | 'journal' | 'preprint'
   doi?: string
   arxiv?: string
-  pdf?: string
   authors: string[]
   abstract: string
   keywords: string[]
-  citations: number
   bibtex: string
   metrics: { label: string; value: string }[]
 }
@@ -30,7 +27,6 @@ export const publications: Publication[] = [
     venueShort: 'IEEE ISAECT 2025',
     date: '2025-12-18',
     status: 'published',
-    type: 'conference',
     doi: '10.1109/ISAECT68904.2025.11318802',
     authors: [
       'Charan Sai Ponnada',
@@ -49,7 +45,6 @@ export const publications: Publication[] = [
       'Edge Deployment',
       'Raspberry Pi',
     ],
-    citations: 0,
     bibtex: `@inproceedings{ponnada2025vision,
   title={Vision-Language Based Real-Time Assistive System for Outdoor Navigation of the Visually Impaired in Indian Urban Environments},
   author={Ponnada, Charan Sai and Kothapalli, Divya and Goparaju, Karthik and Pedapudi, Sanath},
@@ -75,7 +70,6 @@ export const publications: Publication[] = [
     venueShort: 'IEEE InCODE 2026',
     date: '2026-04-01',
     status: 'in-review',
-    type: 'conference',
     authors: ['Charan Sai Ponnada'],
     abstract:
       'This work proposes paraphrase variance across K=5 semantic-preserving rewrites as a label-free, unsupervised proxy for hallucination in large language model outputs, requiring no ground-truth answers at inference time. The signal is evaluated using BERTScore, NLI contradiction rate and AUC-ROC on the TriviaQA and Natural Questions benchmarks. Experiments run on Llama-3-8B-Instruct (BF16, FlashAttention-2) on 2x NVIDIA L40S, and extend to Llama-3-70B for a cross-scale validation claim.',
@@ -88,7 +82,6 @@ export const publications: Publication[] = [
       'BERTScore',
       'AI Safety',
     ],
-    citations: 0,
     bibtex: `@inproceedings{ponnada2026semantic,
   title={Semantic Consistency as an Unsupervised Hallucination Signal in Large Language Models},
   author={Ponnada, Charan Sai},

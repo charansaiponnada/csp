@@ -42,12 +42,6 @@ export const YoutubeIcon = ({ title }: Props) =>
     title
   )
 
-export const ScholarIcon = ({ title }: Props) =>
-  wrap(
-    <path d="M12 1.5L0 8.25l12 6.75 9.75-5.484V16.5H24V8.25zM4.5 13.125v4.125C4.5 19.32 7.858 21 12 21s7.5-1.68 7.5-3.75v-4.125L12 17.34z" />,
-    title
-  )
-
 export const EmailIcon = ({ title }: Props) => (
   <svg viewBox="0 0 40 40" className="iico" role="img" aria-label={title}>
     <title>{title}</title>

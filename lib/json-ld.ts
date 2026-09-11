@@ -66,100 +66,6 @@ export function webPageJsonLd(title: string, description: string, path: string) 
   }
 }
 
-export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    '@id': `${SITE.url}${items[items.length - 1].path}#breadcrumb`,
-    itemListElement: items.map((item, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: item.name,
-      item: `${SITE.url}${item.path}`,
-    })),
-  }
-}
-
-export function articleJsonLd(article: {
-  title: string
-  description: string
-  url: string
-  image?: string
-  datePublished: string
-  dateModified?: string
-  category?: string
-  tags?: string[]
-}) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    '@id': `${SITE.url}${article.url}#article`,
-    headline: article.title,
-    description: article.description,
-    image: article.image || `${SITE.url}${SITE.logo}`,
-    datePublished: article.datePublished,
-    dateModified: article.dateModified || article.datePublished,
-    author: { '@id': `${SITE.url}/#person` },
-    publisher: { '@id': `${SITE.url}/#person` },
-    mainEntityOfPage: { '@id': `${SITE.url}${article.url}#webpage` },
-    articleSection: article.category,
-    keywords: article.tags?.join(', '),
-    wordCount: article.description.split(/\s+/).length,
-  }
-}
-
-export function scholarlyArticleJsonLd(paper: {
-  title: string
-  description: string
-  url: string
-  datePublished: string
-  venue: string
-  doi?: string
-}) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'ScholarlyArticle',
-    '@id': `${SITE.url}${paper.url}#article`,
-    headline: paper.title,
-    description: paper.description,
-    author: { '@id': `${SITE.url}/#person` },
-    publisher: { '@type': 'Organization', name: paper.venue },
-    datePublished: paper.datePublished,
-    mainEntityOfPage: { '@id': `${SITE.url}${paper.url}#webpage` },
-    ...(paper.doi && { sameAs: `https://doi.org/${paper.doi}` }),
-  }
-}
-
-export function researchProjectJsonLd(project: {
-  name: string
-  description: string
-  url: string
-  status?: string
-}) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'ResearchProject',
-    '@id': `${SITE.url}${project.url}#project`,
-    name: project.name,
-    description: project.description,
-    url: `${SITE.url}${project.url}`,
-    foundingDate: '2025',
-    ...(project.status && { status: project.status }),
-  }
-}
-
-export function faqJsonLd(questions: { question: string; answer: string }[]) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: questions.map((q) => ({
-      '@type': 'Question',
-      name: q.question,
-      acceptedAnswer: { '@type': 'Answer', text: q.answer },
-    })),
-  }
-}
-
 export function organizationJsonLd() {
   return {
     '@context': 'https://schema.org',
@@ -169,25 +75,5 @@ export function organizationJsonLd() {
     name: SITE.shortTitle,
     logo: `${SITE.url}${SITE.logo}`,
     founder: { '@id': `${SITE.url}/#person` },
-  }
-}
-
-export function creativeWorkJsonLd(work: {
-  name: string
-  description: string
-  url: string
-  dateCreated?: string
-  image?: string
-}) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'CreativeWork',
-    '@id': `${SITE.url}${work.url}#work`,
-    name: work.name,
-    description: work.description,
-    url: `${SITE.url}${work.url}`,
-    author: { '@id': `${SITE.url}/#person` },
-    ...(work.dateCreated && { dateCreated: work.dateCreated }),
-    ...(work.image && { image: work.image }),
   }
 }

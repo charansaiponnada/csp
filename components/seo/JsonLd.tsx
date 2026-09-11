@@ -2,13 +2,7 @@ import {
   personJsonLd,
   websiteJsonLd,
   webPageJsonLd,
-  breadcrumbJsonLd,
-  articleJsonLd,
-  scholarlyArticleJsonLd,
-  faqJsonLd,
   organizationJsonLd,
-  creativeWorkJsonLd,
-  researchProjectJsonLd,
 } from '@/lib/json-ld'
 
 type JsonLdProps = {
@@ -16,13 +10,7 @@ type JsonLdProps = {
     | 'Person'
     | 'Website'
     | 'WebPage'
-    | 'BreadcrumbList'
-    | 'Article'
-    | 'ScholarlyArticle'
-    | 'FAQ'
     | 'Organization'
-    | 'CreativeWork'
-    | 'ResearchProject'
   data?: Record<string, unknown>
 }
 
@@ -39,30 +27,6 @@ function generateJsonLd(type: JsonLdProps['type'], data?: Record<string, unknown
         (data?.title as string) || '',
         (data?.description as string) || '',
         (data?.path as string) || '/'
-      )
-    case 'BreadcrumbList':
-      return breadcrumbJsonLd(
-        (data?.items as { name: string; path: string }[]) || []
-      )
-    case 'Article':
-      return articleJsonLd(
-        (data?.article as Parameters<typeof articleJsonLd>[0]) || {} as any
-      )
-    case 'ScholarlyArticle':
-      return scholarlyArticleJsonLd(
-        (data?.paper as Parameters<typeof scholarlyArticleJsonLd>[0]) || {} as any
-      )
-    case 'FAQ':
-      return faqJsonLd(
-        (data?.questions as { question: string; answer: string }[]) || []
-      )
-    case 'CreativeWork':
-      return creativeWorkJsonLd(
-        (data?.work as Parameters<typeof creativeWorkJsonLd>[0]) || {} as any
-      )
-    case 'ResearchProject':
-      return researchProjectJsonLd(
-        (data?.project as Parameters<typeof researchProjectJsonLd>[0]) || {} as any
       )
     default:
       return null
