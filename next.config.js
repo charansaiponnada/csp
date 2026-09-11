@@ -28,6 +28,9 @@ const nextConfig = {
     },
   ],
   redirects: async () => [],
+  rewrites: async () => [
+    { source: '/hbd', destination: '/hbd.html' },
+  ],
 }
 
 module.exports = nextConfig
