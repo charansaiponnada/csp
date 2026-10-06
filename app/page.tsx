@@ -38,8 +38,8 @@ export default function Home() {
           </div>
           <div id="dmascot">
             <Mascot
-              directions="/mascots/beard-directions.webp"
-              reactions="/mascots/beard-reactions.webp"
+              directions="/mascots/csp-directions.webp"
+              reactions="/mascots/csp-reactions.webp"
               size={120}
               label="Charan's mascot"
             />
