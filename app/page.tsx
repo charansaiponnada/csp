@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import SocialRow from '@/components/site/SocialRow'
 import EntryIcon from '@/components/site/EntryIcon'
+import { Mascot } from '@/components/site/Mascot'
 import JsonLd from '@/components/seo/JsonLd'
 import { SITE } from '@/lib/constants'
 import { projects } from '@/lib/content/projects'
@@ -34,6 +35,14 @@ export default function Home() {
             <h1>Charan Sai Ponnada</h1>
             <h2>I build LLM systems and train genomic foundation models from scratch 🧬🤖⚡</h2>
             <SocialRow />
+          </div>
+          <div id="dmascot">
+            <Mascot
+              directions="/mascots/beard-directions.webp"
+              reactions="/mascots/beard-reactions.webp"
+              size={120}
+              label="Charan's mascot"
+            />
           </div>
         </div>
       </div>
